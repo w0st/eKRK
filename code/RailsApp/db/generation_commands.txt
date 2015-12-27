@@ -1,0 +1,39 @@
+rails generate model ObszarowyEfektKsztalcenia  kod:string opis:string kategoria:integer stopien:integer profil:integer
+
+rails generate model KierunkowyEfektKsztalcenia kod:string opis:string kategoria:integer
+
+rails generate model PrzedmiotowyEfektKsztalcenia kod:string opis:string kategoria:integer
+
+rails generate model ObszarKsztalcenia nazwaObszaru:string
+
+rails generate model UdzialObszaru udzialObszaru:decimal
+
+rails generate model ProgramKsztalcenia specjalonosc:string poziomKsztalcenia:integer forma:integer profil:integer jezykStudiow:string uchwalony:datetime obowiazujeOd:datetime
+
+rails generate model KierunekStudiow nazwaKierunku:string
+
+rails generate model Wydzial nazwaWydzialu:string numer:integer
+
+rails generate model ProgramStudiow zwiazekZMisjaUczelni:string wymaganiaWstepne:string uzyskiwanyTytul:integer sylwetkaAbsolwenta:string liczbaSemestrow:integer ECTSdoKwalifikacji:integer ECTSdoKwalifikacji:string zwiezlaAnalizaZRynkiem:string
+
+rails generate model ZagadnienieEgzaminuDyplomowego zagadnienie:string
+
+rails generate model ProfilModulu nazwa:string
+
+rails generate model ModulKsztalcenia nazwaModulu:string typ:integer minEcts:integer
+
+rails generate model PlanStudiow
+
+rails generate model Semestr numer:integer
+
+rails generate model Zajecia kodZajec:string nazwaZajec:string punktyECTS:integer punktyECTSBK:integer punktyECTSP:integer sposobZaliczenia:integer czyOgolnouczelniany:boolean rodzaj:integer typ:integer
+
+rails generate model PrzedmiotKsztalcenia nazwaPrzedmiotu:string
+
+rails generate model KartaPrzedmiotu wersjaJezykowa:string
+
+rails generate model PracownikNaukowy imie:string nazwisko:string email:string
+
+rails generate model Kurs --parent Zajecia formaKursu:integer godzinyZZU:integer godzinyCNPS:integer
+
+rails generate model GrupaKursow --parent Zajecia

@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  zwiazekZMisjaUczelni: MyString
+  wymaganiaWstepne: MyString
+  uzyskiwanyTytul: 1
+  sylwetkaAbsolwenta: MyString
+  liczbaSemestrow: 1
+  ECTSdoKwalifikacji: 1
+  ECTSdoKwalifikacji: MyString
+  zwiezlaAnalizaZRynkiem: MyString
+
+two:
+  zwiazekZMisjaUczelni: MyString
+  wymaganiaWstepne: MyString
+  uzyskiwanyTytul: 1
+  sylwetkaAbsolwenta: MyString
+  liczbaSemestrow: 1
+  ECTSdoKwalifikacji: 1
+  ECTSdoKwalifikacji: MyString
+  zwiezlaAnalizaZRynkiem: MyString

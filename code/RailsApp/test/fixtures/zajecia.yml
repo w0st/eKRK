@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  kodZajec: MyString
+  nazwaZajec: MyString
+  punktyECTS: 1
+  punktyECTSBK: 1
+  punktyECTSP: 1
+  sposobZaliczenia: 1
+  czyOgolnouczelniany: false
+  rodzaj: 1
+  typ: 1
+
+two:
+  kodZajec: MyString
+  nazwaZajec: MyString
+  punktyECTS: 1
+  punktyECTSBK: 1
+  punktyECTSP: 1
+  sposobZaliczenia: 1
+  czyOgolnouczelniany: false
+  rodzaj: 1
+  typ: 1

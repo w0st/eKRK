@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  specjalonosc: MyString
+  poziomKsztalcenia: 1
+  forma: 1
+  profil: 1
+  jezykStudiow: MyString
+  uchwalony: 2015-12-27 20:05:54
+  obowiazujeOd: 2015-12-27 20:05:54
+
+two:
+  specjalonosc: MyString
+  poziomKsztalcenia: 1
+  forma: 1
+  profil: 1
+  jezykStudiow: MyString
+  uchwalony: 2015-12-27 20:05:54
+  obowiazujeOd: 2015-12-27 20:05:54

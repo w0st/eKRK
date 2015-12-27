@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  formaKursu: 1
+  godzinyZZU: 1
+  godzinyCNPS: 
+
+two:
+  formaKursu: 1
+  godzinyZZU: 1
+  godzinyCNPS: 
