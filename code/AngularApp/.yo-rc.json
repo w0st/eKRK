@@ -1,0 +1,9 @@
+{
+  "generator-angm": {
+    "appName": "app",
+    "angularCookies": true,
+    "angularAnimate": true,
+    "angularTouch": true,
+    "angularSanitize": true
+  }
+}
