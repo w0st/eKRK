@@ -1,4 +1,4 @@
 class PracownikNaukowy < ActiveRecord::Base
-  has_many :przedmiot_ksztalcenias
-  has_many :karta_przedmiotus
+  has_many :przedmioty_ksztalcenia
+  has_many :karty_przedmiotow
 end

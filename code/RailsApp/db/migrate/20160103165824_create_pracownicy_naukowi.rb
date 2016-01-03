@@ -1,6 +1,6 @@
-class CreatePracownikNaukowies < ActiveRecord::Migration
+class CreatePracownicyNaukowi < ActiveRecord::Migration
   def change
-    create_table :pracownik_naukowies do |t|
+    create_table :pracownicy_naukowi do |t|
       t.string :imie
       t.string :nazwisko
       t.string :email

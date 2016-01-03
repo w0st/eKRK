@@ -1,6 +1,6 @@
-class CreateModulKsztalcenia < ActiveRecord::Migration
+class CreateModulyKsztalcenia < ActiveRecord::Migration
   def change
-    create_table :modul_ksztalcenia do |t|
+    create_table :moduly_ksztalcenia do |t|
       t.string :nazwaModulu
       t.integer :typ
       t.integer :minEcts

@@ -1,6 +1,6 @@
-class CreateProgramKsztalcenia < ActiveRecord::Migration
+class CreateProgramyKsztalcenia < ActiveRecord::Migration
   def change
-    create_table :program_ksztalcenia do |t|
+    create_table :programy_ksztalcenia do |t|
       t.string :specjalonosc
       t.integer :poziomKsztalcenia
       t.integer :forma

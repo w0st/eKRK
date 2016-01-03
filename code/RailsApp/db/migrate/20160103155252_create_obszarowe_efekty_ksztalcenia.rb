@@ -1,6 +1,6 @@
-class CreateObszarowyEfektKsztalcenia < ActiveRecord::Migration
+class CreateObszaroweEfektyKsztalcenia < ActiveRecord::Migration
   def change
-    create_table :obszarowy_efekt_ksztalcenia do |t|
+    create_table :obszarowe_efekty_ksztalcenia do |t|
       t.string :kod
       t.string :opis
       t.integer :kategoria

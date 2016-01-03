@@ -1,6 +1,6 @@
-class CreateProgramStudiows < ActiveRecord::Migration
+class CreateProgramyStudiow < ActiveRecord::Migration
   def change
-    create_table :program_studiows do |t|
+    create_table :programy_studiow do |t|
       t.string :zwiazekZMisjaUczelni
       t.string :wymaganiaWstepne
       t.integer :uzyskiwanyTytul

@@ -1,3 +1,3 @@
 class Wydzial < ActiveRecord::Base
-  has_many :kierunek_studiows
+  has_many :kierunki_studiow
 end

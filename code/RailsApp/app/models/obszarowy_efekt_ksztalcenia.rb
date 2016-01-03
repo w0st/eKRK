@@ -1,11 +1,11 @@
 class ObszarowyEfektKsztalcenia < ActiveRecord::Base
-  has_and_belongs_to_many :kierunkowy_efekt_ksztalcenias
+  has_and_belongs_to_many :kierunkowe_efekty_ksztalcenia
   belongs_to :obszar_ksztalcenia
 
   enum kategoria: {
-    Wiedza: 0,
-    Umiejetnosci: 1,
-    Kompetencje: 2
+      Wiedza: 0,
+      Umiejetnosci: 1,
+      Kompetencje: 2
   }
 
   enum stopien: {

@@ -1,9 +1,9 @@
 class ProgramKsztalcenia < ActiveRecord::Base
-  has_many :udzial_obszarus
+  has_many :udzialy_obszarow
   belongs_to :kierunek_studiow
   has_one :program_studiow
   has_one :plan_studiow
-  has_many :przedmiot_ksztalcenias
+  has_many :przedmioty_ksztalcenia
 
   enum profil: {
       Ogolnoakademicki: 0,

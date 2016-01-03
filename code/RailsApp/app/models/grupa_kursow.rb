@@ -1,3 +1,3 @@
 class GrupaKursow < Zajecia
-  has_many :kurses
+  has_many :kursy
 end

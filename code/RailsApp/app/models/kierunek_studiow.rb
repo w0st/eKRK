@@ -1,4 +1,4 @@
 class KierunekStudiow < ActiveRecord::Base
-  has_many :program_ksztalcenias
+  has_many :programy_ksztalcenia
   belongs_to :wydzial
 end

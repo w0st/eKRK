@@ -1,8 +1,8 @@
 class KierunkowyEfektKsztalcenia < ActiveRecord::Base
 
-  has_and_belongs_to_many :przedmiotowy_efekt_ksztalcenias
-  has_and_belongs_to_many :obszarowy_efekt_ksztalcenias
-  has_and_belongs_to_many :przedmiot_ksztalcenias
+  has_and_belongs_to_many :przedmiotowe_efekty_ksztalcenia
+  has_and_belongs_to_many :obszarowe_efekty_ksztalcenia
+  has_and_belongs_to_many :przedmioty_ksztalcenia
 
 
   enum kategoria: {

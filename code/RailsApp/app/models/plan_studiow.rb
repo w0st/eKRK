@@ -1,4 +1,4 @@
 class PlanStudiow < ActiveRecord::Base
-  has_one :program_ksztalcenia
-  has_many :semestrs
+  belongs_to :program_ksztalcenia
+  has_many :semestry
 end

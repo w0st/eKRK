@@ -1,8 +1,8 @@
 class ProgramStudiow < ActiveRecord::Base
-  has_one :program_ksztalcenia
-  has_many :zagadnienie_egzaminu_dyplomowegos
-  has_many :profil_modulus
-  has_many :modul_ksztalcenias
+  belongs_to :program_ksztalcenia
+  has_many :zagadnienia_egzaminu_dyplomowego
+  has_many :profile_modulow
+  has_many :moduly_ksztalcenia
 
   enum uzyskiwanyTytul: {
       Magister: 0,
