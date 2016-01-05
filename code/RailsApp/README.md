@@ -15,7 +15,7 @@ Pozostałe pomocne polecenia: ``` rake db:drop ``` , ```rake db:create```
 Wraz z rozwojem aplikacji usuniemy niepotrzebne migracje oraz wpisy w naszym schemacie bazy danych
 
 ### Debugowanie aplikacji
-
+Niezwykle pomocne narzędzie ```rails console --sandbox```.
 
 ### Testowanie API
 Poza pisaniem testów sprawdzających poprawność API polecam wtyczki do przeglądarek o nazwach RESTClient.

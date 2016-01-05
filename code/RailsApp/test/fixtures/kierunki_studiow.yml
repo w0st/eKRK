@@ -2,6 +2,8 @@
 
 one:
   nazwaKierunku: MyString
+  wydzial_id:
 
 two:
   nazwaKierunku: MyString
+  wydzial_id:

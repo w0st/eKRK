@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160104173401) do
+ActiveRecord::Schema.define(version: 20160104235706) do
 
   create_table "emp_data", force: true do |t|
     t.string   "name"
@@ -29,9 +29,12 @@ ActiveRecord::Schema.define(version: 20160104173401) do
 
   create_table "kierunki_studiow", force: true do |t|
     t.string   "nazwaKierunku"
+    t.integer  "wydzial_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "kierunki_studiow", ["wydzial_id"], name: "index_kierunki_studiow_on_wydzial_id"
 
   create_table "kierunkowe_efekty_ksztalcenia", force: true do |t|
     t.string   "kod"

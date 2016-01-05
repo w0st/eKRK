@@ -10,9 +10,9 @@ rails generate model UdzialObszaru udzialObszaru:decimal
 
 rails generate model ProgramKsztalcenia specjalonosc:string poziomKsztalcenia:integer forma:integer profil:integer jezykStudiow:string uchwalony:datetime obowiazujeOd:datetime
 
-rails generate model KierunekStudiow nazwaKierunku:string
-
 rails generate model Wydzial nazwaWydzialu:string numer:integer
+
+rails generate model KierunekStudiow nazwaKierunku:string wydzial:references
 
 rails generate model ProgramStudiow zwiazekZMisjaUczelni:string wymaganiaWstepne:string uzyskiwanyTytul:integer sylwetkaAbsolwenta:string liczbaSemestrow:integer ECTSdoKwalifikacji:integer ECTSdoKwalifikacji:string zwiezlaAnalizaZRynkiem:string
 
