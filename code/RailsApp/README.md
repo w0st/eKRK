@@ -19,3 +19,6 @@ Niezwykle pomocne narzędzie ```rails console --sandbox```.
 
 ### Testowanie API
 Poza pisaniem testów sprawdzających poprawność API polecam wtyczki do przeglądarek o nazwach RESTClient.
+
+### Przydatne URLe:
+[swagger](http://localhost:3000/api/swagger)

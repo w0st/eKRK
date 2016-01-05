@@ -6,6 +6,10 @@ class Root < Grape::API
 
   mount Employee::Data
   mount Users::Data
-  add_swagger_documentation   api_version: 'v1'
+  add_swagger_documentation(
+      hide_documentation_path: true,
+      api_version: 'v1',
+      mount_path: 'swagger_doc',
+  )
 
 end
