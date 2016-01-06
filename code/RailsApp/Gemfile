@@ -50,3 +50,6 @@ gem 'hashie-forbidden_attributes'
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+# Coffe script
+gem 'coffee-script-source', '1.8.0'
+
