@@ -8,7 +8,7 @@ rails generate model ObszarKsztalcenia nazwaObszaru:string
 
 rails generate model UdzialObszaru udzialObszaru:decimal
 
-rails generate model ProgramKsztalcenia specjalonosc:string poziomKsztalcenia:integer forma:integer profil:integer jezykStudiow:string uchwalony:datetime obowiazujeOd:datetime
+rails generate model ProgramKsztalcenia specjalnosc:string poziomKsztalcenia:integer forma:integer profil:integer jezykStudiow:string uchwalony:datetime obowiazujeOd:datetime kierunek_studiow:references
 
 rails generate model Wydzial nazwaWydzialu:string numer:integer
 

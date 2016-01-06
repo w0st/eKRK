@@ -22,6 +22,7 @@ ActiveSupport::Inflector.inflections do |inflect|
   inflect.irregular 'obszar_ksztalcenia', 'obszary_ksztalcenia'
   inflect.irregular 'udzial_obszaru', 'udzialy_obszarow'
   inflect.irregular 'program_ksztalcenia', 'programy_ksztalcenia'
+  inflect.irregular 'ProgramKsztalcenia', 'ProgramyKsztalcenia'
   inflect.irregular 'kierunek_studiow', 'kierunki_studiow'
   inflect.irregular 'wydzial', 'wydzialy'
   inflect.irregular 'program_studiow', 'programy_studiow'

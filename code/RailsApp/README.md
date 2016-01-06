@@ -13,6 +13,7 @@ Polecenie ``` rake db:migrate ``` aplikuje migracje na schema.rb w oparciu o zna
 Polecenie ``` rake db:setup ``` tworzy bazę danych zgodną z schema.rb (wg. ustawień database.yml) oraz wypełnia wstępnymi danymi (seed)  
 Pozostałe pomocne polecenia: ``` rake db:drop ``` , ```rake db:create```  
 Wraz z rozwojem aplikacji usuniemy niepotrzebne migracje oraz wpisy w naszym schemacie bazy danych
+W railsach 4.2 dodano wsparcie przy tworzeniu kluczy obcych przy tworzeniu migracji.
 
 ### Debugowanie aplikacji
 Niezwykle pomocne narzędzie ```rails console --sandbox```.

@@ -15,4 +15,11 @@ class ProgramKsztalcenia < ActiveRecord::Base
       Niestacjonarna: 1
   }
 
+  enum poziomKsztalcenia: {
+      JednoliteMagisterskie: 0,
+      PierwszegoStopnia: 1,
+      DrugiegoStopnia: 2,
+      Doktoranckie: 3
+  }
+
 end

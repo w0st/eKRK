@@ -11,9 +11,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160104235706) do
+ActiveRecord::Schema.define(version: 20160106000602) do
 
-  create_table "emp_data", force: true do |t|
+  create_table "emp_data", force: :cascade do |t|
     t.string   "name"
     t.string   "address"
     t.integer  "age"
@@ -21,13 +21,13 @@ ActiveRecord::Schema.define(version: 20160104235706) do
     t.datetime "updated_at"
   end
 
-  create_table "karty_przedmiotow", force: true do |t|
+  create_table "karty_przedmiotow", force: :cascade do |t|
     t.string   "wersjaJezykowa"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "kierunki_studiow", force: true do |t|
+  create_table "kierunki_studiow", force: :cascade do |t|
     t.string   "nazwaKierunku"
     t.integer  "wydzial_id"
     t.datetime "created_at"
@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 20160104235706) do
 
   add_index "kierunki_studiow", ["wydzial_id"], name: "index_kierunki_studiow_on_wydzial_id"
 
-  create_table "kierunkowe_efekty_ksztalcenia", force: true do |t|
+  create_table "kierunkowe_efekty_ksztalcenia", force: :cascade do |t|
     t.string   "kod"
     t.string   "opis"
     t.integer  "kategoria"
@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 20160104235706) do
     t.datetime "updated_at"
   end
 
-  create_table "moduly_ksztalcenia", force: true do |t|
+  create_table "moduly_ksztalcenia", force: :cascade do |t|
     t.string   "nazwaModulu"
     t.integer  "typ"
     t.integer  "minEcts"
@@ -52,7 +52,7 @@ ActiveRecord::Schema.define(version: 20160104235706) do
     t.datetime "updated_at"
   end
 
-  create_table "obszarowe_efekty_ksztalcenia", force: true do |t|
+  create_table "obszarowe_efekty_ksztalcenia", force: :cascade do |t|
     t.string   "kod"
     t.string   "opis"
     t.integer  "kategoria"
@@ -62,18 +62,18 @@ ActiveRecord::Schema.define(version: 20160104235706) do
     t.datetime "updated_at"
   end
 
-  create_table "obszary_ksztalcenia", force: true do |t|
+  create_table "obszary_ksztalcenia", force: :cascade do |t|
     t.string   "nazwaObszaru"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "plany_studiow", force: true do |t|
+  create_table "plany_studiow", force: :cascade do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "pracownicy_naukowi", force: true do |t|
+  create_table "pracownicy_naukowi", force: :cascade do |t|
     t.string   "imie"
     t.string   "nazwisko"
     t.string   "email"
@@ -81,25 +81,28 @@ ActiveRecord::Schema.define(version: 20160104235706) do
     t.datetime "updated_at"
   end
 
-  create_table "profile_modulow", force: true do |t|
+  create_table "profile_modulow", force: :cascade do |t|
     t.string   "nazwa"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "programy_ksztalcenia", force: true do |t|
-    t.string   "specjalonosc"
+  create_table "programy_ksztalcenia", force: :cascade do |t|
+    t.string   "specjalnosc"
     t.integer  "poziomKsztalcenia"
     t.integer  "forma"
     t.integer  "profil"
     t.string   "jezykStudiow"
     t.datetime "uchwalony"
     t.datetime "obowiazujeOd"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.integer  "kierunek_studiow_id"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
   end
 
-  create_table "programy_studiow", force: true do |t|
+  add_index "programy_ksztalcenia", ["kierunek_studiow_id"], name: "index_programy_ksztalcenia_on_kierunek_studiow_id"
+
+  create_table "programy_studiow", force: :cascade do |t|
     t.string   "zwiazekZMisjaUczelni"
     t.string   "wymaganiaWstepne"
     t.integer  "uzyskiwanyTytul"
@@ -111,7 +114,7 @@ ActiveRecord::Schema.define(version: 20160104235706) do
     t.datetime "updated_at"
   end
 
-  create_table "przedmiotowe_efekty_ksztalcenia", force: true do |t|
+  create_table "przedmiotowe_efekty_ksztalcenia", force: :cascade do |t|
     t.string   "kod"
     t.string   "opis"
     t.integer  "kategoria"
@@ -119,45 +122,45 @@ ActiveRecord::Schema.define(version: 20160104235706) do
     t.datetime "updated_at"
   end
 
-  create_table "przedmioty_ksztalcenia", force: true do |t|
+  create_table "przedmioty_ksztalcenia", force: :cascade do |t|
     t.string   "nazwaPrzedmiotu"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "semestry", force: true do |t|
+  create_table "semestry", force: :cascade do |t|
     t.integer  "numer"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "udzialy_obszarow", force: true do |t|
+  create_table "udzialy_obszarow", force: :cascade do |t|
     t.decimal  "udzialObszaru"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "users", force: true do |t|
+  create_table "users", force: :cascade do |t|
     t.string   "name"
     t.string   "email"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "wydzialy", force: true do |t|
+  create_table "wydzialy", force: :cascade do |t|
     t.string   "nazwaWydzialu"
     t.integer  "numer"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "zagadnienia_egzaminu_dyplomowego", force: true do |t|
+  create_table "zagadnienia_egzaminu_dyplomowego", force: :cascade do |t|
     t.string   "zagadnienie"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "zajecia", force: true do |t|
+  create_table "zajecia", force: :cascade do |t|
     t.string   "kodZajec"
     t.string   "nazwaZajec"
     t.integer  "punktyECTS"
