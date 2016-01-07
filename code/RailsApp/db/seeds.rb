@@ -18,4 +18,6 @@ ProgramKsztalcenia.create(specjalnosc: 'Technologie mobilne', poziomKsztalcenia:
                           kierunek_studiow: kierunek)
 
 
-
+# Konto administratora
+User.create(email: 'admin@example.com', password: 'admin1234', password_confirmation: 'admin1234',
+            role: 1)

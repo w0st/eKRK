@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  resources :users
+  devise_for :users
+  use_doorkeeper
 
   mount Root => '/'
 end
