@@ -4,6 +4,17 @@
     "angularCookies": true,
     "angularAnimate": true,
     "angularTouch": true,
-    "angularSanitize": true
+    "angularSanitize": true,
+    "directives": [
+      {
+        "name": "header"
+      },
+      {
+        "name": "header-notification"
+      },
+      {
+        "name": "sidebar"
+      }
+    ]
   }
 }

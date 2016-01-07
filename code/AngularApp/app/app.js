@@ -17,6 +17,7 @@ angular.module('app', [
     'ngTouch',
     'ngSanitize',
     'ui.router',
+    'angular-loading-bar',
     'home',
 ])
 
