@@ -16,12 +16,19 @@ Kroki potrzebne do przygotowania środowiska deweloperskiego:
 **Uwaga: Przy instalacji modułów jako globalne mogą być potrzebne uprawnienia administratora.**
 
 ## Przydatne informacje
+### Odpalanie aplikacji
 Odpalenie aplikacji w środowisku deweloperskim za pomocą zadania grunt:
 
         grunt dev
 Informacje o możliwościach generatora:
   https://github.com/newaeonweb/generator-angm
   [github.com/newaeonweb/generator-angm](https://github.com/newaeonweb/generator-angm "Title")
+  
+### Tłumaczenia
+Wykorzystujemy plugin angular-translate
+Pliki z tłumaczeniami w katalogu i18n
+Wystarczy w pliku .html: ```{{'KLUCZ' | translate}}```
+Poprzedzajmy klucze nazwami modułów jako prefixy, ew. dajmy global, jeśli wiemy, że będzie użyty w wielu miejscach.
 
 ## Komentarz dotyczący wyboru generatora
    Najpopularniejszy generator angular dla yeomana nie trzyma dobrego stylu (zwłaszcza modularności)
