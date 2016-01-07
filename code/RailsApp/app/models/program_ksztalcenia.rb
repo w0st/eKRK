@@ -22,4 +22,11 @@ class ProgramKsztalcenia < ActiveRecord::Base
       Doktoranckie: 3
   }
 
+  def as_json(options={})
+    super(
+          :include => {
+              :kierunek_studiow => {:include => :wydzial }
+          }
+    )
+  end
 end

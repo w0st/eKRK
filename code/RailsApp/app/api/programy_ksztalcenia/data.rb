@@ -6,8 +6,6 @@ module ProgramyKsztalcenia
       #
       # Example Request:
       #   GET /programy_ksztalcenia
-      # TODO Obsluzyc tutaj relacje do kierunku studiow, wydzialu
-      # aby uniknac zbyt duzej ilosci wywolan REST
       get do
         ProgramKsztalcenia.all
       end

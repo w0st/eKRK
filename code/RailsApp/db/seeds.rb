@@ -10,3 +10,12 @@ kierunek = KierunekStudiow.create(nazwaKierunku: 'Informatyka', wydzial: wydzial
 ProgramKsztalcenia.create(specjalnosc: 'Inżynieria', poziomKsztalcenia: 'DrugiegoStopnia',
                           forma: 'Stacjonarna', profil: 'Ogolnoakademicki', jezykStudiow: 'Polski',
                           kierunek_studiow: kierunek)
+ProgramKsztalcenia.create(specjalnosc: 'ISI', poziomKsztalcenia: 'DrugiegoStopnia',
+                          forma: 'Stacjonarna', profil: 'Ogolnoakademicki', jezykStudiow: 'Polski',
+                          kierunek_studiow: kierunek)
+ProgramKsztalcenia.create(specjalnosc: 'Technologie mobilne', poziomKsztalcenia: 'DrugiegoStopnia',
+                          forma: 'Stacjonarna', profil: 'Ogolnoakademicki', jezykStudiow: 'Polski',
+                          kierunek_studiow: kierunek)
+
+
+
