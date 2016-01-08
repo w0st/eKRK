@@ -1,5 +1,5 @@
 class ObszarowyEfektKsztalcenia < ActiveRecord::Base
-  has_and_belongs_to_many :kierunkowe_efekty_ksztalcenia
+  has_and_belongs_to_many :kierunkowe_efekty_ksztalcenia, :join_table => "kierunkowe_efekty_ksztalcenia_obszarowe_efekty_ksztalcenia", :class_name => "KierunkowyEfektKsztalcenia"
   belongs_to :obszar_ksztalcenia
 
   enum kategoria: {

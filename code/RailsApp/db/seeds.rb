@@ -7,7 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 wydzial = Wydzial.create(nazwaWydzialu: 'Informatyki i Zarządzania', numer: 8)
 kierunek = KierunekStudiow.create(nazwaKierunku: 'Informatyka', wydzial: wydzial)
-ProgramKsztalcenia.create(specjalnosc: 'Inżynieria', poziomKsztalcenia: 'DrugiegoStopnia',
+programKsztalcenia1 = ProgramKsztalcenia.create(specjalnosc: 'Inżynieria', poziomKsztalcenia: 'DrugiegoStopnia',
                           forma: 'Stacjonarna', profil: 'Ogolnoakademicki', jezykStudiow: 'Polski',
                           kierunek_studiow: kierunek)
 ProgramKsztalcenia.create(specjalnosc: 'ISI', poziomKsztalcenia: 'DrugiegoStopnia',
@@ -17,7 +17,49 @@ ProgramKsztalcenia.create(specjalnosc: 'Technologie mobilne', poziomKsztalcenia:
                           forma: 'Stacjonarna', profil: 'Ogolnoakademicki', jezykStudiow: 'Polski',
                           kierunek_studiow: kierunek)
 
+# PlanyStudiow
+planStudiow = PlanStudiow.create(program_ksztalcenia: programKsztalcenia1)
 
-# Konto administratora
-User.create(email: 'admin@example.com', password: 'admin1234', password_confirmation: 'admin1234',
-            role: 1)
+# Semestry
+semestr2 = Semestr.create(numer: 2, plan_studiow: planStudiow)
+
+# ObszaryKsztalcenia
+obszarNaukTechnicznych = ObszarKsztalcenia.create(nazwaObszaru: 'Nauk Technicznych')
+
+# ObszaroweEfektyKsztalcenia
+oek1 = ObszarowyEfektKsztalcenia.create(kod:'T2A_W03' ,opis:'Opis T2A_W03' ,kategoria: 'Wiedza',
+                                        stopien: 'DrugiegoStopnia', profil: 'Ogolnoakademicki',
+                                        obszar_ksztalcenia: obszarNaukTechnicznych)
+oek2 = ObszarowyEfektKsztalcenia.create(kod:'T2A_W04' ,opis:'Opis T2A_W04' ,kategoria: 'Umiejetnosci',
+                                        stopien: 'DrugiegoStopnia', profil: 'Praktyczny',
+                                        obszar_ksztalcenia: obszarNaukTechnicznych)
+
+# KierunkoweEfektyKsztalcenia
+kek1 = KierunkowyEfektKsztalcenia.create(kod:'K2INF_W03',opis: 'Opis K2INF_W03',kategoria: 'Wiedza',
+                                         program_ksztalcenia: programKsztalcenia1)
+kek2 = KierunkowyEfektKsztalcenia.create(kod:'K2INF_W04',opis: 'Opis K2INF_W04',kategoria: 'Umiejetnosci',
+                                         program_ksztalcenia: programKsztalcenia1)
+
+oek1.kierunkowe_efekty_ksztalcenia << kek1
+oek1.kierunkowe_efekty_ksztalcenia << kek2
+
+kek1.obszarowe_efekty_ksztalcenia << oek1
+kek1.obszarowe_efekty_ksztalcenia << oek2
+
+# PrzedmiotoweEfektyKsztalcenia
+# TODO dodac referencje do karty przedmiotu
+pek1 = PrzedmiotowyEfektKsztalcenia.create(kod: 'P2INF_W03', opis: 'Opis P2INF_W03', kategoria: 'Wiedza')
+
+kek1.przedmiotowe_efekty_ksztalcenia << pek1
+pek1.kierunkowe_efekty_ksztalcenia << kek1
+
+# UdzialyObszarow
+udzialObszaru1 = UdzialObszaru.create(udzialObszaru: 1.0, obszar_ksztalcenia: obszarNaukTechnicznych,
+                                      program_ksztalcenia: programKsztalcenia1)
+
+#Konto administratora
+  #po rake db:setup
+  #leci mi
+  #LoadError: cannot load such file -- bcrypt_ext
+#User.create(email: 'admin@example.com', password: 'admin1234', password_confirmation: 'admin1234',
+#           role: 1)

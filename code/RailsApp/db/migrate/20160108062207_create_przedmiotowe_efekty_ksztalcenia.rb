@@ -4,8 +4,9 @@ class CreatePrzedmiotoweEfektyKsztalcenia < ActiveRecord::Migration
       t.string :kod
       t.string :opis
       t.integer :kategoria
+      t.references :karta_przedmiotu, index: true, foreign_key: true
 
-      t.timestamps
+      t.timestamps null: false
     end
   end
 end

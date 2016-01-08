@@ -6,6 +6,7 @@ one:
   kategoria: 1
   stopien: 1
   profil: 1
+  obszar_ksztalcenia_id: 
 
 two:
   kod: MyString
@@ -13,3 +14,4 @@ two:
   kategoria: 1
   stopien: 1
   profil: 1
+  obszar_ksztalcenia_id: 

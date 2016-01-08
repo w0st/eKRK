@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160107231634) do
+ActiveRecord::Schema.define(version: 20160108062331) do
 
   create_table "emp_data", force: :cascade do |t|
     t.string   "name"
@@ -40,8 +40,21 @@ ActiveRecord::Schema.define(version: 20160107231634) do
     t.string   "kod"
     t.string   "opis"
     t.integer  "kategoria"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.integer  "program_ksztalcenia_id"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "kierunkowe_efekty_ksztalcenia", ["program_ksztalcenia_id"], name: "index_kierunkowe_efekty_ksztalcenia_on_program_ksztalcenia_id"
+
+  create_table "kierunkowe_efekty_ksztalcenia_obszarowe_efekty_ksztalcenia", id: false, force: :cascade do |t|
+    t.integer "obszarowy_efekt_ksztalcenia_id",  null: false
+    t.integer "kierunkowy_efekt_ksztalcenia_id", null: false
+  end
+
+  create_table "kierunkowe_efekty_ksztalcenia_przedmiotowe_efekty_ksztalcenia", id: false, force: :cascade do |t|
+    t.integer "kierunkowy_efekt_ksztalcenia_id",   null: false
+    t.integer "przedmiotowy_efekt_ksztalcenia_id", null: false
   end
 
   create_table "moduly_ksztalcenia", force: :cascade do |t|
@@ -98,9 +111,12 @@ ActiveRecord::Schema.define(version: 20160107231634) do
     t.integer  "kategoria"
     t.integer  "stopien"
     t.integer  "profil"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.integer  "obszar_ksztalcenia_id"
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
   end
+
+  add_index "obszarowe_efekty_ksztalcenia", ["obszar_ksztalcenia_id"], name: "index_obszarowe_efekty_ksztalcenia_on_obszar_ksztalcenia_id"
 
   create_table "obszary_ksztalcenia", force: :cascade do |t|
     t.string   "nazwaObszaru"
@@ -109,9 +125,12 @@ ActiveRecord::Schema.define(version: 20160107231634) do
   end
 
   create_table "plany_studiow", force: :cascade do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.integer  "program_ksztalcenia_id"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
+
+  add_index "plany_studiow", ["program_ksztalcenia_id"], name: "index_plany_studiow_on_program_ksztalcenia_id"
 
   create_table "pracownicy_naukowi", force: :cascade do |t|
     t.string   "imie"
@@ -158,9 +177,12 @@ ActiveRecord::Schema.define(version: 20160107231634) do
     t.string   "kod"
     t.string   "opis"
     t.integer  "kategoria"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.integer  "karta_przedmiotu_id"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
   end
+
+  add_index "przedmiotowe_efekty_ksztalcenia", ["karta_przedmiotu_id"], name: "index_przedmiotowe_efekty_ksztalcenia_on_karta_przedmiotu_id"
 
   create_table "przedmioty_ksztalcenia", force: :cascade do |t|
     t.string   "nazwaPrzedmiotu"
@@ -170,15 +192,23 @@ ActiveRecord::Schema.define(version: 20160107231634) do
 
   create_table "semestry", force: :cascade do |t|
     t.integer  "numer"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.integer  "plan_studiow_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
+
+  add_index "semestry", ["plan_studiow_id"], name: "index_semestry_on_plan_studiow_id"
 
   create_table "udzialy_obszarow", force: :cascade do |t|
     t.decimal  "udzialObszaru"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.integer  "obszar_ksztalcenia_id"
+    t.integer  "program_ksztalcenia_id"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
+
+  add_index "udzialy_obszarow", ["obszar_ksztalcenia_id"], name: "index_udzialy_obszarow_on_obszar_ksztalcenia_id"
+  add_index "udzialy_obszarow", ["program_ksztalcenia_id"], name: "index_udzialy_obszarow_on_program_ksztalcenia_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false

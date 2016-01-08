@@ -6,8 +6,9 @@ class CreateObszaroweEfektyKsztalcenia < ActiveRecord::Migration
       t.integer :kategoria
       t.integer :stopien
       t.integer :profil
+      t.references :obszar_ksztalcenia, index: true, foreign_key: true
 
-      t.timestamps
+      t.timestamps null: false
     end
   end
 end

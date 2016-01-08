@@ -4,8 +4,10 @@ one:
   kod: MyString
   opis: MyString
   kategoria: 1
+  karta_przedmiotu_id: 
 
 two:
   kod: MyString
   opis: MyString
   kategoria: 1
+  karta_przedmiotu_id: 
