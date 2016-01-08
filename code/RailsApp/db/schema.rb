@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160108062331) do
+ActiveRecord::Schema.define(version: 20160108073012) do
 
   create_table "emp_data", force: :cascade do |t|
     t.string   "name"
@@ -167,11 +167,15 @@ ActiveRecord::Schema.define(version: 20160108062331) do
     t.integer  "uzyskiwanyTytul"
     t.string   "sylwetkaAbsolwenta"
     t.integer  "liczbaSemestrow"
-    t.string   "ECTSdoKwalifikacji"
+    t.integer  "ECTSdoKwalifikacji"
+    t.string   "mozliwoscKontynuacjiStudiow"
     t.string   "zwiezlaAnalizaZRynkiem"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.integer  "program_ksztalcenia_id"
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
   end
+
+  add_index "programy_studiow", ["program_ksztalcenia_id"], name: "index_programy_studiow_on_program_ksztalcenia_id"
 
   create_table "przedmiotowe_efekty_ksztalcenia", force: :cascade do |t|
     t.string   "kod"
@@ -238,9 +242,12 @@ ActiveRecord::Schema.define(version: 20160108062331) do
 
   create_table "zagadnienia_egzaminu_dyplomowego", force: :cascade do |t|
     t.string   "zagadnienie"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.integer  "program_studiow_id"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
   end
+
+  add_index "zagadnienia_egzaminu_dyplomowego", ["program_studiow_id"], name: "index_zagadnienia_egzaminu_dyplomowego_on_program_studiow_id"
 
   create_table "zajecia", force: :cascade do |t|
     t.string   "kodZajec"

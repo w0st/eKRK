@@ -18,9 +18,9 @@ rails generate model Wydzial nazwaWydzialu:string numer:integer
 
 rails generate model KierunekStudiow nazwaKierunku:string wydzial:references
 
-rails generate model ProgramStudiow zwiazekZMisjaUczelni:string wymaganiaWstepne:string uzyskiwanyTytul:integer sylwetkaAbsolwenta:string liczbaSemestrow:integer ECTSdoKwalifikacji:integer ECTSdoKwalifikacji:string zwiezlaAnalizaZRynkiem:string
+rails generate model program_studiow zwiazekZMisjaUczelni:string wymaganiaWstepne:string uzyskiwanyTytul:integer sylwetkaAbsolwenta:string liczbaSemestrow:integer ECTSdoKwalifikacji:integer mozliwoscKontynuacjiStudiow:string zwiezlaAnalizaZRynkiem:string program_ksztalcenia:references
 
-rails generate model ZagadnienieEgzaminuDyplomowego zagadnienie:string
+rails generate model zagadnienie_egzaminu_dyplomowego zagadnienie:string program_studiow:references
 
 rails generate model ProfilModulu nazwa:string
 

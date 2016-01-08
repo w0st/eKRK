@@ -7,10 +7,11 @@ class CreateProgramyStudiow < ActiveRecord::Migration
       t.string :sylwetkaAbsolwenta
       t.integer :liczbaSemestrow
       t.integer :ECTSdoKwalifikacji
-      t.string :ECTSdoKwalifikacji
+      t.string :mozliwoscKontynuacjiStudiow
       t.string :zwiezlaAnalizaZRynkiem
+      t.references :program_ksztalcenia, index: true, foreign_key: true
 
-      t.timestamps
+      t.timestamps null: false
     end
   end
 end

@@ -56,6 +56,14 @@ pek1.kierunkowe_efekty_ksztalcenia << kek1
 # UdzialyObszarow
 udzialObszaru1 = UdzialObszaru.create(udzialObszaru: 1.0, obszar_ksztalcenia: obszarNaukTechnicznych,
                                       program_ksztalcenia: programKsztalcenia1)
+# ProgramyStudiow
+programStudiow1 = ProgramStudiow.create(zwiazekZMisjaUczelni: 'Opis1' ,wymaganiaWstepne: 'Opis2',
+                                        uzyskiwanyTytul: 'Magister', sylwetkaAbsolwenta: 'Opis3',
+                                        liczbaSemestrow: 3, ECTSdoKwalifikacji: 90 ,mozliwoscKontynuacjiStudiow: 'Opis4',
+                                        zwiezlaAnalizaZRynkiem: 'Opis5', program_ksztalcenia: programKsztalcenia1)
+
+# ZagadnianiaEgzaminyDyplomowego
+zagadnieED1 = ZagadnienieEgzaminuDyplomowego.create(zagadnienie: 'Opis 1',program_studiow: programStudiow1)
 
 #Konto administratora
   #po rake db:setup

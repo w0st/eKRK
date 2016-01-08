@@ -7,8 +7,9 @@ one:
   sylwetkaAbsolwenta: MyString
   liczbaSemestrow: 1
   ECTSdoKwalifikacji: 1
-  ECTSdoKwalifikacji: MyString
+  mozliwoscKontynuacjiStudiow: MyString
   zwiezlaAnalizaZRynkiem: MyString
+  program_ksztalcenia_id: 
 
 two:
   zwiazekZMisjaUczelni: MyString
@@ -17,5 +18,6 @@ two:
   sylwetkaAbsolwenta: MyString
   liczbaSemestrow: 1
   ECTSdoKwalifikacji: 1
-  ECTSdoKwalifikacji: MyString
+  mozliwoscKontynuacjiStudiow: MyString
   zwiezlaAnalizaZRynkiem: MyString
+  program_ksztalcenia_id: 
