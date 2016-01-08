@@ -6,8 +6,9 @@
  * @description
  * # app
  *
- * Main module of the application.
+ * Main modules of the application.
  */
+
 angular.module('app', [
         'ngResource',
         'ngAria',
@@ -20,6 +21,7 @@ angular.module('app', [
         'angular-loading-bar',
         'pascalprecht.translate',
         'home',
+        'program-ksztalcenia'
     ])
 
     .config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpProvider', function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {

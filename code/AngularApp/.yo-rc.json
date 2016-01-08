@@ -5,6 +5,8 @@
     "angularAnimate": true,
     "angularTouch": true,
     "angularSanitize": true,
+    "angular-loading-bar": true,
+    "pascalprecht.translate": true,
     "directives": [
       {
         "name": "header"
@@ -17,6 +19,11 @@
       },
       {
         "name": "changelanguage"
+      }
+    ],
+    "modules": [
+      {
+        "name": "program-ksztalcenia"
       }
     ]
   }

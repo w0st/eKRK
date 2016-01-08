@@ -90,6 +90,10 @@ body {
     left: auto;
 }
 
+.navbar-top-links .dropdown-toggle {
+    cursor: pointer;
+}
+
 .sidebar .sidebar-nav.navbar-collapse {
     padding-right: 0;
     padding-left: 0;
