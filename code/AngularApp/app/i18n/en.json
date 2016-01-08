@@ -1,4 +1,6 @@
 {
     "home_hello": "Hello",
-    "global_logout": "Logout"
+    "global_logout": "Logout",
+    "program_ksztalcenia_faculty": "Faculty",
+    "program_ksztalcenia_field_of_study": "Field of study"
 }

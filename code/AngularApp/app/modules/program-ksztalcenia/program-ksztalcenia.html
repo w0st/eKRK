@@ -1,3 +1,95 @@
-<div class="container">
-    <h1>Content from: program-ksztalcenia page {{vm.content}}</h1>
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">Program kształcenia</h1>
+    </div>
+    <!-- /.col-lg-12 -->
 </div>
+<!-- /.row -->
+<div class="alert alert-danger" ng-show="vm.error">
+    {{vm.error}} <a href="" class="alert-link">Alert Link</a>.
+</div>
+<div class="col-lg-6" ng-show="!vm.error">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            Progam kształcenia: {{vm.content.id}}
+        </div>
+        <!-- /.panel-heading -->
+        <div class="table-responsive">
+            <table class="table">
+                <tbody>
+                <tr>
+                    <td>{{'program_ksztalcenia_faculty' | translate}}</td>
+                    <td>{{vm.content.kierunek_studiow.wydzial.nazwaWydzialu}}</td>
+                </tr>
+                <tr>
+                    <td>{{'program_ksztalcenia_field_of_study' | translate}}</td>
+                    <td>{{vm.content.kierunek_studiow.nazwaKierunku}}</td>
+                </tr>
+                <tr>
+                    <td>Specjalność</td>
+                    <td>{{vm.content.specjalnosc}}</td>
+                </tr>
+                <tr>
+                    <td>Poziom kształcenia</td>
+                    <td>{{vm.content.poziomKsztalcenia}}</td>
+                </tr>
+                <tr>
+                    <td>Forma</td>
+                    <td>{{vm.content.forma}}</td>
+                </tr>
+                <tr>
+                    <td>Profil</td>
+                    <td>{{vm.content.profil}}</td>
+                </tr>
+                <tr>
+                    <td>Język studiów</td>
+                    <td>{{vm.content.jezykStudiow}}</td>
+                </tr>
+                <tr>
+                    <td>Uchwalony</td>
+                    <td>{{vm.content.uchwalony}}</td>
+                </tr>
+                <tr>
+                    <td>Obowiązuje od</td>
+                    <td>{{vm.content.obowiazujeOd}}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <!-- /.table-responsive -->
+    </div>
+    <!-- /.panel -->
+</div>
+<!-- /.col-lg-6 -->
+<div class="col-lg-6" ng-show="!vm.error">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            Powiązane obszary kształcenia
+        </div>
+        <!-- /.panel-heading -->
+        <div class="panel-body">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Nazwa obszaru</th>
+                        <th>Udział obszaru</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>Nauki techniczne</td>
+                        <td>100%</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.table-responsive -->
+        </div>
+        <!-- /.panel-body -->
+    </div>
+    <!-- /.panel -->
+</div>
+<!-- /.col-lg-6 -->
+
+

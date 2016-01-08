@@ -40,7 +40,7 @@ angular.module('app', [
             prefix: 'app/i18n/',
             suffix: '.json'
         });
-        $translateProvider.useSanitizeValueStrategy('sanitize');
+        $translateProvider.useSanitizeValueStrategy('escapeParameters');
         $translateProvider.preferredLanguage('en');
     }])
 

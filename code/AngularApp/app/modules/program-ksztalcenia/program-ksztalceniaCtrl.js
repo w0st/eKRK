@@ -26,8 +26,8 @@
         var vm = this;
         ProgramKsztalceniaService.getProgramKsztalcenia(1).then(function(result) {
             vm.content = result;
-        }, function(error) {
-            vm.content = 'ERROR';
+        }, function(reason) {
+            vm.error = reason;
         });
 
     }

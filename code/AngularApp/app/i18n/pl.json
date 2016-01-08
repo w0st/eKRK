@@ -1,5 +1,7 @@
 {
     "TITLE": "Hej",
     "home_hello": "Witaj",
-    "global_logout": "Wyloguj"
+    "global_logout": "Wyloguj",
+    "program_ksztalcenia_faculty": "Wydział",
+    "program_ksztalcenia_field_of_study": "Kierunek"
 }
