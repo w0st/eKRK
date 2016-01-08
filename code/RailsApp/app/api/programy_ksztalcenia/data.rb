@@ -16,6 +16,19 @@ module ProgramyKsztalcenia
       get do
         ProgramKsztalcenia.all
       end
+
+      # Get a single program_ksztalcenia
+      #
+      # Parameters:
+      #   id (required) - The ID of a program_ksztalcenia
+      # Example Request:
+      #   GET /programy_ksztalcenia/:id
+      params do
+        requires :id
+      end
+      get ':id' do
+        ProgramKsztalcenia.find(params[:id])
+      end
     end
   end
 end
