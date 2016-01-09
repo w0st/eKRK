@@ -6,6 +6,9 @@ class Root < Grape::API
   mount Employee::Data
   mount Users::Data
   mount ProgramyKsztalcenia::Data
+  mount ObszaroweEfektyKsztalcenia::Data
+  mount KierunkoweEfektyKsztalcenia::Data
+  mount ProgramyStudiow::Data
   add_swagger_documentation(hide_documentation_path: true,
                             api_version: 'v1',
                             mount_path: 'swagger_doc'

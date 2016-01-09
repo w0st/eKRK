@@ -3,5 +3,21 @@
     "home_hello": "Witaj",
     "global_logout": "Wyloguj",
     "program_ksztalcenia_faculty": "Wydział",
-    "program_ksztalcenia_field_of_study": "Kierunek"
+    "program_ksztalcenia_field_of_study": "Kierunek",
+    "program_studiow_sem_nr": "Liczba semestrów",
+    "program_studiow_ECTS_to_be_classified": "Liczba punktów ECTS do uzyskania kwalifikacji",
+    "program_studiow_obtained_title": "Uzyskiwany tytuł",
+    "program_studiow_bachelor": "Licencjat",
+    "program_studiow_engineer": "Inżynier",
+    "program_studiow_master": "Magister",
+    "program_studiow_entrance_requirements": "Wymagania wstępne",
+    "program_studiow_possibility_of_continuation": "Możliwość kontynuacji studiów",
+    "program_studiow_graduate_profile": "Sylwetka absolwenta",
+    "program_studiow_link_with_uni_mission": "Związek z misją uczelni",
+    "program_studiow_labour_market_analise": "Zwięzła analiza zgodności zakładanych efektów kształcenia z potrzebami rynku pracy",
+    "program_studiow_diploma_exam_scope": "Zakres egzaminu dyplomowego",
+    "program_studiow_diploma_exam_question": "Zagadnienie"
+
+
+
 }
