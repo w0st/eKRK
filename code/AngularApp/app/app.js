@@ -21,7 +21,8 @@ angular.module('app', [
         'angular-loading-bar',
         'pascalprecht.translate',
         'home',
-        'program-ksztalcenia'
+        'program-ksztalcenia',
+        'program-studiow'
     ])
 
     .config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpProvider', function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {

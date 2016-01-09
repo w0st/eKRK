@@ -2,5 +2,20 @@
     "home_hello": "Hello",
     "global_logout": "Logout",
     "program_ksztalcenia_faculty": "Faculty",
-    "program_ksztalcenia_field_of_study": "Field of study"
+    "program_ksztalcenia_field_of_study": "Field of study",
+    "program_studiow_sem_nr": "Number of semesters",
+    "program_studiow_ECTS_to_be_classified": "ECTS necessary to be classified",
+    "program_studiow_obtained_title": "Obtained title",
+    "program_studiow_bachelor": "Bachelor",
+    "program_studiow_engineer": "Engineer",
+    "program_studiow_master": "Master",
+    "program_studiow_entrance_requirements": "Entrance requirements",
+    "program_studiow_possibility_of_continuation": "Possibility of continuation",
+    "program_studiow_graduate_profile": "Graduate profile",
+    "program_studiow_link_with_uni_mission": "Connection with university mission",
+    "program_studiow_labour_market_analise": "...",
+    "program_studiow_diploma_exam_scope": "Diploma exam scope",
+    "program_studiow_diploma_exam_question": "Diploma exam question"
+
+
 }
