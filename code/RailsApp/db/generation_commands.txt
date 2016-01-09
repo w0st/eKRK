@@ -2,11 +2,11 @@ rails generate model ObszarowyEfektKsztalcenia  kod:string opis:string kategoria
 
 rails generate model kierunkowy_efekt_ksztalcenia kod:string opis:string kategoria:integer program_ksztalcenia:references
 
-rails generate migration CreateJoinTableOEK_KEK obszarowy_efekt_ksztalcenia kierunkowy_efekt_ksztalcenia
+rails generate migration CreateJoinTableOEK_KEK obszarowy_efekt_ksztalcenia:uniq kierunkowy_efekt_ksztalcenia:uniq
 
 rails generate model przedmiotowy_efekt_ksztalcenia kod:string opis:string kategoria:integer karta_przedmiotu:references
 
-rails generate migration CreateJoinTableKEK_PEK kierunkowy_efekt_ksztalcenia przedmiotowy_efekt_ksztalcenia
+rails generate migration CreateJoinTableKEK_PEK kierunkowy_efekt_ksztalcenia:uniq przedmiotowy_efekt_ksztalcenia:uniq
 
 rails generate model ObszarKsztalcenia nazwaObszaru:string
 
@@ -22,9 +22,9 @@ rails generate model program_studiow zwiazekZMisjaUczelni:string wymaganiaWstepn
 
 rails generate model zagadnienie_egzaminu_dyplomowego zagadnienie:string program_studiow:references
 
-rails generate model ProfilModulu nazwa:string
+rails generate model profil_modulu nazwa:string program_studiow:references
 
-rails generate model ModulKsztalcenia nazwaModulu:string typ:integer minEcts:integer
+rails generate model modul_ksztalcenia nazwaModulu:string typ:integer minEcts:integer program_studiow:references profil_modulu:references
 
 rails generate model PlanStudiow program_ksztalcenia:references
 

@@ -4,8 +4,12 @@ one:
   nazwaModulu: MyString
   typ: 1
   minEcts: 1
+  program_studiow_id: 
+  profil_modulu_id: 
 
 two:
   nazwaModulu: MyString
   typ: 1
   minEcts: 1
+  program_studiow_id: 
+  profil_modulu_id: 

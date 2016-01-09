@@ -1,5 +1,8 @@
 class PrzedmiotowyEfektKsztalcenia < ActiveRecord::Base
-  has_and_belongs_to_many :kierunkowe_efekty_ksztalcenia, :join_table => "kierunkowe_efekty_ksztalcenia_przedmiotowe_efekty_ksztalcenia", :class_name => "KierunkowyEfektKsztalcenia"
+  has_and_belongs_to_many :kierunkowe_efekty_ksztalcenia,
+                          :join_table => "kierunkowe_efekty_ksztalcenia_przedmiotowe_efekty_ksztalcenia",
+                          :class_name => "KierunkowyEfektKsztalcenia",
+                          :uniq => true
   belongs_to :karta_przedmiotu
 
   enum kategoria: {

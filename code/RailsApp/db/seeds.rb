@@ -43,15 +43,11 @@ kek2 = KierunkowyEfektKsztalcenia.create(kod:'K2INF_W04',opis: 'Opis K2INF_W04',
 oek1.kierunkowe_efekty_ksztalcenia << kek1
 oek1.kierunkowe_efekty_ksztalcenia << kek2
 
-kek1.obszarowe_efekty_ksztalcenia << oek1
-kek1.obszarowe_efekty_ksztalcenia << oek2
-
 # PrzedmiotoweEfektyKsztalcenia
 # TODO dodac referencje do karty przedmiotu
 pek1 = PrzedmiotowyEfektKsztalcenia.create(kod: 'P2INF_W03', opis: 'Opis P2INF_W03', kategoria: 'Wiedza')
 
 kek1.przedmiotowe_efekty_ksztalcenia << pek1
-pek1.kierunkowe_efekty_ksztalcenia << kek1
 
 # UdzialyObszarow
 udzialObszaru1 = UdzialObszaru.create(udzialObszaru: 1.0, obszar_ksztalcenia: obszarNaukTechnicznych,

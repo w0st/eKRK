@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160108073012) do
+ActiveRecord::Schema.define(version: 20160109180328) do
 
   create_table "emp_data", force: :cascade do |t|
     t.string   "name"
@@ -52,18 +52,29 @@ ActiveRecord::Schema.define(version: 20160108073012) do
     t.integer "kierunkowy_efekt_ksztalcenia_id", null: false
   end
 
+  add_index "kierunkowe_efekty_ksztalcenia_obszarowe_efekty_ksztalcenia", ["kierunkowy_efekt_ksztalcenia_id", "obszarowy_efekt_ksztalcenia_id"], name: "kek_oek_index", unique: true
+  add_index "kierunkowe_efekty_ksztalcenia_obszarowe_efekty_ksztalcenia", ["obszarowy_efekt_ksztalcenia_id", "kierunkowy_efekt_ksztalcenia_id"], name: "oek_kek_index", unique: true
+
   create_table "kierunkowe_efekty_ksztalcenia_przedmiotowe_efekty_ksztalcenia", id: false, force: :cascade do |t|
     t.integer "kierunkowy_efekt_ksztalcenia_id",   null: false
     t.integer "przedmiotowy_efekt_ksztalcenia_id", null: false
   end
 
+  add_index "kierunkowe_efekty_ksztalcenia_przedmiotowe_efekty_ksztalcenia", ["kierunkowy_efekt_ksztalcenia_id", "przedmiotowy_efekt_ksztalcenia_id"], name: "kek_pek_index", unique: true
+  add_index "kierunkowe_efekty_ksztalcenia_przedmiotowe_efekty_ksztalcenia", ["przedmiotowy_efekt_ksztalcenia_id", "kierunkowy_efekt_ksztalcenia_id"], name: "pek_kek_index", unique: true
+
   create_table "moduly_ksztalcenia", force: :cascade do |t|
     t.string   "nazwaModulu"
     t.integer  "typ"
     t.integer  "minEcts"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.integer  "program_studiow_id"
+    t.integer  "profil_modulu_id"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
   end
+
+  add_index "moduly_ksztalcenia", ["profil_modulu_id"], name: "index_moduly_ksztalcenia_on_profil_modulu_id"
+  add_index "moduly_ksztalcenia", ["program_studiow_id"], name: "index_moduly_ksztalcenia_on_program_studiow_id"
 
   create_table "oauth_access_grants", force: :cascade do |t|
     t.integer  "resource_owner_id", null: false
@@ -142,9 +153,12 @@ ActiveRecord::Schema.define(version: 20160108073012) do
 
   create_table "profile_modulow", force: :cascade do |t|
     t.string   "nazwa"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.integer  "program_studiow_id"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
   end
+
+  add_index "profile_modulow", ["program_studiow_id"], name: "index_profile_modulow_on_program_studiow_id"
 
   create_table "programy_ksztalcenia", force: :cascade do |t|
     t.string   "specjalnosc"
