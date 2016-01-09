@@ -30,6 +30,7 @@ gem 'rack-cors', :require => 'rack/cors'
 
 # Grape gem
 gem 'grape', '~> 0.14.0'
+gem 'grape-entity', '~> 0.4.8'
 
 # API documentation gem
 gem 'grape-swagger'
