@@ -61,6 +61,43 @@ programStudiow1 = ProgramStudiow.create(zwiazekZMisjaUczelni: 'Opis1' ,wymagania
 # ZagadnianiaEgzaminyDyplomowego
 zagadnieED1 = ZagadnienieEgzaminuDyplomowego.create(zagadnienie: 'Opis 1',program_studiow: programStudiow1)
 
+# ProfilModulow
+profil_modulu1 = ProfilModulu.create(nazwa: 'Kierunkowe', program_studiow: programStudiow1)
+
+# ModulKsztalcenia
+modul_ksztalcenia1 = ModulKsztalcenia.create(nazwaModulu: 'Technologie informacyjne', typ: 'Obowiazkowy', minEcts: 9, program_studiow: programStudiow1, profil_modulu: profil_modulu1)
+
+
+# PracownikNaukowy
+pracownik_naukowy1 = PracownikNaukowy.create(imie: 'Janusz', nazwisko: 'Martan', email: 'janusz.martan@pwr.wroc.pl')
+
+# PrzedmiotKsztalcenia
+przedmiotKsztalcenia1 = PrzedmiotKsztalcenia.create(nazwaPrzedmiotu: 'Podstawy elektroniki i miernictwa', program_ksztalcenia: programKsztalcenia1,opiekunPrzedmiotu: pracownik_naukowy1 )
+przedmiotKsztalcenia1.kierunkowe_efekty_ksztalcenia << kek1
+przedmiotKsztalcenia1.kierunkowe_efekty_ksztalcenia << kek2
+
+
+# KartaPrzedmiotu
+kartaPrzedmiotu1PL = KartaPrzedmiotu.create(wersjaJezykowa: 'PL', przedmiot_ksztalcenia: przedmiotKsztalcenia1, autorKartyPrzedmiotu: pracownik_naukowy1)
+kartaPrzedmiotu1ENG = KartaPrzedmiotu.create(wersjaJezykowa: 'ENG', przedmiot_ksztalcenia: przedmiotKsztalcenia1, autorKartyPrzedmiotu: pracownik_naukowy1)
+
+kartaPrzedmiotu1PL.przedmiotowe_efekty_ksztalcenia << pek1
+
+# Zajecia
+gk1 = GrupaKursow.create(kodZajec: 'IZN001516WL',nazwaZajec: 'Podstawy elektroniki i miernictwa GK',
+                   punktyECTS: 2,punktyECTSBK: 3,punktyECTSP: 2,sposobZaliczenia: 'Zaliczenie',
+                   czyOgolnouczelniany: FALSE, rodzaj: 'Podstawowy',
+                   typ: 'Obowiazkowy',modul_ksztalcenia: modul_ksztalcenia1, semestr: semestr2, przedmiot_ksztalcenia: przedmiotKsztalcenia1)
+
+kurs1 = Kurs.create(formaKursu: 'Wyklad', godzinyZZU: 30, godzinyCNPS: 60, modul_ksztalcenia: modul_ksztalcenia1, semestr: semestr2)
+kurs2 = Kurs.create(formaKursu: 'Laboratorium', godzinyZZU: 30, godzinyCNPS: 60, modul_ksztalcenia: modul_ksztalcenia1, semestr: semestr2)
+
+gk1.kursy << kurs1
+gk1.kursy << kurs2
+
+gk1.kurs_koncowy = kurs1
+
+
 #Konto administratora
   #po rake db:setup
   #leci mi

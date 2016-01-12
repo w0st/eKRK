@@ -10,6 +10,15 @@ one:
   czyOgolnouczelniany: false
   rodzaj: 1
   typ: 1
+  modul_ksztalcenia_id: 
+  semestr_id: 
+  przedmiot_ksztalcenia_id: 
+  formaKursu: 1
+  godzinyZZU: 1
+  godzinyCNPS: 1
+  zajecia_id: 
+  zajecia_id: 
+  type: 
 
 two:
   kodZajec: MyString
@@ -21,3 +30,12 @@ two:
   czyOgolnouczelniany: false
   rodzaj: 1
   typ: 1
+  modul_ksztalcenia_id: 
+  semestr_id: 
+  przedmiot_ksztalcenia_id: 
+  formaKursu: 1
+  godzinyZZU: 1
+  godzinyCNPS: 1
+  zajecia_id: 
+  zajecia_id: 
+  type: 

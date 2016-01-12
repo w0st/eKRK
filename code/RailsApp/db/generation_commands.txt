@@ -1,4 +1,4 @@
-rails generate model ObszarowyEfektKsztalcenia  kod:string opis:string kategoria:integer stopien:integer profil:integer obszar_ksztalcenia:references
+rails generate model obszarowy_efekt_ksztalcenia  kod:string opis:string kategoria:integer stopien:integer profil:integer obszar_ksztalcenia:references
 
 rails generate model kierunkowy_efekt_ksztalcenia kod:string opis:string kategoria:integer program_ksztalcenia:references
 
@@ -8,15 +8,15 @@ rails generate model przedmiotowy_efekt_ksztalcenia kod:string opis:string kateg
 
 rails generate migration CreateJoinTableKEK_PEK kierunkowy_efekt_ksztalcenia:uniq przedmiotowy_efekt_ksztalcenia:uniq
 
-rails generate model ObszarKsztalcenia nazwaObszaru:string
+rails generate model obszar_ksztalcenia nazwaObszaru:string
 
-rails generate model UdzialObszaru udzialObszaru:decimal obszar_ksztalcenia:references program_ksztalcenia:references
+rails generate model udzial_obszaru udzialObszaru:decimal obszar_ksztalcenia:references program_ksztalcenia:references
 
-rails generate model ProgramKsztalcenia specjalnosc:string poziomKsztalcenia:integer forma:integer profil:integer jezykStudiow:string uchwalony:datetime obowiazujeOd:datetime kierunek_studiow:references
+rails generate model program_ksztalcenia specjalnosc:string poziomKsztalcenia:integer forma:integer profil:integer jezykStudiow:string uchwalony:datetime obowiazujeOd:datetime kierunek_studiow:references
 
-rails generate model Wydzial nazwaWydzialu:string numer:integer
+rails generate model wydzial nazwaWydzialu:string numer:integer
 
-rails generate model KierunekStudiow nazwaKierunku:string wydzial:references
+rails generate model kierunek_studiow nazwaKierunku:string wydzial:references
 
 rails generate model program_studiow zwiazekZMisjaUczelni:string wymaganiaWstepne:string uzyskiwanyTytul:integer sylwetkaAbsolwenta:string liczbaSemestrow:integer ECTSdoKwalifikacji:integer mozliwoscKontynuacjiStudiow:string zwiezlaAnalizaZRynkiem:string program_ksztalcenia:references
 
@@ -26,18 +26,20 @@ rails generate model profil_modulu nazwa:string program_studiow:references
 
 rails generate model modul_ksztalcenia nazwaModulu:string typ:integer minEcts:integer program_studiow:references profil_modulu:references
 
-rails generate model PlanStudiow program_ksztalcenia:references
+rails generate model plan_studiow program_ksztalcenia:references
 
-rails generate model Semestr numer:integer plan_studiow:references
+rails generate model semestr numer:integer plan_studiow:references
 
-rails generate model Zajecia kodZajec:string nazwaZajec:string punktyECTS:integer punktyECTSBK:integer punktyECTSP:integer sposobZaliczenia:integer czyOgolnouczelniany:boolean rodzaj:integer typ:integer
+rails generate model zajecia kodZajec:string nazwaZajec:string punktyECTS:integer punktyECTSBK:integer punktyECTSP:integer sposobZaliczenia:integer czyOgolnouczelniany:boolean rodzaj:integer typ:integer modul_ksztalcenia:references semestr:references przedmiot_ksztalcenia:references formaKursu:integer godzinyZZU:integer godzinyCNPS:integer zajecia:references zajecia:references type:string
 
-rails generate model PrzedmiotKsztalcenia nazwaPrzedmiotu:string
+rails generate model przedmiot_ksztalcenia nazwaPrzedmiotu:string program_ksztalcenia:references pracownik_naukowy:references
 
-rails generate model KartaPrzedmiotu wersjaJezykowa:string
+rails generate model karta_przedmiotu wersjaJezykowa:string przedmiot_ksztalcenia:references pracownik_naukowy:references
 
-rails generate model PracownikNaukowy imie:string nazwisko:string email:string
+rails generate model pracownik_naukowy imie:string nazwisko:string email:string
 
-rails generate model Kurs --parent Zajecia formaKursu:integer godzinyZZU:integer godzinyCNPS:integer
+rails generate migration CreateJoinTableKEK_PrzedmiotKsztalcenia kierunkowy_efekt_ksztalcenia:uniq przedmiot_ksztalcenia:uniq
 
-rails generate model GrupaKursow --parent Zajecia
+rails generate model kurs --parent Zajecia
+
+rails generate model grupaKursow  --parent Zajecia

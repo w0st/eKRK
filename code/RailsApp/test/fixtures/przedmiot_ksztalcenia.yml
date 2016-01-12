@@ -2,6 +2,10 @@
 
 one:
   nazwaPrzedmiotu: MyString
+  program_ksztalcenia_id: 
+  pracownik_naukowy_id: 
 
 two:
   nazwaPrzedmiotu: MyString
+  program_ksztalcenia_id: 
+  pracownik_naukowy_id: 

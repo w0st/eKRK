@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160109180328) do
+ActiveRecord::Schema.define(version: 20160111191828) do
 
   create_table "emp_data", force: :cascade do |t|
     t.string   "name"
@@ -23,9 +23,14 @@ ActiveRecord::Schema.define(version: 20160109180328) do
 
   create_table "karty_przedmiotow", force: :cascade do |t|
     t.string   "wersjaJezykowa"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.integer  "przedmiot_ksztalcenia_id"
+    t.integer  "pracownik_naukowy_id"
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
   end
+
+  add_index "karty_przedmiotow", ["pracownik_naukowy_id"], name: "index_karty_przedmiotow_on_pracownik_naukowy_id"
+  add_index "karty_przedmiotow", ["przedmiot_ksztalcenia_id"], name: "index_karty_przedmiotow_on_przedmiot_ksztalcenia_id"
 
   create_table "kierunki_studiow", force: :cascade do |t|
     t.string   "nazwaKierunku"
@@ -62,6 +67,14 @@ ActiveRecord::Schema.define(version: 20160109180328) do
 
   add_index "kierunkowe_efekty_ksztalcenia_przedmiotowe_efekty_ksztalcenia", ["kierunkowy_efekt_ksztalcenia_id", "przedmiotowy_efekt_ksztalcenia_id"], name: "kek_pek_index", unique: true
   add_index "kierunkowe_efekty_ksztalcenia_przedmiotowe_efekty_ksztalcenia", ["przedmiotowy_efekt_ksztalcenia_id", "kierunkowy_efekt_ksztalcenia_id"], name: "pek_kek_index", unique: true
+
+  create_table "kierunkowe_efekty_ksztalcenia_przedmioty_ksztalcenia", id: false, force: :cascade do |t|
+    t.integer "kierunkowy_efekt_ksztalcenia_id", null: false
+    t.integer "przedmiot_ksztalcenia_id",        null: false
+  end
+
+  add_index "kierunkowe_efekty_ksztalcenia_przedmioty_ksztalcenia", ["kierunkowy_efekt_ksztalcenia_id", "przedmiot_ksztalcenia_id"], name: "kek_pk_index", unique: true
+  add_index "kierunkowe_efekty_ksztalcenia_przedmioty_ksztalcenia", ["przedmiot_ksztalcenia_id", "kierunkowy_efekt_ksztalcenia_id"], name: "pk_kek_index", unique: true
 
   create_table "moduly_ksztalcenia", force: :cascade do |t|
     t.string   "nazwaModulu"
@@ -204,9 +217,14 @@ ActiveRecord::Schema.define(version: 20160109180328) do
 
   create_table "przedmioty_ksztalcenia", force: :cascade do |t|
     t.string   "nazwaPrzedmiotu"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.integer  "program_ksztalcenia_id"
+    t.integer  "pracownik_naukowy_id"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
+
+  add_index "przedmioty_ksztalcenia", ["pracownik_naukowy_id"], name: "index_przedmioty_ksztalcenia_on_pracownik_naukowy_id"
+  add_index "przedmioty_ksztalcenia", ["program_ksztalcenia_id"], name: "index_przedmioty_ksztalcenia_on_program_ksztalcenia_id"
 
   create_table "semestry", force: :cascade do |t|
     t.integer  "numer"
@@ -273,8 +291,21 @@ ActiveRecord::Schema.define(version: 20160109180328) do
     t.boolean  "czyOgolnouczelniany"
     t.integer  "rodzaj"
     t.integer  "typ"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.integer  "modul_ksztalcenia_id"
+    t.integer  "semestr_id"
+    t.integer  "przedmiot_ksztalcenia_id"
+    t.integer  "formaKursu"
+    t.integer  "godzinyZZU"
+    t.integer  "godzinyCNPS"
+    t.integer  "zajecia_id"
+    t.string   "type"
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
   end
+
+  add_index "zajecia", ["modul_ksztalcenia_id"], name: "index_zajecia_on_modul_ksztalcenia_id"
+  add_index "zajecia", ["przedmiot_ksztalcenia_id"], name: "index_zajecia_on_przedmiot_ksztalcenia_id"
+  add_index "zajecia", ["semestr_id"], name: "index_zajecia_on_semestr_id"
+  add_index "zajecia", ["zajecia_id"], name: "index_zajecia_on_zajecia_id"
 
 end

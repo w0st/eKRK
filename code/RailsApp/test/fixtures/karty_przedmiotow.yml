@@ -2,6 +2,10 @@
 
 one:
   wersjaJezykowa: MyString
+  przedmiot_ksztalcenia_id: 
+  pracownik_naukowy_id: 
 
 two:
   wersjaJezykowa: MyString
+  przedmiot_ksztalcenia_id: 
+  pracownik_naukowy_id: 
