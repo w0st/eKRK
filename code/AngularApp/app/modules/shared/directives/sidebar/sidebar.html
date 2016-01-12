@@ -4,16 +4,24 @@
             <li ui-sref-active="active">
                 <a ui-sref="home"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
             </li>
-            <li ui-sref-active="active">
-
-                <a ui-sref="program-ksztalcenia"><i class="fa fa-bar-chart-o fa-fw"></i> Programy kształcenia<span></span></a>
-
+            <li ng-class="{active: collapseVar==2}">
+                <a ui-sref="program-ksztalcenia" href="" ng-click="check(2)"><i class="fa fa-sitemap fa-fw"></i> Programy kształcenia<span
+                    class="fa arrow"></span></a>
+                <ul class="nav nav-second-level" collapse="collapseVar!=2">
+                    <li ng-init="third=!third" ng-class="{active: multiCollapseVar==3}">
+                        <a ui-sref="program-ksztalcenia" href="" ng-click="multiCheck(3)">Program kształcenia 1<span class="fa arrow"></span></a>
+                        <ul class="nav nav-third-level" collapse="multiCollapseVar!=3">
+                            <li>
+                                <a ui-sref="program-studiow">Program studiów</a>
+                            </li>
+                        </ul>
+                        <!-- /.nav-third-level -->
+                    </li>
+                </ul>
+                <!-- /.nav-second-level -->
             </li>
-            <li ui-sref-active="active">
 
-                <a ui-sref="program-studiow"><i class="fa fa-bar-chart-o fa-fw"></i> Program studiów<span></span></a>
 
-            </li>
             <li ui-sref-active="active">
                 <a ui-sref="dashboard.table"><i class="fa fa-table fa-fw"></i> Tables</a>
             </li>
