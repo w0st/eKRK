@@ -13,7 +13,7 @@
     function ProgramStudiow($resource, CONFIG) {
         return {
             getProgramStudiow: function(id) {
-                return $resource(CONFIG.BASE_URL + "programy_studiow/:id").get({id: id}).$promise;
+                return $resource(CONFIG.API_URL + "programy_studiow/:id").get({id: id}).$promise;
             }
         }
     }
