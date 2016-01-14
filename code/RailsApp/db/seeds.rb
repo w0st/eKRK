@@ -99,8 +99,10 @@ gk1.kurs_koncowy = kurs1
 
 
 #Konto administratora
-  #po rake db:setup
-  #leci mi
-  #LoadError: cannot load such file -- bcrypt_ext
-#User.create(email: 'admin@example.com', password: 'admin1234', password_confirmation: 'admin1234',
-#           role: 1)
+User.create(email: 'admin@example.com', password: 'admin1234', password_confirmation: 'admin1234',
+           role: 1)
+# Konta uzytkownikow
+User.create(email: 'user@example.com', password: 'user1234', password_confirmation: 'user1234',
+            role: 0)
+User.create(email: 'another@example.com', password: 'user1234', password_confirmation: 'user1234',
+            role: 0)

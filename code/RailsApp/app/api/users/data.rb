@@ -1,5 +1,14 @@
+require 'doorkeeper/grape/helpers'
 module Users
     class Data < Grape::API
+      helpers Doorkeeper::Grape::Helpers
+      resource :current_user do
+        # Get a current user
+        get do
+          User.find(doorkeeper_token.resource_owner_id) if doorkeeper_token
+        end
+      end
+
 
       resource :users do
         # Get a list of users
