@@ -106,3 +106,13 @@ User.create(email: 'user@example.com', password: 'user1234', password_confirmati
             role: 0)
 User.create(email: 'another@example.com', password: 'user1234', password_confirmation: 'user1234',
             role: 0)
+
+#Seed dla OAuth
+app = Doorkeeper::Application.create! :name => "Doorkeeper AngularJS Client", :redirect_uri => "http://localhost:8000/"
+
+puts "Application: "
+puts "name: #{app.name}"
+puts "redirect_uri: #{app.redirect_uri}"
+puts "uid: #{app.uid}"
+puts "secret: #{app.secret}"
+puts "Przepisz uid jako CLIENT_ID do konfiguracji aplikacji Angulara"
