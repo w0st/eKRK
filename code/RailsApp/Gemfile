@@ -58,3 +58,7 @@ gem 'doorkeeper', '~>  3.1.0'
 # Coffe script
 gem 'coffee-script-source', '1.8.0'
 
+
+# For pdf generation
+gem 'wkhtmltopdf-binary'
+gem 'wicked_pdf'

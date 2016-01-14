@@ -26,6 +26,7 @@ ActiveSupport::Inflector.inflections do |inflect|
   inflect.irregular 'kierunek_studiow', 'kierunki_studiow'
   inflect.irregular 'wydzial', 'wydzialy'
   inflect.irregular 'program_studiow', 'programy_studiow'
+  inflect.irregular 'ProgramStudiow', 'ProgramyStudiow'
   inflect.irregular 'zagadnienie_egzaminu_dyplomowego', 'zagadnienia_egzaminu_dyplomowego'
   inflect.irregular 'profil_modulu', 'profile_modulow'
   inflect.irregular 'plan_studiow', 'plany_studiow'
