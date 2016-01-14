@@ -20,7 +20,7 @@
     function ProgramKsztalcenia($resource, CONFIG) {
         return {
             getProgramKsztalcenia: function(id) {
-                return $resource(CONFIG.BASE_URL + "programy_ksztalcenia/:id").get({id: id}).$promise;
+                return $resource(CONFIG.API_URL + "programy_ksztalcenia/:id").get({id: id}).$promise;
             }
         }
     }

@@ -20,20 +20,23 @@ angular.module('app', [
         'ui.router',
         'angular-loading-bar',
         'pascalprecht.translate',
+        'ngStorage',
+        'authorisation',
         'home',
         'program-ksztalcenia',
         'program-studiow'
     ])
 
     .config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpProvider', function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
-
-        $locationProvider.hashPrefix('!');
-
+        $locationProvider.html5Mode(true);
         // This is required for Browser Sync to work poperly
         $httpProvider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
         $urlRouterProvider
             .otherwise('/');
+
+        $httpProvider.interceptors.push('TokenInterceptorService');
+        $httpProvider.defaults.withCredentials = true;
 
     }])
     .config(['$translateProvider', function ($translateProvider) {
@@ -50,5 +53,6 @@ angular.module('app', [
         'use strict';
 
         console.log('AngularJS run() function...');
+
 
     }]);

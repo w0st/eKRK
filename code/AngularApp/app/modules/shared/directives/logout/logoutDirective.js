@@ -4,22 +4,25 @@
 
 	/**
 	* @ngdoc function
-	* @name app.controller:header-notificationDirective
+	* @name app.controller:logoutDirective
 	* @description
-	* # header-notificationDirective
+	* # logoutDirective
 	* Directive of the app
 	*/
 angular
 		.module('app')
-		.directive('headerNotification', headerNotification);
+		.directive('directiveLogout', logout);
 
-		function headerNotification () {
+		function logout () {
 
 			var directive = {
 				link: link,
 				restrict: 'EA',
-				templateUrl:'app/modules/shared/directives/header-notification/header-notification.html',
+				controller: 'LogoutCtrl',
+                controllerAs: 'logoutCtrl',
+				templateUrl:'app/modules/shared/directives/logout/logout.html',
                 replace: true,
+
 			}
 
 			return directive;

@@ -1,6 +1,8 @@
 {
     "home_hello": "Hello",
     "global_logout": "Logout",
+    "global_login": "Log In",
+    "global_not_logged": "Not logged",
     "program_ksztalcenia_faculty": "Faculty",
     "program_ksztalcenia_field_of_study": "Field of study",
     "program_studiow_sem_nr": "Number of semesters",

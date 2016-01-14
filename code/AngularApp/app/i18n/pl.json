@@ -2,6 +2,8 @@
     "TITLE": "Hej",
     "home_hello": "Witaj",
     "global_logout": "Wyloguj",
+    "global_login": "Zaloguj się",
+    "global_not_logged": "Niezalogowany",
     "program_ksztalcenia_faculty": "Wydział",
     "program_ksztalcenia_field_of_study": "Kierunek",
     "program_studiow_sem_nr": "Liczba semestrów",

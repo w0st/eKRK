@@ -19,7 +19,7 @@ angular
 				link: link,
 				restrict: 'EA',
 				controller: 'ChangeLanguageCtrl',
-                controllerAs: 'vm',
+                controllerAs: 'languageCtrl',
 				templateUrl:'app/modules/shared/directives/change-language/change-language.html',
                 replace: true,
 

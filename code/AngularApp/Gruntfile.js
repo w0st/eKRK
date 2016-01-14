@@ -1,5 +1,5 @@
 // Grunt tasks
-
+var pushState = require('connect-pushstate');
 module.exports = function (grunt) {
     "use strict";
 
@@ -69,6 +69,17 @@ module.exports = function (grunt) {
         },
 
         connect: {
+            options: {
+                middleware: function (connect, options) {
+                    return [
+                        // Rewrite requests to root so they may be handled by router
+                        pushState(),
+
+                        // Serve static files
+                        connect.static(options.base)
+                    ];
+                }
+            },
             server: {
                 options: {
                     keepalive: true,

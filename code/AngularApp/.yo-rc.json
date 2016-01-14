@@ -19,11 +19,20 @@
       },
       {
         "name": "changelanguage"
+      },
+      {
+        "name": "logout"
       }
     ],
     "modules": [
       {
         "name": "program-ksztalcenia"
+      },
+      {
+        "name": "authorisation"
+      },
+      {
+        "name": "authentication"
       }
     ]
   }
