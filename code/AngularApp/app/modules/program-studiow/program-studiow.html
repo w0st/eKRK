@@ -6,7 +6,7 @@
 
 <div class="panel panel-default">
     <div class="panel-heading">
-        Program studiów {{vm.content.id}}
+        Program studiów {{vm.ps.id}}
     </div>
     <div class="panel-body">
         <div class="row">
@@ -14,15 +14,15 @@
                 <form role="form">
                     <div class="form-group">
                         <label>{{'program_studiow_sem_nr' | translate}}</label>
-                        <input class="form-control">
+                        <input type="text" class="form-control" ng-model="vm.ps.liczbaSemestrow">
                     </div>
                     <div class="form-group">
                         <label>{{"program_studiow_ECTS_to_be_classified" | translate}}</label>
-                        <input class="form-control">
+                        <input class="form-control" ng-model="vm.ps.ECTSdoKwalifikacji">
                     </div>
                     <div class="form-group">
                         <label>{{"program_studiow_obtained_title" | translate}}</label>
-                        <select class="form-control">
+                        <select class="form-control" ng-model="vm.ps.uzyskiwanyTytul">
                             <option>{{"program_studiow_bachelor" | translate}}</option>
                             <option>{{"program_studiow_engineer" | translate}}</option>
                             <option>{{"program_studiow_master" | translate}}</option>
@@ -30,23 +30,23 @@
                     </div>
                     <div class="form-group">
                         <label>{{"program_studiow_entrance_requirements" | translate}}</label>
-                        <textarea class="form-control" rows="5"></textarea>
+                        <textarea class="form-control" rows="5" ng-model="vm.ps.wymaganiaWstepne"></textarea>
                     </div>
                     <div class="form-group">
                         <label>{{"program_studiow_possibility_of_continuation" | translate}}</label>
-                        <textarea class="form-control" rows="5"></textarea>
+                        <textarea class="form-control" rows="5" ng-model="vm.ps.mozliwoscKontynuacjiStudiow"></textarea>
                     </div>
                     <div class="form-group">
                         <label>{{"program_studiow_graduate_profile" | translate}}</label>
-                        <textarea class="form-control" rows="5"></textarea>
+                        <textarea class="form-control" rows="5" ng-model="vm.ps.sylwetkaAbsolwenta"></textarea>
                     </div>
                     <div class="form-group">
                         <label>{{"program_studiow_link_with_uni_mission" | translate}}</label>
-                        <textarea class="form-control" rows="5"></textarea>
+                        <textarea class="form-control" rows="5" ng-model="vm.ps.zwiazekZMisjaUczelni"></textarea>
                     </div>
                     <div class="form-group">
                         <label>{{"program_studiow_labour_market_analise" | translate}}</label>
-                        <textarea class="form-control" rows="3"></textarea>
+                        <textarea class="form-control" rows="3" ng-model="vm.ps.zwiezlaAnalizaZRynkiem"></textarea>
                     </div>
                 </form>
                 <div class="panel panel-default">
@@ -80,6 +80,8 @@
                 </div>
             </div>
         </div>
+        <button type="submit" class="btn btn-success">{{'program_studiow_btn_save' | translate}}</button>
+        <button type="reset" class="btn btn-danger">{{'program_studiow_btn_reset' | translate}}</button>
     </div>
 </div>
 

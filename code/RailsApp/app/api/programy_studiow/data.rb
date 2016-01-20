@@ -39,7 +39,7 @@ module ProgramyStudiow
         requires :liczbaSemestrow, type: String
         requires :zwiazekZMisjaUczelni, type: String
         requires :wymaganiaWstepne, type: String
-        requires :uzyskiwanyTytul, type: Integer
+        requires :uzyskiwanyTytul, type: String
         requires :sylwetkaAbsolwenta, type: String
         requires :liczbaSemestrow, type: Integer
         requires :ECTSdoKwalifikacji, type: Integer
@@ -55,6 +55,33 @@ module ProgramyStudiow
         programStudiow.errors
       end
     end
+
+      # Updates program studiów
+      #
+      # Example Request:
+      #   PUT /v1/programy_studiow/:id
+      params do
+        requires :id
+        requires :liczbaSemestrow, type: String
+        requires :zwiazekZMisjaUczelni, type: String
+        requires :wymaganiaWstepne, type: String
+        requires :uzyskiwanyTytul, type: String
+        requires :sylwetkaAbsolwenta, type: String
+        requires :liczbaSemestrow, type: Integer
+        requires :ECTSdoKwalifikacji, type: Integer
+        requires :mozliwoscKontynuacjiStudiow, type: String
+        requires :zwiezlaAnalizaZRynkiem, type: String
+        requires :program_ksztalcenia_id, type: Integer
+      end
+      put do
+        programStudiow = ProgramStudiow.find(params[:id])
+        programStudiow.assign_attributes(params)
+        if programStudiow.save
+          programStudiow
+        else
+          programStudiow.errors
+        end
+      end
 
     end
   end

@@ -12,7 +12,7 @@
         /*jshint validthis: true */
         var vm = this;
         ProgramStudiowService.getProgramStudiow(1).then(function(result) {
-            vm.content = result;
+            vm.ps = result;
         }, function(reason) {
             vm.error = reason;
         });

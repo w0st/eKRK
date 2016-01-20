@@ -17,7 +17,11 @@
     "program_studiow_link_with_uni_mission": "Connection with university mission",
     "program_studiow_labour_market_analise": "...",
     "program_studiow_diploma_exam_scope": "Diploma exam scope",
-    "program_studiow_diploma_exam_question": "Diploma exam question"
+    "program_studiow_diploma_exam_question": "Diploma exam question",
+    "program_studiow_btn_save": "Save changes",
+    "program_studiow_btn_reset": "Clear all"
+
+
 
 
 }
