@@ -73,10 +73,43 @@
                                 </tr>
                                 </tbody>
                             </table>
+
+                            <ul class="fancy" ng-controller="ProgramStudiowCtrl as fancy">
+                                <li ng-repeat="item in fancy.bag"
+                                    selection-model
+                                    selection-model-selected-items="fancy.selectedItems">
+                                    {{$index+1}} {{item.label}}
+                                </li>
+                            </ul>
                         </div>
                         <!-- /.table-responsive -->
-                    </div>
+                        <button data-target="#myModal" data-toggle="modal" class="btn btn-default">{{'program_studiow_btn_add' | translate}}</button>
 
+                        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                        <h4 class="modal-title" id="myModalLabel">{{"program_studiow_diploma_exam_scope_add" | translate}}</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <ul ng-controller="ProgramStudiowCtrl as fancy">
+                                            <li ng-repeat="item in fancy.bag" selection-model>
+                                                {{$index+1}} {{item.label}}
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-primary">Save changes</button>
+                                    </div>
+                                </div>
+                                <!-- /.modal-content -->
+                            </div>
+                            <!-- /.modal-dialog -->
+                        </div>
+
+                    </div>
                 </div>
             </div>
         </div>

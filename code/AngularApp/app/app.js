@@ -21,6 +21,7 @@ angular.module('app', [
         'angular-loading-bar',
         'pascalprecht.translate',
         'ngStorage',
+        'selectionModel',
         'authorisation',
         'home',
         'program-ksztalcenia',

@@ -16,7 +16,19 @@
         }, function(reason) {
             vm.error = reason;
         });
+
+         this.bag = [
+                  {label: 'Monacle', selected: false},
+                  {label: 'Top Hat', selected: true},
+                  {label: 'Mustachio', selected: false},
+                  {label: 'Coffee', selected: false}
+                ];
     }
 
 
+
+
+
+
 })();
+

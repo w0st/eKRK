@@ -18,9 +18,13 @@
     "program_studiow_link_with_uni_mission": "Związek z misją uczelni",
     "program_studiow_labour_market_analise": "Zwięzła analiza zgodności zakładanych efektów kształcenia z potrzebami rynku pracy",
     "program_studiow_diploma_exam_scope": "Zakres egzaminu dyplomowego",
+    "program_studiow_diploma_exam_scope_add": "Dodaj nowe zagadnienie",
     "program_studiow_diploma_exam_question": "Zagadnienie",
     "program_studiow_btn_save": "Zapisz zmiany",
-    "program_studiow_btn_reset": "Wyczyść formularz"
+    "program_studiow_btn_reset": "Wyczyść formularz",
+    "program_studiow_btn_add": "Dodaj zagadnienie"
+
+
 
 
 
