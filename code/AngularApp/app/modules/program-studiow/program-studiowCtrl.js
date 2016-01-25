@@ -18,10 +18,10 @@
         });
 
          this.bag = [
-                  {label: 'Monacle', selected: false},
-                  {label: 'Top Hat', selected: true},
-                  {label: 'Mustachio', selected: false},
-                  {label: 'Coffee', selected: false}
+                  {label: 'Monacle fdlajfda fasldfjsad', selected: false},
+                  {label: 'Top Hat adfasdf a afd', selected: true},
+                  {label: 'Mustachio adfsdf ad', selected: false},
+                  {label: 'Coffeef afasdfas dfasdfd', selected: false}
                 ];
     }
 

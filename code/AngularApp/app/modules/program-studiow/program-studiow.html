@@ -3,12 +3,11 @@
         <h1 class="page-header">Program studiów</h1>
     </div>
 </div>
-
 <div class="panel panel-default">
     <div class="panel-heading">
         Program studiów {{vm.ps.id}}
     </div>
-    <div class="panel-body">
+    <div class="panel-body" ng-controller="ProgramStudiowCtrl as psCtr">
         <div class="row">
             <div class="col-lg-6">
                 <form role="form">
@@ -73,14 +72,6 @@
                                 </tr>
                                 </tbody>
                             </table>
-
-                            <ul class="fancy" ng-controller="ProgramStudiowCtrl as fancy">
-                                <li ng-repeat="item in fancy.bag"
-                                    selection-model
-                                    selection-model-selected-items="fancy.selectedItems">
-                                    {{$index+1}} {{item.label}}
-                                </li>
-                            </ul>
                         </div>
                         <!-- /.table-responsive -->
                         <button data-target="#myModal" data-toggle="modal" class="btn btn-default">{{'program_studiow_btn_add' | translate}}</button>
@@ -93,11 +84,14 @@
                                         <h4 class="modal-title" id="myModalLabel">{{"program_studiow_diploma_exam_scope_add" | translate}}</h4>
                                     </div>
                                     <div class="modal-body">
-                                        <ul ng-controller="ProgramStudiowCtrl as fancy">
-                                            <li ng-repeat="item in fancy.bag" selection-model>
-                                                {{$index+1}} {{item.label}}
-                                            </li>
-                                        </ul>
+                                        <table class="table">
+                                            <tr ng-repeat="item in psCtr.bag"
+                                                selection-model
+                                                selection-model-mode="'multiple-additive'">
+                                                <td>{{$index+1}}</td>
+                                                <td>{{item.label}}</td>
+                                            </tr>
+                                        </table>
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
