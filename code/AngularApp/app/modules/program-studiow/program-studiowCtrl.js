@@ -6,9 +6,9 @@
         .module('program-studiow')
         .controller('ProgramStudiowCtrl', ProgramStudiow);
 
-    ProgramStudiow.$inject = ['ProgramStudiowService'];
+    ProgramStudiow.$inject = ['ProgramStudiowService', '$scope'];
 
-    function ProgramStudiow(ProgramStudiowService) {
+    function ProgramStudiow(ProgramStudiowService, $scope) {
         /*jshint validthis: true */
         var vm = this;
         ProgramStudiowService.getProgramStudiow(1).then(function(result) {
@@ -17,12 +17,11 @@
             vm.error = reason;
         });
 
-         this.bag = [
-                  {label: 'Monacle fdlajfda fasldfjsad', selected: false},
-                  {label: 'Top Hat adfasdf a afd', selected: true},
-                  {label: 'Mustachio adfsdf ad', selected: false},
-                  {label: 'Coffeef afasdfas dfasdfd', selected: false}
-                ];
+        this.addZagadnienie= function (){
+            var program_studiow_id=1;
+            var zagadnienie = $scope.examItemDescription;
+            return ProgramStudiowService.createZagadnienieEgzaminu(zagadnienie, program_studiow_id);
+        };
     }
 
 

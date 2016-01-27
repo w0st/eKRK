@@ -9,4 +9,10 @@ class ProgramStudiow < ActiveRecord::Base
       Licencjat: 1,
       Inzynier: 2
   }
+
+  def as_json(options={})
+    super(
+        :include => :zagadnienia_egzaminu_dyplomowego
+    )
+  end
 end
