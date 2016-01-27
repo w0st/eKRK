@@ -60,7 +60,7 @@
                                     <th>{{"program_studiow_diploma_exam_question" | translate}}</th>
                                 </tr>
                                 </thead>
-                                <table class="table">
+                                <table class="table" ng-model="zagadnieniaTable">
                                     <tr ng-repeat="item in psCtr.ps.zagadnienia_egzaminu_dyplomowego"
                                         selection-model
                                         selection-model-mode="'multiple-additive'"
@@ -93,7 +93,7 @@
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                        <button ng-click="psCtr.addZagadnienie()" type="button" class="btn btn-primary">Save changes</button>
+                                        <button ng-click="psCtr.addZagadnienie()" type="button" data-dismiss="modal" class="btn btn-primary">Save changes</button>
                                     </div>
                                 </div>
                                 <!-- /.modal-content -->
@@ -106,14 +106,14 @@
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                        <h4 class="modal-title">Czy na pewno?</h4>
+                                        <h4 class="modal-title">Potwierdź usunięcie zagadnień</h4>
                                     </div>
                                     <div class="modal-body">
                                         Zaznaczone zagadnienia zostaną usunięte, czy kontynuować?
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                        <button ng-click="psCtr.deleteZagadnienia()" type="button" class="btn btn-primary">OK</button>
+                                        <button ng-click="psCtr.deleteZagadnienia()" data-dismiss="modal" type="button" class="btn btn-primary">OK</button>
                                     </div>
                                 </div>
                                 <!-- /.modal-content -->
@@ -124,6 +124,10 @@
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="alert alert-success" collapse="isSaveAlertCollapsed">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+            <strong>Zmiany zostały zapisane!</strong>
         </div>
         <button ng-click="psCtr.updateProgramStudiow()" type="submit" class="btn btn-success">{{'program_studiow_btn_save' | translate}}</button>
         <button type="reset" class="btn btn-danger">{{'program_studiow_btn_reset' | translate}}</button>
