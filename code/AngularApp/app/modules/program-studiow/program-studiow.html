@@ -13,15 +13,15 @@
                 <form role="form">
                     <div class="form-group">
                         <label>{{'program_studiow_sem_nr' | translate}}</label>
-                        <input type="text" class="form-control" ng-model="vm.ps.liczbaSemestrow">
+                        <input type="text" class="form-control" ng-model="ps.liczbaSemestrow">
                     </div>
                     <div class="form-group">
                         <label>{{"program_studiow_ECTS_to_be_classified" | translate}}</label>
-                        <input class="form-control" ng-model="vm.ps.ECTSdoKwalifikacji">
+                        <input class="form-control" ng-model="ps.ECTSdoKwalifikacji">
                     </div>
                     <div class="form-group">
                         <label>{{"program_studiow_obtained_title" | translate}}</label>
-                        <select class="form-control" ng-model="vm.ps.uzyskiwanyTytul">
+                        <select class="form-control" ng-model="ps.uzyskiwanyTytul">
                             <option>{{"program_studiow_bachelor" | translate}}</option>
                             <option>{{"program_studiow_engineer" | translate}}</option>
                             <option>{{"program_studiow_master" | translate}}</option>
@@ -29,23 +29,23 @@
                     </div>
                     <div class="form-group">
                         <label>{{"program_studiow_entrance_requirements" | translate}}</label>
-                        <textarea class="form-control" rows="5" ng-model="vm.ps.wymaganiaWstepne"></textarea>
+                        <textarea class="form-control" rows="5" ng-model="ps.wymaganiaWstepne"></textarea>
                     </div>
                     <div class="form-group">
                         <label>{{"program_studiow_possibility_of_continuation" | translate}}</label>
-                        <textarea class="form-control" rows="5" ng-model="vm.ps.mozliwoscKontynuacjiStudiow"></textarea>
+                        <textarea class="form-control" rows="5" ng-model="ps.mozliwoscKontynuacjiStudiow"></textarea>
                     </div>
                     <div class="form-group">
                         <label>{{"program_studiow_graduate_profile" | translate}}</label>
-                        <textarea class="form-control" rows="5" ng-model="vm.ps.sylwetkaAbsolwenta"></textarea>
+                        <textarea class="form-control" rows="5" ng-model="ps.sylwetkaAbsolwenta"></textarea>
                     </div>
                     <div class="form-group">
                         <label>{{"program_studiow_link_with_uni_mission" | translate}}</label>
-                        <textarea class="form-control" rows="5" ng-model="vm.ps.zwiazekZMisjaUczelni"></textarea>
+                        <textarea class="form-control" rows="5" ng-model="ps.zwiazekZMisjaUczelni"></textarea>
                     </div>
                     <div class="form-group">
                         <label>{{"program_studiow_labour_market_analise" | translate}}</label>
-                        <textarea class="form-control" rows="3" ng-model="vm.ps.zwiezlaAnalizaZRynkiem"></textarea>
+                        <textarea class="form-control" rows="3" ng-model="ps.zwiezlaAnalizaZRynkiem"></textarea>
                     </div>
                 </form>
                 <div class="panel panel-default">
@@ -63,7 +63,8 @@
                                 <table class="table">
                                     <tr ng-repeat="item in psCtr.ps.zagadnienia_egzaminu_dyplomowego"
                                         selection-model
-                                        selection-model-mode="'multiple-additive'">
+                                        selection-model-mode="'multiple-additive'"
+                                        selection-model-selected-items="psCtr.selectedZagadnienia">
                                         <td>{{$index+1}}</td>
                                         <td>{{item.zagadnienie}}</td>
                                     </tr>
@@ -71,11 +72,11 @@
                             </table>
                         </div>
                         <!-- /.table-responsive -->
-                        <button data-target="#myModal" data-toggle="modal" class="btn btn-default">{{'program_studiow_btn_add' | translate}}</button>
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Usuń zaznaczone</button>
+                        <button data-target="#addZagadnienieModal" data-toggle="modal" class="btn btn-default">{{'program_studiow_btn_add' | translate}}</button>
+                        <button data-target="#deleteZagadnienieModal" data-toggle="modal" type="button"  class="btn btn-default" data-dismiss="modal">Usuń zaznaczone</button>
 
 
-                        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+                        <div class="modal fade" id="addZagadnienieModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -100,11 +101,31 @@
                             <!-- /.modal-dialog -->
                         </div>
 
+                        <div class="modal fade" id="deleteZagadnienieModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                        <h4 class="modal-title">Czy na pewno?</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        Zaznaczone zagadnienia zostaną usunięte, czy kontynuować?
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                        <button ng-click="psCtr.deleteZagadnienia()" type="button" class="btn btn-primary">OK</button>
+                                    </div>
+                                </div>
+                                <!-- /.modal-content -->
+                            </div>
+                            <!-- /.modal-dialog -->
+                        </div>
+
                     </div>
                 </div>
             </div>
         </div>
-        <button type="submit" class="btn btn-success">{{'program_studiow_btn_save' | translate}}</button>
+        <button ng-click="psCtr.updateProgramStudiow()" type="submit" class="btn btn-success">{{'program_studiow_btn_save' | translate}}</button>
         <button type="reset" class="btn btn-danger">{{'program_studiow_btn_reset' | translate}}</button>
     </div>
 </div>

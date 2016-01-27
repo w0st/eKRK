@@ -25,6 +25,18 @@ module ZagadnieniaEgzaminuDyplomowego
         zagadnienieEgzaminuDyplomowego.errors
       end
     end
+
+    # Delete zagadnienie egzaminu dyplomowego
+    #
+    # Example Request:
+    #   DELETE /v1/zagadnienia_egzaminu_dyplomowego/:id
+    params do
+      requires :id
+    end
+    delete ':id' do
+      ZagadnienieEgzaminuDyplomowego.destroy(params[:id])
+    end
+
     end
   end
 end

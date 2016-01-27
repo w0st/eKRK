@@ -18,7 +18,14 @@
             createZagadnienieEgzaminu: function(zagadnienie, program_studiow_id){
                 var data = {zagadnienie: zagadnienie, program_studiow_id: program_studiow_id};
                 $http.post(CONFIG.API_URL + "zagadnienia_egzaminu_dyplomowego", data);
+            },
+            deleteZagadnienieEgzaminu: function(zagadnienie_id){
+                $http.delete(CONFIG.API_URL + "zagadnienia_egzaminu_dyplomowego/"+zagadnienie_id);
+            },
+            updateProgramStudiow: function(programStudiow){
+                $http.put(CONFIG.API_URL + "programy_studiow", programStudiow);
             }
+
         }
     }
 
