@@ -7,10 +7,13 @@ class ProgramyStudiowController < ApplicationController
       # disable html view
       # format.html
       # only pdf view?
+      @programStudiow = ProgramStudiow.find params[:id]
+
       format.pdf do
-        render pdf: 'orders',
+        render pdf: 'programStudiow1',
                encoding: 'utf8',
-               layout: 'pdf' # uses views/layouts/pdf.erb
+               layout: 'pdf', # uses views/layouts/pdf.erb
+               locals: {:programStudiow => @programStudiow}
       end
     end
   end
