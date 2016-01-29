@@ -85,3 +85,8 @@ background-color: #eee;
 .selected {
         background-color: lightskyblue;
 }
+
+
+.icon-column {
+    width: 75px;
+}

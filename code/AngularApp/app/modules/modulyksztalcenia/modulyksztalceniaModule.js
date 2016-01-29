@@ -1,0 +1,15 @@
+'use strict';
+
+/**
+* @ngdoc function
+* @name app.route:modulyksztalceniaRoute
+* @description
+* # modulyksztalceniaRoute
+* Route of the app
+*/
+(function() {
+  'use strict';
+
+  angular.module('modulyksztalcenia', []);
+
+})();
