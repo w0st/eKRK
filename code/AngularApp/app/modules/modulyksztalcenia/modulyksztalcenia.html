@@ -17,8 +17,6 @@
     </div>
 </div>
 
-
-
 <div>
         <ul class="nav nav-tabs">
             <li ng-repeat="profil in vm.profile_modulow" ng-class="{'nav nav-pills active' : selectedTab == $index}">
@@ -26,16 +24,14 @@
                     {{ profil.nazwa }}
                 </a>
             </li>
-
         </ul>
 
+
         <div ng-repeat="profil in vm.profile_modulow" ng-show="selectedTab == $index">
-
             <div class="tab-content">
-
                     <div class="panel-body">
                         <div class="dataTable_wrapper">
-                            <table class="table table-striped table-bordered table-hover" id="table-{{ $index }}">
+                            <table datatable="ng" id="table-{{ $index }}" class="row-border hover">
                                 <thead>
                                 <tr>
                                     <th>Nazwa modułu</th>
@@ -43,8 +39,8 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr ng-repeat="modul in profil.moduly_ksztalcenia" class="odd gradeX">
-                                    <td>ddsfkjsdl</td>
+                                <tr dt-rows ng-repeat="modul in profil.moduly_ksztalcenia" class="gradeA even">
+                                    <td>{{ modul.nazwaModulu }}</td>
                                     <td>
                                         <button type="button" class="btn btn-primary">E</button>
                                         <button type="button" class="btn btn-primary">D</button>

@@ -10,6 +10,6 @@
 (function() {
   'use strict';
 
-  angular.module('modulyksztalcenia', []);
+  angular.module('modulyksztalcenia', ['datatables']);
 
 })();
