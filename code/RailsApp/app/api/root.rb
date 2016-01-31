@@ -10,6 +10,7 @@ class Root < Grape::API
   mount KierunkoweEfektyKsztalcenia::Data
   mount ProgramyStudiow::Data
   mount ZagadnieniaEgzaminuDyplomowego::Data
+  mount PrzedmiotyKsztalcenia::Data
   add_swagger_documentation(hide_documentation_path: true,
                             api_version: 'v1',
                             mount_path: 'swagger_doc'
