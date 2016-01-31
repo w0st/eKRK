@@ -15,9 +15,26 @@ angular
 		// Inject your dependencies as .$inject = ['$http', 'someSevide'];
 		// function Name ($http, someSevide) {...}
 
-		MacierzSladowania.$inject = ['$http'];
+		MacierzSladowania.$inject = ['$resource', 'CONFIG'];
 
-		function MacierzSladowania ($http) {
+		function MacierzSladowania ($resource, CONFIG) {
+            return {
+                set: function(macierz) {
+                    return $resource(CONFIG.API_URL + "obszarowe_efekty_ksztalcenia/ustaw_powiazania", null, {
+                        'update': {method: 'PUT'}
+                    }).update(
+                        {},
+                        { powiazania: macierz }
+                    ).$promise;
+                },
+                // jednoczesnie jest to macierz sladowania!
+                getObszaroweEfektyKsztalcenia: function() {
+                    return $resource(CONFIG.API_URL + "obszarowe_efekty_ksztalcenia", {}, {get: {isArray: true}}).get().$promise;
+                },
+                getKierunkoweEfektyKsztalcenia: function() {
+                    return $resource(CONFIG.API_URL + "kierunkowe_efekty_ksztalcenia", {}, {get: {isArray: true}}).get().$promise;
+                }
+            };
 
 		}
 

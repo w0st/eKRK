@@ -24,7 +24,7 @@
     function ProgramKsztalcenia(ProgramKsztalceniaService) {
         /*jshint validthis: true */
         var vm = this;
-        ProgramKsztalceniaService.getProgramKsztalcenia(1).then(function(result) {
+        ProgramKsztalceniaService.get(1).then(function(result) {
             vm.content = result;
         }, function(reason) {
             vm.error = reason;
