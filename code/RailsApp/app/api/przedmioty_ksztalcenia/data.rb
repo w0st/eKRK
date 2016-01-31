@@ -14,7 +14,7 @@ module PrzedmiotyKsztalcenia
       # Example Request:
       #   GET /przedmioty_ksztalcenia
       get do
-        PrzedmiotKsztalcenia.all
+        present PrzedmiotKsztalcenia.all, with: PrzedmiotyKsztalcenia::Entities::PrzedmiotKsztalcenia
       end
 
 
