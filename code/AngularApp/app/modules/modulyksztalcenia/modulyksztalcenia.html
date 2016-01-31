@@ -6,6 +6,7 @@
 <div class="panel">
     <div class="col-md-4">
         <select class="form-control">
+            <option>Wszystkie</option>
             <option>Obowiązkowe</option>
             <option>Wybieralne</option>
         </select>
@@ -15,101 +16,47 @@
         <button type="button" class="btn btn-primary btn-block">Edytuj profile kształcenia</button>
     </div>
 </div>
-<ul class="nav nav-tabs">
-    <li class="active"><a data-toggle="tab" href="#home">Kształczenia ogólnego</a></li>
-    <li><a data-toggle="tab" href="#menu1">Nauk podstawowych</a></li>
-    <li><a data-toggle="tab" href="#menu2">Kierunkowe</a></li>
-</ul>
-<div class="tab-content">
-    <div id="home" class="tab-pane fade in active">
-        <div class="panel-body">
-            <div class="dataTable_wrapper">
-                <table class="table table-striped table-bordered table-hover" id="table-0">
-                    <thead>
-                    <tr>
-                        <th>Nazwa modułu</th>
-                        <th class="icon-column"></th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr class="odd gradeX">
-                        <td>Przedmioty Humanistyczno menadżerskie</td>
-                        <td>
-                            <button type="button" class="btn btn-primary">E</button>
-                            <button type="button" class="btn btn-primary">D</button>
-                        </td>
-                    </tr>
-                    <tr class="even gradeC">
-                        <td>Zajęcia sportowe</td>
-                        <td>
-                            <button type="button" class="btn btn-primary">E</button>
-                            <button type="button" class="btn btn-primary">D</button>
-                        </td>
-                    </tr>
-                    <tr class="odd gradeX">
-                        <td>Języki obce</td>
-                        <td>
-                            <button type="button" class="btn btn-primary">E</button>
-                            <button type="button" class="btn btn-primary">D</button>
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
+
+
+
+<div>
+        <ul class="nav nav-tabs">
+            <li ng-repeat="profil in vm.profile_modulow" ng-class="{'nav nav-pills active' : selectedTab == $index}">
+                <a href ng-click="setTab($index)">
+                    {{ profil.nazwa }}
+                </a>
+            </li>
+
+        </ul>
+
+        <div ng-repeat="profil in vm.profile_modulow" ng-show="selectedTab == $index">
+
+            <div class="tab-content">
+
+                    <div class="panel-body">
+                        <div class="dataTable_wrapper">
+                            <table class="table table-striped table-bordered table-hover" id="table-{{ $index }}">
+                                <thead>
+                                <tr>
+                                    <th>Nazwa modułu</th>
+                                    <th class="icon-column"></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr ng-repeat="modul in profil.moduly_ksztalcenia" class="odd gradeX">
+                                    <td>ddsfkjsdl</td>
+                                    <td>
+                                        <button type="button" class="btn btn-primary">E</button>
+                                        <button type="button" class="btn btn-primary">D</button>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
             </div>
+
+            <!--Profile end -->
         </div>
-    </div>
-    <div id="menu1" class="tab-pane fade">
-
-
-
-        <div class="panel-body">
-            <div class="dataTable_wrapper">
-                <table class="table table-striped table-bordered table-hover" id="table-2">
-                    <thead>
-                    <tr>
-                        <th>Nazwa modułu</th>
-                        <th class="icon-column"></th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr class="odd gradeX">
-                        <td>Języki obce</td>
-                        <td>
-                            <button type="button" class="btn btn-primary">E</button>
-                            <button type="button" class="btn btn-primary">D</button>
-                        </td>
-                    </tr>
-                    <tr class="even gradeC">
-                        <td>Zajęcia sportowe</td>
-                        <td>
-                            <button type="button" class="btn btn-primary">E</button>
-                            <button type="button" class="btn btn-primary">D</button>
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-
-
-    <div id="menu2" class="tab-pane fade">
-        <div class="panel-body">
-            <div class="dataTable_wrapper">
-                <table class="table table-striped table-bordered table-hover" id="table-1">
-                    <thead>
-                    <tr>
-                        <th>Nazwa modułu</th>
-                        <th class="icon-column"></th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-
-    </div>
-    </div>
 </div>
+

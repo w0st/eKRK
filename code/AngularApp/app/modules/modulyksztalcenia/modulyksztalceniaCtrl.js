@@ -13,7 +13,7 @@
 		.module('modulyksztalcenia')
 		.controller('ModulyKsztalceniaCtrl', ModulyKsztalcenia);
 
-		ModulyKsztalcenia.$inject = [];
+		ModulyKsztalcenia.$inject = ['$scope', 'ModulyKsztalceniaService'];
 
 		/*
 		* recommend
@@ -21,15 +21,28 @@
 		* and bindable members up top.
 		*/
 
-		function ModulyKsztalcenia() {
+		function ModulyKsztalcenia($scope, ModulyKsztalceniaService) {
 			/*jshint validthis: true */
 			var vm = this;
+            $scope.selectedTab = 0;
 
-                $('.table').DataTable({
-                    responsive: true
 
+            ModulyKsztalceniaService.getProfileForPK(1).then(function(result) {
+                    vm.profile_modulow = result;
+
+                    $('.table').DataTable({
+                        responsive: true
+                    });
+
+                }, function(reason) {
+                    vm.error = reason;
                 });
 
+
+            // Ustawianie wybranej zakładki
+            $scope.setTab = function (tabId) {
+                    $scope.selectedTab = tabId;
+                };
 
 		}
 

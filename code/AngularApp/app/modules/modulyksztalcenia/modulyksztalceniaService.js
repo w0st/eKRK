@@ -15,10 +15,15 @@ angular
 		// Inject your dependencies as .$inject = ['$http', 'someSevide'];
 		// function Name ($http, someSevide) {...}
 
-		ModulyKsztalcenia.$inject = ['$http'];
+		ModulyKsztalcenia.$inject = ['$resource', 'CONFIG', '$http'];
 
-		function ModulyKsztalcenia ($http) {
-
+		function ModulyKsztalcenia ($resource, CONFIG) {
+            return {
+                getProfileForPK: function(pkID) {
+                    return $resource(CONFIG.API_URL + "profile_modulow/program_ksztalcenia_pk/:id").query({id: pkID}).$promise;
+                }
+            }
 		}
+
 
 })();
