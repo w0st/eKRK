@@ -5,12 +5,13 @@
 </div>
 <div class="panel">
     <div class="col-md-4">
-        <select class="form-control">
-            <option>Wszystkie</option>
-            <option>Obowiązkowe</option>
-            <option>Wybieralne</option>
+        <select ng-init="typFilter='all'" ng-model="typFilter" class="form-control">
+            <option value="all">Wszystkie</option>
+            <option value="mandatory">Obowiązkowe</option>
+            <option value="optional">Wybieralne</option>
         </select>
     </div>
+    
     <div class="col-md-4 col-md-offset-4">
         <button type="button" class="btn btn-primary btn-block btn-lg">Dodaj nowy modół</button>
         <button type="button" class="btn btn-primary btn-block">Edytuj profile kształcenia</button>
@@ -39,7 +40,10 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr dt-rows ng-repeat="modul in profil.moduly_ksztalcenia" class="gradeA even">
+                                <tr dt-rows ng-repeat="modul in profil.moduly_ksztalcenia" ng-show="typFilter =='all'
+                                                                                                ||  typFilter =='mandatory' && modul.typ == 'Obowiazkowy'
+                                                                                                ||  typFilter =='optional' && modul.typ == 'Opcjonalny'"
+                                                                                                class="gradeA even">
                                     <td>{{ modul.nazwaModulu }}</td>
                                     <td>
                                         <button type="button" class="btn btn-primary">E</button>

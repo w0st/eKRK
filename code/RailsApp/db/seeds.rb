@@ -68,6 +68,10 @@ profil_modulu2 = ProfilModulu.create(nazwa: 'Kształcenia ogólnego', program_st
 # ModulKsztalcenia
 modul_ksztalcenia1 = ModulKsztalcenia.create(nazwaModulu: 'Technologie informacyjne', typ: 'Obowiazkowy', minEcts: 9, program_studiow: programStudiow1, profil_modulu: profil_modulu1)
 modul_ksztalcenia2 = ModulKsztalcenia.create(nazwaModulu: 'Języki obce', typ: 'Obowiazkowy', minEcts: 9, program_studiow: programStudiow1, profil_modulu: profil_modulu2)
+modul_ksztalcenia3 = ModulKsztalcenia.create(nazwaModulu: 'Modul wybieralny1', typ: 'Opcjonalny', minEcts: 9, program_studiow: programStudiow1, profil_modulu: profil_modulu1)
+modul_ksztalcenia4 = ModulKsztalcenia.create(nazwaModulu: 'Przedmioty managerskie', typ: 'Opcjonalny', minEcts: 9, program_studiow: programStudiow1, profil_modulu: profil_modulu2)
+
+
 
 # PracownikNaukowy
 pracownik_naukowy1 = PracownikNaukowy.create(imie: 'Janusz', nazwisko: 'Martan', email: 'janusz.martan@pwr.wroc.pl')
