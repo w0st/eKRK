@@ -13,6 +13,7 @@ module KierunkoweEfektyKsztalcenia
       #
       # Example Request:
       #   GET /kierunkowe_efekty_ksztalcenia
+      desc 'Pokaż kierunkowe efekty kształcenia'
       get do
         efekty = KierunkowyEfektKsztalcenia.all
         present efekty, with: KierunkoweEfektyKsztalcenia::Entities::KierunkowyEfektKsztalcenia
