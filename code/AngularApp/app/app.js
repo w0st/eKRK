@@ -26,7 +26,9 @@ angular.module('app', [
         'home',
         'program-ksztalcenia',
         'program-studiow',
-        'modulyksztalcenia'
+        'modulyksztalcenia',
+        'macierzsladowania',
+        'przedmioty-ksztalcenia'
     ])
 
     .config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpProvider', function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {

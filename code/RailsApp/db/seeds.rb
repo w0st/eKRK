@@ -63,10 +63,11 @@ zagadnieED1 = ZagadnienieEgzaminuDyplomowego.create(zagadnienie: 'Opis 1',progra
 
 # ProfilModulow
 profil_modulu1 = ProfilModulu.create(nazwa: 'Kierunkowe', program_studiow: programStudiow1)
+profil_modulu2 = ProfilModulu.create(nazwa: 'Kształcenia ogólnego', program_studiow: programStudiow1)
 
 # ModulKsztalcenia
 modul_ksztalcenia1 = ModulKsztalcenia.create(nazwaModulu: 'Technologie informacyjne', typ: 'Obowiazkowy', minEcts: 9, program_studiow: programStudiow1, profil_modulu: profil_modulu1)
-
+modul_ksztalcenia2 = ModulKsztalcenia.create(nazwaModulu: 'Języki obce', typ: 'Obowiazkowy', minEcts: 9, program_studiow: programStudiow1, profil_modulu: profil_modulu2)
 
 # PracownikNaukowy
 pracownik_naukowy1 = PracownikNaukowy.create(imie: 'Janusz', nazwisko: 'Martan', email: 'janusz.martan@pwr.wroc.pl')

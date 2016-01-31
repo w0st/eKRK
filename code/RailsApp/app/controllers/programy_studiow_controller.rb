@@ -12,8 +12,7 @@ class ProgramyStudiowController < ApplicationController
       format.pdf do
         render pdf: 'programStudiow1',
                encoding: 'utf8',
-               layout: 'pdf', # uses views/layouts/pdf.erb
-               locals: {:programStudiow => @programStudiow}
+               layout: 'pdf' # uses views/layouts/pdf.erb
       end
     end
   end

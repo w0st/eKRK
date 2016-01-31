@@ -13,7 +13,7 @@
 		.module('macierzsladowania')
 		.controller('MacierzSladowaniaCtrl', MacierzSladowania);
 
-		MacierzSladowania.$inject = [];
+		MacierzSladowania.$inject = ['MacierzSladowaniaService'];
 
 		/*
 		* recommend
@@ -21,9 +21,36 @@
 		* and bindable members up top.
 		*/
 
-		function MacierzSladowania() {
+		function MacierzSladowania(MacierzSladowaniaService) {
 			/*jshint validthis: true */
 			var vm = this;
+            MacierzSladowaniaService.getObszaroweEfektyKsztalcenia().then(function(response) {
+                vm.macierz = response;
+            }, function(reason) {
+                console.log("Nie udalo sie pobrac macierzy");
+            });
+
+            MacierzSladowaniaService.getKierunkoweEfektyKsztalcenia().then(function(response) {
+                console.log("kierunkowe efekty ksztalcenia = ", response)
+            }, function(reason) {
+                console.log("Nie udalo sie pobrac kierunkowych efektow ksztalcenia");
+            });
+
+            MacierzSladowaniaService.set([
+                    {
+                        "kierunkowe_efekty_ksztalcenia":
+                            [
+                                {
+                                    "id": 1
+                                }
+                            ],
+                        "id": 2
+                    }
+            ]).then(function(response) {
+                console.log("Udalo sie zaktualizowac macierz sladowania");
+            }, function(reason) {
+                console.log("Wystapil blad podczas proby aktualizacji macierzy sladowania");
+            });
 
 		}
 
