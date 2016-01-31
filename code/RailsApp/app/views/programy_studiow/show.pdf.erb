@@ -1,1 +1,92 @@
-COS CO TRAFI DO PDF
+<h1>
+  Program studiów <%= @programStudiow.id %>
+</h1>
+<div>
+  <label>Liczba semestrów:</label>
+  <%= @programStudiow.liczbaSemestrow %>
+</div>
+<div>
+  <label>Liczba punktów ECTS konieczna do uzyskania kwalifikacji: </label>
+  <%= @programStudiow.ECTSdoKwalifikacji %>
+</div>
+<div>
+  <label>Wymagania wstępne: </label>
+  <%= @programStudiow.wymaganiaWstepne %>
+</div>
+<div>
+  <label>Uzyskiwany tytuł:</label>
+  <%= @programStudiow.uzyskiwanyTytul %>
+</div>
+<div>
+  <label>Możliwość kontynuacji studiów:</label>
+  <%= @programStudiow.mozliwoscKontynuacjiStudiow %>
+</div>
+<div>
+  <label> Sylwetka absolwenta, możliwości zatrudnienia:</label>
+  <%= @programStudiow.sylwetkaAbsolwenta %>
+</div>
+<div>
+  <label>Wskazanie związku z misją Uczelni i strategią jej rozwoju:</label>
+  <%= @programStudiow.zwiazekZMisjaUczelni %>
+</div>
+
+<div>
+  <label>Kierunek studiów:</label>
+  <%= @programStudiow.program_ksztalcenia.kierunek_studiow.nazwaKierunku %>
+</div>
+
+<div>
+  <label>Profil kształcenia:</label>
+  <%= @programStudiow.program_ksztalcenia.profil %>
+</div>
+
+<div>
+  <label>Obszary kształcenia:</label>
+  <%= "TODO (Braki w modelu)" %>
+</div>
+
+<div>
+  <label>Zwięzła analiza zgodności zakładanych efektów kształcenia z potrzebami rynku pracy:</label>
+  <%= @programStudiow.zwiezlaAnalizaZRynkiem %>
+</div>
+
+<div>
+  <label>Lista modułów kształcenia (obowiązkowych):</label>
+  <% @programStudiow.moduly_ksztalcenia.select{|m| m.Obowiazkowy?}.each do |obowiazkowy|%>
+      <%= obowiazkowy.nazwaModulu %>
+  <% end %>
+</div>
+
+<div>
+  <label>Lista modułów:</label>
+  <ul>
+    <% @programStudiow.moduly_ksztalcenia.group_by {|m| m[:typ]}.each do |typ, modulyTypu| %>
+        <li><%= typ == 0 ? 'Obowiazkowy' : 'Opcjonalny' %>
+          <ul>
+            <% modulyTypu.group_by {|n| n[:profil_modulu_id]}.each do |profilModulu, moduly| %>
+                <li><%= ProfilModulu.find(profilModulu).nazwa %></li>
+                <ul>
+                  <% moduly.each do |modul| %>
+                      <li>
+                        <%= modul.nazwaModulu %> (min. <%= modul.minEcts %> pkt. ECTS)
+                        <% # TODO W obrebie modulu zrobic tabelke kursow!
+                        %><br />
+                        <%= render "przypis_tabelki"%>
+                      </li>
+                  <% end %>
+                </ul>
+            <% end %>
+          </ul>
+        </li>
+    <% end %>
+  </ul>
+</div>
+
+<div>
+  <label>Zakres egzaminu dyplomowego:</label>
+  <% @programStudiow.zagadnienia_egzaminu_dyplomowego.each do |zagadnienie| %>
+      <ol>
+        <li><%= zagadnienie.zagadnienie %></li>
+      </ol>
+  <% end %>
+</div>
