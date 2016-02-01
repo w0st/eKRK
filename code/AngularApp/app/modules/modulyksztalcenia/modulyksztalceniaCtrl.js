@@ -27,13 +27,12 @@
 		function ModulyKsztalcenia($scope, ModulyKsztalceniaService) {
             /*jshint validthis: true */
             var vm = this;
-            var all_profiles;
 
+            $scope.modulToDelete = null;
             $scope.selectedTab = 0;
 
-
+            // Pobranie danych dla modulu
             ModulyKsztalceniaService.getProfileForPK(1).then(function (result) {
-                all_profiles = result;
                 vm.profile_modulow = result;
 
                 $('.table').DataTable({
@@ -50,10 +49,24 @@
                 $scope.selectedTab = tabId;
             };
 
+
+            // Ustawia modul do usuniacia
+            // Po akceptacji usuniecia modulu wywolywana jest funkcja: deleteSelectedModul
+            $scope.selectModulToDelete = function(modul) {
+                console.log("select modul to delete: "+modul);
+                $scope.modulToDelete = modul;
+            };
+
+
+            // Usuwa wybrany wszczesnie modul
+            $scope.deleteSelectedModul = function () {
+                ModulyKsztalceniaService.deleteModulKsztalcenia($scope.modulToDelete.id);
+                vm.profile_modulow.forEach(function(profile) {
+                    console.log(profile);
+                    var index =profile.moduly_ksztalcenia.indexOf($scope.modulToDelete);
+                    profile.moduly_ksztalcenia.splice(index, 1);
+                });
+            };
+
         }
-
-
-
-
-
 })();

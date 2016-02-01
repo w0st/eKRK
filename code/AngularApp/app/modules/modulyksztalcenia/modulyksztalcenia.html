@@ -11,9 +11,9 @@
             <option value="optional">Wybieralne</option>
         </select>
     </div>
-    
+
     <div class="col-md-4 col-md-offset-4">
-        <button type="button" class="btn btn-primary btn-block btn-lg">Dodaj nowy modół</button>
+        <a class="btn btn-primary btn-block btn-lg" href="/modulyksztalcenia/modulksztalcenia">Dodaj nowy modół</a>
         <button type="button" class="btn btn-primary btn-block">Edytuj profile kształcenia</button>
     </div>
 </div>
@@ -46,8 +46,8 @@
                                                                                                 class="gradeA even">
                                     <td>{{ modul.nazwaModulu }}</td>
                                     <td>
-                                        <button type="button" class="btn btn-primary">E</button>
-                                        <button type="button" class="btn btn-primary">D</button>
+                                        <a class="btn btn-primary" ng-href="modulyksztalcenia/modulksztalcenia?modul-id={{ modul.id }}">E</a>
+                                        <button data-target="#deleteModulModal" data-toggle="modal"type="button" ng-click="selectModulToDelete(modul)" class="btn btn-primary">D</button>
                                     </td>
                                 </tr>
                                 </tbody>
@@ -55,6 +55,27 @@
                         </div>
                     </div>
             </div>
+
+            <div class="modal fade" id="deleteModulModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                            <h4 class="modal-title">Potwierdź usuniecie modułu</h4>
+                        </div>
+                        <div class="modal-body">
+                            Czy na pewno chcesz usunąć modół o nazwie: '{{ modulToDelete.nazwaModulu }}' ?
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button ng-click="deleteSelectedModul()" data-dismiss="modal" type="button" class="btn btn-primary">OK</button>
+                        </div>
+                    </div>
+                    <!-- /.modal-content -->
+                </div>
+                <!-- /.modal-dialog -->
+            </div>
+
 
             <!--Profile end -->
         </div>
