@@ -53,7 +53,8 @@
             // Ustawia modul do usuniacia
             // Po akceptacji usuniecia modulu wywolywana jest funkcja: deleteSelectedModul
             $scope.selectModulToDelete = function(modul) {
-                console.log("select modul to delete: "+modul);
+                console.log("select modul to delete: ");
+                console.log(modul);
                 $scope.modulToDelete = modul;
             };
 
@@ -64,7 +65,11 @@
                 vm.profile_modulow.forEach(function(profile) {
                     console.log(profile);
                     var index =profile.moduly_ksztalcenia.indexOf($scope.modulToDelete);
-                    profile.moduly_ksztalcenia.splice(index, 1);
+                    if(index != -1) {
+                        console.log('delete index: '+index);
+                        profile.moduly_ksztalcenia.splice(index, 1);
+                    }
+
                 });
             };
 
