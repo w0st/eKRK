@@ -44,6 +44,13 @@ module ProfileModulow
         end
       end
 
+
+      # Lista profili modolow dla danego programu ksztalcenia z przypisanymi modulami
+      #
+      # Parameters:
+      #   program_ksztalcenia_id (required) - The id of program_ksztalcenia
+      # Example Request:
+      #   GET /profile_modulow/program_ksztalcenia_pk/:program_ksztalcenia_id
       params do
         requires :program_ksztalcenia_id
       end
