@@ -12,6 +12,7 @@ class Root < Grape::API
   mount ZagadnieniaEgzaminuDyplomowego::Data
   mount ProfileModulow::Data
   mount PrzedmiotyKsztalcenia::Data
+  mount ModulyKsztalcenia::Data
 
   add_swagger_documentation(hide_documentation_path: true,
                             api_version: 'v1',

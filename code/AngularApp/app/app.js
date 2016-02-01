@@ -28,6 +28,7 @@ angular.module('app', [
         'program-ksztalcenia',
         'program-studiow',
         'modulyksztalcenia',
+        'modulksztalcenia',
         'macierzsladowania',
         'przedmioty-ksztalcenia'
     ])

@@ -17,10 +17,14 @@ angular
 
 		ModulyKsztalcenia.$inject = ['$resource', 'CONFIG', '$http'];
 
-		function ModulyKsztalcenia ($resource, CONFIG) {
+		function ModulyKsztalcenia ($resource, CONFIG, $http) {
             return {
                 getProfileForPK: function(pkID) {
                     return $resource(CONFIG.API_URL + "profile_modulow/program_ksztalcenia_pk/:id").query({id: pkID}).$promise;
+                },
+
+                deleteModulKsztalcenia: function(id){
+                    $http.delete(CONFIG.API_URL + "moduly_ksztalcenia/"+id);
                 }
             }
 		}
