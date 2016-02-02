@@ -9,16 +9,16 @@ module ModulyKsztalcenia
     end
 =end
     resource :moduly_ksztalcenia do
-      # Get a list of profile_modulow
-      #
+
+      desc "Lista wszystkich ModulowKsztalcenia"
       # Example Request:
       #   GET /moduly_ksztalcenia
       get do
         ModulKsztalcenia.all
       end
 
-      # Get a single moduly_ksztalcenia
-      #
+
+      desc "ModoluKsztalcenia dla podanego ID"
       # Parameters:
       #   id (required) - The ID of a moduly_ksztalcenia
       # Example Request:
@@ -31,7 +31,9 @@ module ModulyKsztalcenia
       end
 
 
-      desc "Tworzenie nowego modulu"
+      desc "Tworzenie nowego ModuluKsztalcenia"
+      # Example Request:
+      #   POST /moduly_ksztalcenia/:modul
       params do
         requires :nazwaModulu, type: String
         requires :typ, type: String
@@ -48,10 +50,9 @@ module ModulyKsztalcenia
         end
       end
 
-      # Updates program studiów
-      #
+      desc "Zmiana ModuluKsztalcenia"
       # Example Request:
-      #   PUT /v1/programy_studiow/:id
+      #   POST /moduly_ksztalcenia/:modul
       params do
         requires :id
         requires :nazwaModulu, type: String
@@ -69,7 +70,9 @@ module ModulyKsztalcenia
       end
 
 
-      desc "delete modul ksztalcenia"
+      desc "Usuwa ModulKsztalcenia"
+      # Example Request:
+      #   DELETE /moduly_ksztalcenia/:id
       params do
         requires :id
       end
