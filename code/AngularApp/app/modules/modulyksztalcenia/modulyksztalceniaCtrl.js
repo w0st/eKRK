@@ -34,11 +34,6 @@
             // Pobranie danych dla modulu
             ModulyKsztalceniaService.getProfileForPK(1).then(function (result) {
                 vm.profile_modulow = result;
-
-                $('.table').DataTable({
-                    responsive: true
-                });
-
             }, function (reason) {
                 vm.error = reason;
             });

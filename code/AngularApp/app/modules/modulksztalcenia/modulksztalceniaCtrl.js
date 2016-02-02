@@ -70,13 +70,13 @@
 
             $scope.submit = function() {
                 if($scope.isEditMode()) {
-                    console.log('dodaj nowy modul ksztalcenia');
+                    console.log('edytuj nowy modul ksztalcenia');
                     ModulksztalceniaService.updateModulKsztalcenia($scope.modul);
                     $scope.isSaveAlertCollapsed = false;
                 }
                 else {
                     ModulksztalceniaService.addModulKsztalcenia($scope.modul);
-                    console.log('usun modul ksztalcenia');
+                    console.log('dodaj modul ksztalcenia');
                     $scope.modul.program_studiow_id = 1;
                     $scope.isSaveAlertCollapsed = false;
                 }
