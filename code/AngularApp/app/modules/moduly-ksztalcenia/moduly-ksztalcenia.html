@@ -13,8 +13,8 @@
     </div>
 
     <div class="col-md-4 col-md-offset-4">
-        <a class="btn btn-primary btn-block btn-lg" href="/modulyksztalcenia/modulksztalcenia">Dodaj nowy modół</a>
-        <a class="btn btn-primary btn-block" href="/modulyksztalcenia/profilemodulow">Edytuj profile kształcenia</a>
+        <a class="btn btn-primary btn-block btn-lg" href="/moduly-ksztalcenia/modul-ksztalcenia">Dodaj nowy modół</a>
+        <a class="btn btn-primary btn-block" href="/moduly-ksztalcenia/profile-modulow">Edytuj profile kształcenia</a>
     </div>
 </div>
 
@@ -46,7 +46,7 @@
                                                                                                 class="gradeA even">
                                     <td>{{ modul.nazwaModulu }}</td>
                                     <td>
-                                        <a class="btn btn-primary" ng-href="modulyksztalcenia/modulksztalcenia?modul-id={{ modul.id }}">E</a>
+                                        <a class="btn btn-primary" ng-href="moduly-ksztalcenia/modul-ksztalcenia?modul-id={{ modul.id }}">E</a>
                                         <button data-target="#deleteModulModal" data-toggle="modal" type="button" ng-click="vm.selectModulToDelete(modul)" class="btn btn-primary">D</button>
                                     </td>
                                 </tr>

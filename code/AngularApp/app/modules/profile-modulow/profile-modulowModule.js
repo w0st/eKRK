@@ -10,6 +10,6 @@
 (function() {
   'use strict';
 
-  angular.module('profilemodulow', ['datatables']);
+  angular.module('profile-modulow', ['datatables']);
 
 })();

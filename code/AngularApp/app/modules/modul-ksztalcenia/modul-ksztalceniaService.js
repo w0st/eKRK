@@ -10,14 +10,14 @@
 	* Service of the app
 	*/
 angular
-		.module('modulksztalcenia')
-		.factory('ModulksztalceniaService', Modulksztalcenia);
+		.module('modul-ksztalcenia')
+		.factory('ModulKsztalceniaService', ModulKsztalcenia);
 		// Inject your dependencies as .$inject = ['$http', 'someSevide'];
 		// function Name ($http, someSevide) {...}
 
-		Modulksztalcenia.$inject = ['$resource', 'CONFIG', '$http'];
+		ModulKsztalcenia.$inject = ['$resource', 'CONFIG', '$http'];
 
-		function Modulksztalcenia ($resource, CONFIG, $http) {
+		function ModulKsztalcenia ($resource, CONFIG, $http) {
             return {
                 getModulKsztalcenia: function (id) {
                     return $resource(CONFIG.API_URL + "moduly_ksztalcenia/:id").get({id: id}).$promise;

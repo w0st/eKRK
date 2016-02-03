@@ -10,10 +10,10 @@
 	* Controller of the app
 	*/
 	angular
-		.module('modulksztalcenia')
-		.controller('ModulksztalceniaCtrl', Modulksztalcenia);
+		.module('modul-ksztalcenia')
+		.controller('ModulKsztalceniaCtrl', ModulKsztalcenia);
 
-		Modulksztalcenia.$inject = ['ModulksztalceniaService', '$scope', '$location'];
+		ModulKsztalcenia.$inject = ['ModulKsztalceniaService', '$scope', '$location'];
 
 		/*
 		* recommend
@@ -21,7 +21,7 @@
 		* and bindable members up top.
 		*/
 
-		function Modulksztalcenia(ModulksztalceniaService, $scope, $location) {
+		function ModulKsztalcenia(ModulKsztalceniaService, $scope, $location) {
 			/*jshint validthis: true */
 			var vm = this;
 
@@ -42,7 +42,7 @@
                 return moduleID != undefined;
             };
 
-            ModulksztalceniaService.getZajeciaForModule(1, null).then(function(result){
+            ModulKsztalceniaService.getZajeciaForModule(1, null).then(function(result){
                 console.log('Zajecia bez modulu')
                 console.log((result))
                 vm.zajaciaWithoutModule = result;
@@ -50,7 +50,7 @@
                 vm.error = reason;
             });
 
-            ModulksztalceniaService.getProfileForPK(1).then(function(result){
+            ModulKsztalceniaService.getProfileForPK(1).then(function(result){
                 console.log(result)
                 vm.profile= result;
             }, function(reason) {
@@ -60,7 +60,7 @@
 
             if(this.isEditMode()){
                 console.log('request for moduleID '+ moduleID);
-                ModulksztalceniaService.getModulKsztalcenia(moduleID).then(function(result){
+                ModulKsztalceniaService.getModulKsztalcenia(moduleID).then(function(result){
                     console.log(result)
                     initialModuleData = angular.copy(result);
                     vm.modul= result;
@@ -70,7 +70,7 @@
                 }, function(reason) {
                     vm.error = reason;
                 });
-                ModulksztalceniaService.getZajeciaForModule(1,moduleID).then(function(result){
+                ModulKsztalceniaService.getZajeciaForModule(1,moduleID).then(function(result){
                     console.log('Zajecia dla modulu')
                     console.log(result)
                     vm.module_zajecia = result;
@@ -104,18 +104,18 @@
                     "id": modulId
                 };
                 console.log(moduleZajecia);
-                ModulksztalceniaService.assignZajecia(moduleZajecia);
+                ModulKsztalceniaService.assignZajecia(moduleZajecia);
             }
 
             this.submit = function() {
                 if(this.isEditMode()) {
                     console.log('edytuj nowy modul ksztalcenia');
-                    ModulksztalceniaService.updateModulKsztalcenia(vm.modul);
+                    ModulKsztalceniaService.updateModulKsztalcenia(vm.modul);
                     vm.assignZajeciaToModule(vm.modul.id);
                     vm.isSaveAlertCollapsed = false;
                 }
                 else {
-                    ModulksztalceniaService.addModulKsztalcenia(vm.modul).then(function (res) {
+                    ModulKsztalceniaService.addModulKsztalcenia(vm.modul).then(function (res) {
                             console.log("Add new modul");
                             console.log(res.data.id);
                             vm.modul.id = res.data.id;

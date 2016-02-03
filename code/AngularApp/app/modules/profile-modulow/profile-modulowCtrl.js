@@ -10,10 +10,10 @@
 	* Controller of the app
 	*/
 	angular
-		.module('profilemodulow')
-		.controller('ProfilemodulowCtrl', Profilemodulow);
+		.module('profile-modulow')
+		.controller('ProfileModulowCtrl', ProfileModulow);
 
-		Profilemodulow.$inject = ['$scope','ProfilemodulowService', '$location', '$anchorScroll'];
+		ProfileModulow.$inject = ['$scope','ProfileModulowService', '$location', '$anchorScroll'];
 
 
 
@@ -23,7 +23,7 @@
 		* and bindable members up top.
 		*/
 
-		function Profilemodulow($scope, ProfilemodulowService, $location, $anchorScroll) {
+		function ProfileModulow($scope, ProfileModulowService, $location, $anchorScroll) {
 			/*jshint validthis: true */
             var vm = this;
             vm.selectedProfile = null;
@@ -32,7 +32,7 @@
             var initialProfileData;
 
             // Pobranie danych dla modulu
-            ProfilemodulowService.getProfileForPK(1).then(function (result) {
+            ProfileModulowService.getProfileForPK(1).then(function (result) {
                 console.log(result)
                 vm.profile_modulow = result;
                 initialProfileData = angular.copy(result);
@@ -62,7 +62,7 @@
 
             // Usowa wybrany profil
             this.deleteSelectedProfile = function() {
-                ProfilemodulowService.deleteProfilModulu(vm.profilToDelete.id).then(function (res) {
+                ProfileModulowService.deleteProfilModulu(vm.profilToDelete.id).then(function (res) {
                         console.log('delete profile');
                         console.log(vm.profilToDelete);
                         var index = vm.profile_modulow.indexOf(vm.profilToDelete);
@@ -87,7 +87,7 @@
             // Tworzy nowy profil lub edytuje wybrany
             this.submit = function() {
                 if(vm.selectedProfile != null) {
-                    ProfilemodulowService.updateProfilModulu(vm.profilToSave).then(function (res) {
+                    ProfileModulowService.updateProfilModulu(vm.profilToSave).then(function (res) {
                             console.log('Edited profile');
                         },
                         function (err) {
@@ -96,7 +96,7 @@
                 }
                 else {
                     vm.profilToSave.program_studiow_id = 1;
-                    ProfilemodulowService.addProfilModulu(vm.profilToSave).then(function (res) {
+                    ProfileModulowService.addProfilModulu(vm.profilToSave).then(function (res) {
                             console.log('Saved profile');
                             vm.profile_modulow.push(res.data);
                             initialProfileData = angular.copy(vm.profile_modulow);

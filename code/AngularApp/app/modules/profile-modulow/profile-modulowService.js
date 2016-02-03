@@ -10,14 +10,14 @@
 	* Service of the app
 	*/
 angular
-		.module('profilemodulow')
-		.factory('ProfilemodulowService', Profilemodulow);
+		.module('profile-modulow')
+		.factory('ProfileModulowService', ProfileModulow);
 		// Inject your dependencies as .$inject = ['$http', 'someSevide'];
 		// function Name ($http, someSevide) {...}
 
-		Profilemodulow.$inject = ['$resource', 'CONFIG', '$http'];
+		ProfileModulow.$inject = ['$resource', 'CONFIG', '$http'];
 
-		function Profilemodulow ($resource, CONFIG, $http) {
+		function ProfileModulow ($resource, CONFIG, $http) {
             return {
                 getProfileForPK: function (pkID) {
                     return $resource(CONFIG.API_URL + "profile_modulow/program_ksztalcenia_pk/:id").query({id: pkID}).$promise;

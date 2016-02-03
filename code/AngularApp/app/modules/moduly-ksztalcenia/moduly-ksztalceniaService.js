@@ -10,7 +10,7 @@
 	* Service of the app
 	*/
 angular
-		.module('modulyksztalcenia')
+		.module('moduly-ksztalcenia')
 		.factory('ModulyKsztalceniaService', ModulyKsztalcenia);
 		// Inject your dependencies as .$inject = ['$http', 'someSevide'];
 		// function Name ($http, someSevide) {...}

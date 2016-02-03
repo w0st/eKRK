@@ -8,13 +8,13 @@
  * Route of the app
  */
 
-angular.module('profilemodulow')
+angular.module('profile-modulow')
 	.config(['$stateProvider', function ($stateProvider) {
 		$stateProvider
-			.state('profilemodulow', {
-				url:'/modulyksztalcenia/profilemodulow',
-				templateUrl: 'app/modules/profilemodulow/profilemodulow.html',
-				controller: 'ProfilemodulowCtrl',
+			.state('profile-modulow', {
+				url:'/moduly-ksztalcenia/profile-modulow',
+				templateUrl: 'app/modules/profile-modulow/profile-modulow.html',
+				controller: 'ProfileModulowCtrl',
 				controllerAs: 'vm'
 			});
 	}]);
