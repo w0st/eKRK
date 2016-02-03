@@ -14,6 +14,11 @@ class Root < Grape::API
   mount PrzedmiotyKsztalcenia::Data
   mount ModulyKsztalcenia::Data
 
+  # mount Zajecia::Data powoduje
+ # `combine_namespaces': undefined method `endpoints' for Data:Class (NoMethodError) jakis bug?
+  mount ZajeciaModule::Data
+
+
   add_swagger_documentation(hide_documentation_path: true,
                             api_version: 'v1',
                             mount_path: 'swagger_doc'

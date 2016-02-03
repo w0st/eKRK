@@ -94,8 +94,20 @@ gk1 = GrupaKursow.create(kodZajec: 'IZN001516WL',nazwaZajec: 'Podstawy elektroni
                    czyOgolnouczelniany: FALSE, rodzaj: 'Podstawowy',
                    typ: 'Obowiazkowy',modul_ksztalcenia: modul_ksztalcenia1, semestr: semestr2, przedmiot_ksztalcenia: przedmiotKsztalcenia1)
 
-kurs1 = Kurs.create(formaKursu: 'Wyklad', godzinyZZU: 30, godzinyCNPS: 60, modul_ksztalcenia: modul_ksztalcenia1, semestr: semestr2)
-kurs2 = Kurs.create(formaKursu: 'Laboratorium', godzinyZZU: 30, godzinyCNPS: 60, modul_ksztalcenia: modul_ksztalcenia1, semestr: semestr2)
+kurs1 = Kurs.create(formaKursu: 'Wyklad', godzinyZZU: 30, godzinyCNPS: 60, modul_ksztalcenia: modul_ksztalcenia1, semestr: semestr2, przedmiot_ksztalcenia: przedmiotKsztalcenia1)
+kurs2 = Kurs.create(formaKursu: 'Laboratorium', godzinyZZU: 30, godzinyCNPS: 60, modul_ksztalcenia: modul_ksztalcenia1, semestr: semestr2, przedmiot_ksztalcenia: przedmiotKsztalcenia1)
+
+kurs3 = Kurs.create(kodZajec: 'IZN001518',nazwaZajec: 'Test',
+                    punktyECTS: 2,punktyECTSBK: 3,punktyECTSP: 2,sposobZaliczenia: 'Zaliczenie',
+                    czyOgolnouczelniany: FALSE, rodzaj: 'Podstawowy',
+                    typ: 'Obowiazkowy',formaKursu: 'Laboratorium', godzinyZZU: 30, godzinyCNPS: 60, semestr: semestr2, przedmiot_ksztalcenia: przedmiotKsztalcenia1)
+
+kurs4 = Kurs.create(kodZajec: 'IZN001518',nazwaZajec: 'Test2',
+                    punktyECTS: 2,punktyECTSBK: 3,punktyECTSP: 2,sposobZaliczenia: 'Zaliczenie',
+                    czyOgolnouczelniany: FALSE, rodzaj: 'Podstawowy',
+                    typ: 'Obowiazkowy',formaKursu: 'Laboratorium', godzinyZZU: 30, godzinyCNPS: 60, semestr: semestr2, przedmiot_ksztalcenia: przedmiotKsztalcenia1)
+
+
 
 gk1.kursy << kurs1
 gk1.kursy << kurs2

@@ -70,6 +70,25 @@ module ModulyKsztalcenia
       end
 
 
+      desc 'Przypisuje zajecia do modulu'
+      params do
+        requires 'zajecia',type: Array[Integer]
+        requires 'id', type: Integer
+      end
+      # PUT is idempotent, so if you PUT an object twice, it has no effect.
+      put :przypisz_zajecia do
+
+        modul = ModulKsztalcenia.find(params[:id])
+        modul.zajecia.clear
+
+        params[:zajecia].each do |z|
+          zajecia = Zajecia.find(z)
+          modul.zajecia << zajecia
+        end
+      end
+
+
+
       desc "Usuwa ModulKsztalcenia"
       # Example Request:
       #   DELETE /moduly_ksztalcenia/:id
