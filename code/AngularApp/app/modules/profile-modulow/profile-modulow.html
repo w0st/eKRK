@@ -7,11 +7,12 @@
 <!-- Edit from-->
 
 <form id="edit-form">
-    <div class="form-group" >
-        <label for="profil-input-save">{{  vm.selectedProfile == null? "Nowy profil:" : "Edytuj profil:" }}</label>
+    <div class="form-group">
+        <label for="profil-input-save">{{ vm.selectedProfile == null? "Nowy profil:" : "Edytuj profil:" }}</label>
         <input type="text" ng-model="vm.profilToSave.nazwa" class="form-control" id="profil-input-save">
     </div>
-    <button ng-click="vm.submit()" type="submit" class="btn btn-success">{{'program_studiow_btn_save' | translate}}</button>
+    <button ng-click="vm.submit()" type="submit" class="btn btn-success">{{'program_studiow_btn_save' | translate}}
+    </button>
     <button ng-click="vm.reset()" class="btn btn-danger">Reset</button>
 </form>
 
@@ -31,7 +32,9 @@
                         <td>{{ profil.nazwa }}</td>
                         <td>
                             <button class="btn btn-primary" ng-click="vm.selectEditProfile(profil)">E</button>
-                            <button data-target="#deleteProfilModal" data-toggle="modal" type="button" ng-click="vm.selectProfilToDelete(profil)" class="btn btn-primary">D</button>
+                            <button data-target="#deleteProfilModal" data-toggle="modal" type="button"
+                                    ng-click="vm.selectProfilToDelete(profil)" class="btn btn-primary">D
+                            </button>
                         </td>
                     </tr>
                     </tbody>
@@ -43,7 +46,8 @@
 
 
     <!--Delete profile popup-->
-    <div class="modal fade" id="deleteProfilModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal fade" id="deleteProfilModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+         aria-hidden="true" style="display: none;">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -55,7 +59,9 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button ng-click="vm.deleteSelectedProfile()" data-dismiss="modal" type="button" class="btn btn-primary">OK</button>
+                    <button ng-click="vm.deleteSelectedProfile()" data-dismiss="modal" type="button"
+                            class="btn btn-primary">OK
+                    </button>
                 </div>
             </div>
             <!-- /.modal-content -->
