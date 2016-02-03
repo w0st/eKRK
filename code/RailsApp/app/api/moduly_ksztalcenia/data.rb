@@ -96,7 +96,10 @@ module ModulyKsztalcenia
         requires :id
       end
       delete ':id' do
-        ModulKsztalcenia.find(params[:id]).destroy!
+        modul = ModulKsztalcenia.find(params[:id])
+        modul.zajecia.clear
+        modul.save
+        modul.destroy!
       end
 
     end

@@ -53,7 +53,7 @@ module ProfileModulow
       end
       put do
         profil_modulu = ProfilModulu.find(params[:id])
-        profil_modulu.assign_attributes(params)
+        profil_modulu.nazwa = params[:nazwa]
         if profil_modulu.save
           profil_modulu
         else
