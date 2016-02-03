@@ -27,12 +27,24 @@
             var moduleID;
             var moduleID = $location.search()['modul-id'];
             var initialModuleData;
+
+            this.selectedZajeciaToAdd = [];
+            this.selectedZajeciaToRemove = [];
+
             $scope.isSaveAlertCollapsed=true;
             console.log('moduleID ' + moduleID);
 
-            $scope.isEditMode = function (tabId) {
+            this.isEditMode = function (tabId) {
                 return moduleID != undefined;
             };
+
+            ModulksztalceniaService.getZajeciaForModule(1, null).then(function(result){
+                console.log('Zajecia bez modulu')
+                console.log((result))
+                vm.zajaciaWithoutModule = result;
+            }, function(reason) {
+                vm.error = reason;
+            });
 
             ModulksztalceniaService.getProfileForPK(1).then(function(result){
                 console.log(result)
@@ -43,7 +55,7 @@
             });
 
 
-            if($scope.isEditMode()){
+            if(this.isEditMode()){
                 console.log('request for moduleID '+ moduleID);
                 ModulksztalceniaService.getModulKsztalcenia(moduleID).then(function(result){
                     console.log(result)
@@ -55,10 +67,20 @@
                 }, function(reason) {
                     vm.error = reason;
                 });
+                ModulksztalceniaService.getZajeciaForModule(1,moduleID).then(function(result){
+                    console.log('Zajecia dla modulu')
+                    console.log(result)
+                    vm.module_zajecia = result;
+
+                }, function(reason) {
+                    vm.error = reason;
+                })
+
             }
             else {
                 // set default values
                 $scope.modul = {typ: "Obowiazkowy", program_studiow_id: 1, profil_modulu_id: "1", nazwaModulu: "", minEcts: 1}
+                vm.module_zajecia = [];
                 //$scope.modul.minEcts = 1;
             }
 
@@ -68,19 +90,67 @@
                 $scope.modul.profil_modulu_id = $scope.modul.profil_modulu_id+"";
             }
 
-            $scope.submit = function() {
-                if($scope.isEditMode()) {
+            this.submit = function() {
+                if(this.isEditMode()) {
                     console.log('edytuj nowy modul ksztalcenia');
                     ModulksztalceniaService.updateModulKsztalcenia($scope.modul);
+                    $scope.assignZajeciaToModule($scope.modul.id);
                     $scope.isSaveAlertCollapsed = false;
                 }
                 else {
-                    ModulksztalceniaService.addModulKsztalcenia($scope.modul);
-                    console.log('dodaj modul ksztalcenia');
-                    $scope.modul.program_studiow_id = 1;
-                    $scope.isSaveAlertCollapsed = false;
+                    ModulksztalceniaService.addModulKsztalcenia($scope.modul).then(function (res) {
+                            console.log("Add new modul");
+                            console.log(res.data.id);
+                            $scope.modul.id = res.data.id;
+                            $scope.assignZajeciaToModule($scope.modul.id);
+                            $scope.isSaveAlertCollapsed = false;
+                        },
+                        function (err) {
+                            console.log("THERE WAS AN ERROR");
+                        });
                 }
             }
+
+
+            $scope.assignZajeciaToModule = function(modulId) {
+                var zajeciaIdArray = [];
+                vm.module_zajecia.forEach(function(zajecia){
+                    zajeciaIdArray.push(zajecia.id);
+                });
+
+                var moduleZajecia = {
+                    "zajecia": zajeciaIdArray,
+                    "id": modulId
+                };
+                console.log(moduleZajecia);
+                ModulksztalceniaService.assignZajecia(moduleZajecia);
+            }
+
+
+
+            this.addZajeciaToModule = function() {
+                console.log(vm.selectedZajeciaToAdd);
+                this.moveItems(vm.selectedZajeciaToAdd, vm.zajaciaWithoutModule, vm.module_zajecia);
+            }
+
+            this.removeZajeciaFromModule = function() {
+                console.log(this.selectedZajeciaToRemove);
+                this.moveItems(vm.selectedZajeciaToRemove, vm.module_zajecia, vm.zajaciaWithoutModule);
+            }
+
+                this.moveItems = function(itemsToMove, listFrom, listTo) {
+                    itemsToMove.forEach(
+                        function(item){
+                            listTo.push(item);
+                            var index = listFrom.indexOf(item);
+                            if(index != -1) {
+                                listFrom.splice(index, 1);
+                            }
+                        });
+                }
+
+
+
 
 		}
 

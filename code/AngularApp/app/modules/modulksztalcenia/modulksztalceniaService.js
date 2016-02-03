@@ -27,14 +27,21 @@ angular
                     return $resource(CONFIG.API_URL + "profile_modulow/program_ksztalcenia_pk/:id").query({id: pkID}).$promise;
                 },
 
-                updateModulKsztalcenia: function(modulKsztalcenia){
-                    $http.put(CONFIG.API_URL + "moduly_ksztalcenia", modulKsztalcenia);
+                getZajeciaForModule: function(pkID, moduleID)  {
+                    return $resource(CONFIG.API_URL + "zajecia/from_module").query({program_ksztalcenia_id: pkID, modul_ksztalcenia_id: moduleID}).$promise;
                 },
 
-                addModulKsztalcenia: function(modulKsztalcenia){
-                    console.log(modulKsztalcenia);
-                    $http.post(CONFIG.API_URL + "moduly_ksztalcenia", modulKsztalcenia);
+                updateModulKsztalcenia: function(modulKsztalcenia){
+                    return $http.put(CONFIG.API_URL + "moduly_ksztalcenia", modulKsztalcenia);
+                },
+
+                addModulKsztalcenia: function(modulKsztalcenia) {
+                    return $http.post(CONFIG.API_URL + "moduly_ksztalcenia", modulKsztalcenia);
+                },
+                assignZajecia: function(array) {
+                    return $http.put(CONFIG.API_URL + "moduly_ksztalcenia/przypisz_zajecia", array);
                 }
+
             }
 		}
 
