@@ -28,8 +28,11 @@
             /*jshint validthis: true */
             var vm = this;
 
-            $scope.modulToDelete = null;
-            $scope.selectedTab = 0;
+            // Moduł wybrany do usuniecia
+            vm.modulToDelete = null;
+
+
+            vm.selectedTab = 0;
 
             // Pobranie danych dla modulu
             ModulyKsztalceniaService.getProfileForPK(1).then(function (result) {
@@ -40,26 +43,26 @@
 
 
             // Ustawianie wybranej zakładki
-            $scope.setTab = function (tabId) {
-                $scope.selectedTab = tabId;
+            this.setTab = function (tabId) {
+                vm.selectedTab = tabId;
             };
 
 
             // Ustawia modul do usuniacia
             // Po akceptacji usuniecia modulu wywolywana jest funkcja: deleteSelectedModul
-            $scope.selectModulToDelete = function(modul) {
+            this.selectModulToDelete = function(modul) {
                 console.log("select modul to delete: ");
                 console.log(modul);
-                $scope.modulToDelete = modul;
+                vm.modulToDelete = modul;
             };
 
 
-            // Usuwa wybrany wszczesnie modul
-            $scope.deleteSelectedModul = function () {
-                ModulyKsztalceniaService.deleteModulKsztalcenia($scope.modulToDelete.id);
+            // Usuwa wybrany wczesnie modul
+            this.deleteSelectedModul = function () {
+                ModulyKsztalceniaService.deleteModulKsztalcenia(vm.modulToDelete.id);
                 vm.profile_modulow.forEach(function(profile) {
                     console.log(profile);
-                    var index =profile.moduly_ksztalcenia.indexOf($scope.modulToDelete);
+                    var index =profile.moduly_ksztalcenia.indexOf(vm.modulToDelete);
                     if(index != -1) {
                         console.log('delete index: '+index);
                         profile.moduly_ksztalcenia.splice(index, 1);

@@ -18,26 +18,26 @@
                     <div class="col-lg-6">
                     <div class="form-group">
                         <label>Nazwa</label>
-                        <input type="text" class="form-control" ng-model="modul.nazwaModulu">
+                        <input type="text" class="form-control" ng-model="vm.modul.nazwaModulu">
                     </div>
                     <div class="form-group">
                         <label class="radio control-label">Typ</label>
                         <label class="radio-inline">
-                            <input type="radio" name="inlineRadioOptions" id="inlineRadio1" ng-model="modul.typ" value="Obowiazkowy"> Obowiązkowy
+                            <input type="radio" name="inlineRadioOptions" id="inlineRadio1" ng-model="vm.modul.typ" value="Obowiazkowy"> Obowiązkowy
                         </label>
                         <label class="radio-inline">
-                            <input type="radio" name="inlineRadioOptions" id="inlineRadio2"ng-model="modul.typ" value="Opcjonalny"> Wybieralny
+                            <input type="radio" name="inlineRadioOptions" id="inlineRadio2"ng-model="vm.modul.typ" value="Opcjonalny"> Wybieralny
                         </label>
                     </div>
                     <div class="form-group">
                         <label>Profil</label>
-                        <select class="form-control" ng-model="modul.profil_modulu_id" >
-                            <option ng-repeat="profil in profile"  value="{{profil.id}}">{{ profil.nazwa }}</option>
+                        <select class="form-control" ng-model="vm.modul.profil_modulu_id" >
+                            <option ng-repeat="profil in vm.profile"  value="{{profil.id}}">{{ profil.nazwa }}</option>
                         </select>
                     </div>
                     <div class="form-group">
                         <label>Minimum punktów ECTS dla modelu</label>
-                        <input type="number" min="1" max="30" ng-model="modul.minEcts" class="form-control">
+                        <input type="number" min="1" max="30" ng-model="vm.modul.minEcts" class="form-control">
                     </div>
                         </div>
 
@@ -69,14 +69,13 @@
                         </div>
                     <div  class="col-lg-12">
                     <button ng-click="vm.submit()" type="submit" class="btn btn-success">{{'program_studiow_btn_save' | translate}}</button>
-                    <button  ng-click="reset()" class="btn btn-danger">Reset</button>
-                    </div>
+                    <button  ng-click="vm.reset()" class="btn btn-danger">Reset</button>
                     </div>
                 </form>
 
 
         </div>
-        <div class="alert alert-success" collapse="isSaveAlertCollapsed">
+        <div class="alert alert-success" collapse="vm.isSaveAlertCollapsed">
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
             <strong>Zmiany zostały zapisane!</strong>
         </div>

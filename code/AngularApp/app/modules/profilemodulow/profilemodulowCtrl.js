@@ -25,9 +25,10 @@
 
 		function Profilemodulow($scope, ProfilemodulowService, $location, $anchorScroll) {
 			/*jshint validthis: true */
-            $scope.selectedProfile = null;
-            $scope.profilToDelete = null;
-			var vm = this;
+            var vm = this;
+            vm.selectedProfile = null;
+            vm.profilToDelete = null;
+            vm.profilToSave;
             var initialProfileData;
 
             // Pobranie danych dla modulu
@@ -39,30 +40,32 @@
                 vm.error = reason;
             });
 
-            $scope.selectEditProfile = function(profil){
+
+            //Ustawia profil do edycji
+            this.selectEditProfile = function(profil){
                 console.log(profil);
-                $scope.profilToSave = profil;
-                $scope.selectedProfile = angular.copy(profil);
+                vm.profilToSave = profil;
+                vm.selectedProfile = angular.copy(profil);
 
                 // scroll to edit form after select
                 $location.hash('edit-form');
                 $anchorScroll();
             }
 
-            // Ustawia profilu do usuniacia
+            // Ustawia profil do usuniacia
             // Po akceptacji usuniecia profilu wywolywana jest funkcja: deleteSelectedProfile
-            $scope.selectProfilToDelete = function(profil) {
+            this.selectProfilToDelete = function(profil) {
                 console.log("select profil to delete: ");
                 console.log(profil);
-                $scope.profilToDelete = profil;
+                vm.profilToDelete = profil;
             };
 
             // Usowa wybrany profil
-            $scope.deleteSelectedProfile = function() {
-                ProfilemodulowService.deleteProfilModulu($scope.profilToDelete.id).then(function (res) {
+            this.deleteSelectedProfile = function() {
+                ProfilemodulowService.deleteProfilModulu(vm.profilToDelete.id).then(function (res) {
                         console.log('delete profile');
-                        console.log($scope.profilToDelete);
-                        var index = vm.profile_modulow.indexOf($scope.profilToDelete);
+                        console.log(vm.profilToDelete);
+                        var index = vm.profile_modulow.indexOf(vm.profilToDelete);
                         if(index != -1) {
                             vm.profile_modulow.splice(index, 1);
                         }
@@ -72,32 +75,37 @@
                     });
             }
 
-            $scope.reset = function() {
-                $scope.profilToSave =  null;
-                $scope.selectedProfile = null;
+
+            // Anuluje niezapisane zmiany
+            this.reset = function() {
+                vm.profilToSave =  null;
+                vm.selectedProfile = null;
                 vm.profile_modulow = angular.copy(initialProfileData);
             }
 
-            $scope.submit = function() {
 
-                if($scope.selectedProfile != null) {
-                    ProfilemodulowService.updateProfilModulu($scope.profilToSave);
-                    console.log('Edited profile:');
+            // Tworzy nowy profil lub edytuje wybrany
+            this.submit = function() {
+                if(vm.selectedProfile != null) {
+                    ProfilemodulowService.updateProfilModulu(vm.profilToSave).then(function (res) {
+                            console.log('Edited profile');
+                        },
+                        function (err) {
+                            console.log("THERE WAS AN ERROR");
+                        });
                 }
                 else {
-                    $scope.profilToSave.program_studiow_id = 1;
-                    ProfilemodulowService.addProfilModulu($scope.profilToSave).then(function (res) {
+                    vm.profilToSave.program_studiow_id = 1;
+                    ProfilemodulowService.addProfilModulu(vm.profilToSave).then(function (res) {
                             console.log('Saved profile');
                             vm.profile_modulow.push(res.data);
+                            initialProfileData = angular.copy(vm.profile_modulow);
                         },
                         function (err) {
                                console.log("THERE WAS AN ERROR");
                         });
-
                 }
-                console.log( $scope.profilToSave);
-
-                initialProfileData = angular.copy(vm.profile_modulow);
+                console.log(vm.profilToSave);
             }
 
 		}

@@ -20,15 +20,15 @@
 
 <div>
         <ul class="nav nav-tabs">
-            <li ng-repeat="profil in vm.profile_modulow" ng-class="{'nav nav-pills active' : selectedTab == $index}">
-                <a href ng-click="setTab($index)">
+            <li ng-repeat="profil in vm.profile_modulow" ng-class="{'nav nav-pills active' : vm.selectedTab == $index}">
+                <a href ng-click="vm.setTab($index)">
                     {{ profil.nazwa }}
                 </a>
             </li>
         </ul>
 
 
-        <div ng-repeat="profil in vm.profile_modulow" ng-show="selectedTab == $index">
+        <div ng-repeat="profil in vm.profile_modulow" ng-show="vm.selectedTab == $index">
             <div class="tab-content">
                     <div class="panel-body">
                         <div class="dataTable_wrapper">
@@ -47,7 +47,7 @@
                                     <td>{{ modul.nazwaModulu }}</td>
                                     <td>
                                         <a class="btn btn-primary" ng-href="modulyksztalcenia/modulksztalcenia?modul-id={{ modul.id }}">E</a>
-                                        <button data-target="#deleteModulModal" data-toggle="modal" type="button" ng-click="selectModulToDelete(modul)" class="btn btn-primary">D</button>
+                                        <button data-target="#deleteModulModal" data-toggle="modal" type="button" ng-click="vm.selectModulToDelete(modul)" class="btn btn-primary">D</button>
                                     </td>
                                 </tr>
                                 </tbody>
@@ -67,11 +67,11 @@
                     <h4 class="modal-title">Potwierdź usuniecie modułu</h4>
                 </div>
                 <div class="modal-body">
-                    Czy na pewno chcesz usunąć modół o nazwie: '{{ modulToDelete.nazwaModulu }}' ?
+                    Czy na pewno chcesz usunąć moduł o nazwie: '{{ vm.modulToDelete.nazwaModulu }}' ?
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button ng-click="deleteSelectedModul()" data-dismiss="modal" type="button" class="btn btn-primary">OK</button>
+                    <button ng-click="vm.deleteSelectedModul()" data-dismiss="modal" type="button" class="btn btn-primary">OK</button>
                 </div>
             </div>
             <!-- /.modal-content -->

@@ -24,14 +24,18 @@
 		function Modulksztalcenia(ModulksztalceniaService, $scope, $location) {
 			/*jshint validthis: true */
 			var vm = this;
-            var moduleID;
+
+            // id edytowanego modulu jesli brak dodajemy nowy modul
             var moduleID = $location.search()['modul-id'];
+
+            // poczatkowe dane modulu do resetowania zmian
             var initialModuleData;
 
-            this.selectedZajeciaToAdd = [];
-            this.selectedZajeciaToRemove = [];
 
-            $scope.isSaveAlertCollapsed=true;
+            vm.selectedZajeciaToAdd = [];
+            vm.selectedZajeciaToRemove = [];
+
+            vm.isSaveAlertCollapsed = true;
             console.log('moduleID ' + moduleID);
 
             this.isEditMode = function (tabId) {
@@ -48,8 +52,7 @@
 
             ModulksztalceniaService.getProfileForPK(1).then(function(result){
                 console.log(result)
-                $scope.profile= result;
-
+                vm.profile= result;
             }, function(reason) {
                 vm.error = reason;
             });
@@ -60,9 +63,9 @@
                 ModulksztalceniaService.getModulKsztalcenia(moduleID).then(function(result){
                     console.log(result)
                     initialModuleData = angular.copy(result);
-                    $scope.modul= result;
+                    vm.modul= result;
                     //hack - domyslna wartosc sie nie ustawiala bo była brana jako int a nie string
-                    $scope.modul.profil_modulu_id = $scope.modul.profil_modulu_id+"";
+                    vm.modul.profil_modulu_id = vm.modul.profil_modulu_id+"";
 
                 }, function(reason) {
                     vm.error = reason;
@@ -79,40 +82,18 @@
             }
             else {
                 // set default values
-                $scope.modul = {typ: "Obowiazkowy", program_studiow_id: 1, profil_modulu_id: "1", nazwaModulu: "", minEcts: 1}
+                vm.modul = {typ: "Obowiazkowy", program_studiow_id: 1, profil_modulu_id: "1", nazwaModulu: "", minEcts: 1}
                 vm.module_zajecia = [];
-                //$scope.modul.minEcts = 1;
+                initialModuleData = angular.copy(vm.modul);
             }
 
-            $scope.reset = function() {
+            this.reset = function() {
                 console.log("reset initial data");
-                $scope.modul = angular.copy(initialModuleData);
-                $scope.modul.profil_modulu_id = $scope.modul.profil_modulu_id+"";
+                vm.modul = angular.copy(initialModuleData);
+                vm.modul.profil_modulu_id = vm.modul.profil_modulu_id+"";
             }
 
-            this.submit = function() {
-                if(this.isEditMode()) {
-                    console.log('edytuj nowy modul ksztalcenia');
-                    ModulksztalceniaService.updateModulKsztalcenia($scope.modul);
-                    $scope.assignZajeciaToModule($scope.modul.id);
-                    $scope.isSaveAlertCollapsed = false;
-                }
-                else {
-                    ModulksztalceniaService.addModulKsztalcenia($scope.modul).then(function (res) {
-                            console.log("Add new modul");
-                            console.log(res.data.id);
-                            $scope.modul.id = res.data.id;
-                            $scope.assignZajeciaToModule($scope.modul.id);
-                            $scope.isSaveAlertCollapsed = false;
-                        },
-                        function (err) {
-                            console.log("THERE WAS AN ERROR");
-                        });
-                }
-            }
-
-
-            $scope.assignZajeciaToModule = function(modulId) {
+            this.assignZajeciaToModule = function(modulId) {
                 var zajeciaIdArray = [];
                 vm.module_zajecia.forEach(function(zajecia){
                     zajeciaIdArray.push(zajecia.id);
@@ -126,7 +107,26 @@
                 ModulksztalceniaService.assignZajecia(moduleZajecia);
             }
 
-
+            this.submit = function() {
+                if(this.isEditMode()) {
+                    console.log('edytuj nowy modul ksztalcenia');
+                    ModulksztalceniaService.updateModulKsztalcenia(vm.modul);
+                    vm.assignZajeciaToModule(vm.modul.id);
+                    vm.isSaveAlertCollapsed = false;
+                }
+                else {
+                    ModulksztalceniaService.addModulKsztalcenia(vm.modul).then(function (res) {
+                            console.log("Add new modul");
+                            console.log(res.data.id);
+                            vm.modul.id = res.data.id;
+                            vm.assignZajeciaToModule(vm.modul.id);
+                            vm.isSaveAlertCollapsed = false;
+                        },
+                        function (err) {
+                            console.log("THERE WAS AN ERROR");
+                        });
+                }
+            }
 
             this.addZajeciaToModule = function() {
                 console.log(vm.selectedZajeciaToAdd);
@@ -148,9 +148,6 @@
                             }
                         });
                 }
-
-
-
 
 		}
 
