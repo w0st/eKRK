@@ -10,7 +10,7 @@
 	* Controller of the app
 	*/
 	angular
-		.module('modul-ksztalcenia')
+		.module('moduly-ksztalcenia')
 		.controller('ModulKsztalceniaCtrl', ModulKsztalcenia);
 
 		ModulKsztalcenia.$inject = ['ModulKsztalceniaService', '$scope', '$location'];

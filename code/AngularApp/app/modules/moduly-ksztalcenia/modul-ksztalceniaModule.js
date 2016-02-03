@@ -10,6 +10,6 @@
 (function() {
   'use strict';
 
-  angular.module('modul-ksztalcenia', []);
+  angular.module('moduly-ksztalcenia', []);
 
 })();
