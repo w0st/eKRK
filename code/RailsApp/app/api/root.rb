@@ -13,6 +13,7 @@ class Root < Grape::API
   mount ProfileModulow::Data
   mount PrzedmiotyKsztalcenia::Data
   mount ModulyKsztalcenia::Data
+  mount PracownicyNaukowi::Data
 
   # mount Zajecia::Data powoduje
  # `combine_namespaces': undefined method `endpoints' for Data:Class (NoMethodError) jakis bug?

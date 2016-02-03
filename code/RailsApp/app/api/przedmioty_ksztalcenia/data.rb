@@ -9,12 +9,20 @@ module PrzedmiotyKsztalcenia
     end
 =end
     resource :przedmioty_ksztalcenia do
-      # Get a list of programy_ksztalcenia
+      # Get a list of przedmioty_ksztalcenia
       #
       # Example Request:
       #   GET /przedmioty_ksztalcenia
       get do
         present PrzedmiotKsztalcenia.all, with: PrzedmiotyKsztalcenia::Entities::PrzedmiotKsztalcenia
+      end
+
+      # Get a przedmiot_ksztalcenia with id
+      params do
+        requires :id
+      end
+      get ':id' do
+        present PrzedmiotKsztalcenia.find(params[:id]), with: PrzedmiotyKsztalcenia::Entities::PrzedmiotKsztalcenia
       end
 
 
@@ -28,31 +36,31 @@ module PrzedmiotyKsztalcenia
         requires :pracownik_naukowy_id, type: Integer
       end
       post do
-        programKsztalcenia = PrzedmiotKsztalcenia.new(params)
-        if programKsztalcenia.save
-          programKsztalcenia
+        przedmiotKsztalcenia = PrzedmiotKsztalcenia.new(params)
+        if przedmiotKsztalcenia.save
+          przedmiotKsztalcenia
         else
-          programKsztalcenia.errors
+          przedmiotKsztalcenia.errors
         end
       end
 
       # Updates przedmiot kształcenia
       #
       # Example Request:
-      #   PUT /v1/przedmioty_ksztalcenia/:id
+      #   PUT /v1/przedmioty_ksztalcenia
       params do
         requires :id
         requires :nazwaPrzedmiotu, type: String
         requires :program_ksztalcenia_id, type: Integer
         requires :pracownik_naukowy_id, type: Integer
       end
-      put do
-        programKsztalcenia = PrzedmiotKsztalcenia.find(params[:id])
-        programKsztalcenia.assign_attributes(params)
-        if programKsztalcenia.save
-          programKsztalcenia
+      put ':id' do
+        przedmiotKsztalcenia = PrzedmiotKsztalcenia.find(params[:id])
+        przedmiotKsztalcenia.assign_attributes(params)
+        if przedmiotKsztalcenia.save
+          przedmiotKsztalcenia
         else
-          programKsztalcenia.errors
+          przedmiotKsztalcenia.errors
         end
       end
 
@@ -60,10 +68,7 @@ module PrzedmiotyKsztalcenia
       #
       # Example Request:
       #   DELETE /v1/przedmioty_ksztalcenia/:id
-      params do
-        requires :id
-      end
-      delete do
+      delete ':id' do
         PrzedmiotKsztalcenia.destroy(params[:id])
       end
 
