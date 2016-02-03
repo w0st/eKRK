@@ -31,7 +31,7 @@
             // Moduł wybrany do usuniecia
             vm.modulToDelete = null;
 
-
+            // index zaznaczonego tab-panelu z modulem
             vm.selectedTab = 0;
 
             // Pobranie danych dla modulu

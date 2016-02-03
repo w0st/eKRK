@@ -31,13 +31,17 @@
             // poczatkowe dane modulu do resetowania zmian
             var initialModuleData;
 
-
+            // zajecia zaznaczone do dodania z listy zajec nie przypisanych
             vm.selectedZajeciaToAdd = [];
+
+            // zajecia zaznaczone do usuniecia z listy zajec przypisanych
             vm.selectedZajeciaToRemove = [];
 
             vm.isSaveAlertCollapsed = true;
+
             console.log('moduleID ' + moduleID);
 
+            // jesli w url nie zostalo podane id modulu zwraca false
             this.isEditMode = function (tabId) {
                 return moduleID != undefined;
             };
@@ -57,7 +61,8 @@
                 vm.error = reason;
             });
 
-
+            // jesli edytuje istniejacy modul wczytuje dane modulu
+            // w przeciwnym razie ustawia domyslne dane nowego modulu
             if(this.isEditMode()){
                 console.log('request for moduleID '+ moduleID);
                 ModulKsztalceniaService.getModulKsztalcenia(moduleID).then(function(result){
@@ -70,6 +75,7 @@
                 }, function(reason) {
                     vm.error = reason;
                 });
+
                 ModulKsztalceniaService.getZajeciaForModule(1,moduleID).then(function(result){
                     console.log('Zajecia dla modulu')
                     console.log(result)
@@ -87,12 +93,14 @@
                 initialModuleData = angular.copy(vm.modul);
             }
 
+            // reset poczatkowo wprowadzonych danych
             this.reset = function() {
                 console.log("reset initial data");
                 vm.modul = angular.copy(initialModuleData);
                 vm.modul.profil_modulu_id = vm.modul.profil_modulu_id+"";
             }
 
+            // funkcja pomocnicza przypisujaca wybrane zajecia do modulu
             this.assignZajeciaToModule = function(modulId) {
                 var zajeciaIdArray = [];
                 vm.module_zajecia.forEach(function(zajecia){
@@ -107,6 +115,8 @@
                 ModulKsztalceniaService.assignZajecia(moduleZajecia);
             }
 
+            // tworzy nowy modul lub edytuje istniejacy
+            // przypisuje zajecia do modulu
             this.submit = function() {
                 if(this.isEditMode()) {
                     console.log('edytuj nowy modul ksztalcenia');
@@ -128,16 +138,19 @@
                 }
             }
 
+            // funkcja obslugujaca przenoszenie modulow do listy przypisanych
             this.addZajeciaToModule = function() {
                 console.log(vm.selectedZajeciaToAdd);
                 this.moveItems(vm.selectedZajeciaToAdd, vm.zajaciaWithoutModule, vm.module_zajecia);
             }
 
+            // funkcja obslugujaca usuwanie modulu z listy przypisanych
             this.removeZajeciaFromModule = function() {
                 console.log(this.selectedZajeciaToRemove);
                 this.moveItems(vm.selectedZajeciaToRemove, vm.module_zajecia, vm.zajaciaWithoutModule);
             }
 
+            // funkcja pomocnicza przenoszaca elemety miedzy dwoma listami
                 this.moveItems = function(itemsToMove, listFrom, listTo) {
                     itemsToMove.forEach(
                         function(item){

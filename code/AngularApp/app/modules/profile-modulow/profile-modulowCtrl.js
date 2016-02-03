@@ -26,12 +26,19 @@
 		function ProfileModulow($scope, ProfileModulowService, $location, $anchorScroll) {
 			/*jshint validthis: true */
             var vm = this;
+            // zaznaczony profil do edycji
             vm.selectedProfile = null;
+
+            // wybrany profil do usuniecia
             vm.profilToDelete = null;
+
+            // profil do utworzenia lub edycji
             vm.profilToSave;
+
+            // poczatkowe wczytane dane profilu
             var initialProfileData;
 
-            // Pobranie danych dla modulu
+            // Pobranie danych dla profilu
             ProfileModulowService.getProfileForPK(1).then(function (result) {
                 console.log(result)
                 vm.profile_modulow = result;
@@ -60,7 +67,7 @@
                 vm.profilToDelete = profil;
             };
 
-            // Usowa wybrany profil
+            // Usuwa wybrany profil
             this.deleteSelectedProfile = function() {
                 ProfileModulowService.deleteProfilModulu(vm.profilToDelete.id).then(function (res) {
                         console.log('delete profile');
