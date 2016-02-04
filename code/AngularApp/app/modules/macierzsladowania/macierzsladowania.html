@@ -11,54 +11,48 @@
     })
 </script>
 
-<div  ng-controller="MacierzSladowaniaCtrl">
-    <table class="table" ng-model="efektyKierunkoweTable">
-        <thead>
-        <tr>
-            <th>Nr</th>
-            <th>Efekt kierunkowy/specjalnościowy</th>
-            <th>Opis</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr ng-repeat="item in ms">
-            <td >{{$index+1}}</td>
-            <td class="btn btn-default" data-drag="true" data-jqyoui-options="{revert: 'invalid'}"
-                ng-model="list1" jqyoui-draggable="{animate:true}">{{item.kod}}</td>
-            <td>{{item.opis}}</td>
-        </tr>
-    </table>
-    </tbody>
-    </table>
-    <table class="table" ng-model="macierzTable">
-        <thead>
-        <tr>
-            <th>Nr</th>
-            <th>Efekty obszarowe</th>
-            <th>Efekty kierunkowe</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr ng-repeat="item in vm.macierz">
-            <td >{{$index+1}}</td>
-            <td class="text-info" data-toggle="tooltip" data-placement="right" title={{item.opis}}>{{item.kod}}</td>
-            <td><div class="thumbnail" data-drop="true" data-jqyoui-options ng-model="list2" jqyoui-droppable style='height:50px;'>
-                <div class="btn btn-success" data-drag="false" data-jqyoui-options ng-model="list2" jqyoui-draggable ng-hide="!list2.title">{{list2}}</div>
-            </div></td>
-        </tr>
-    </table>
-        </tbody>
-    </table>
+<table class="table" ng-model="efektyKierunkoweTable">
+    <thead>
+    <tr>
+        <th>Nr</th>
+        <th>Efekt kierunkowy/specjalnościowy</th>
+        <th>Opis</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="item in listKierunkoweEfekty">
+        <td >{{$index+1}}</td>
+        <td data-drop="true" ng-model='listKierunkoweEfekty'
+            data-jqyoui-options="{helper: 'clone', accept:'.btn-draggable:not([ng-model=list5])'}" jqyoui-droppable="{index: {{$index}}}">
+            <div class="btn btn-info btn-draggable" data-drag="{{item.drag}}" data-jqyoui-options="{revert: 'invalid'}" ng-model="listKierunkoweEfekty"
+                 jqyoui-draggable="{index: {{$index}},placeholder: 'keep', animate:true}" ng-hide="!item.kod">{{item.kod}}</div>
+        </td>
 
-</div>
-
+        <td>{{item.opis}}</td>
+    </tr>
+</tbody>
 </table>
 
-<!--<div class="container form-inline" style="text-align: center;">-->
-    <!--<div class="btn btn-droppable" ng-repeat="item in list5" data-drop="true" ng-model='list5' data-jqyoui-options="{accept:'.btn-draggable:not([ng-model=list5])'}"  jqyoui-droppable="{index: {{$index}}}">-->
-        <!--<div class="btn btn-info btn-draggable" data-drag="{{item.drag}}" data-jqyoui-options="{revert: 'invalid'}" ng-model="list5" jqyoui-draggable="{index: {{$index}},placeholder:true,animate:true}">{{item.kod}}</div>-->
-    <!--</div>-->
-<!--</div>-->
 
+<table class="table" ng-model="macierzTable">
+    <thead>
+    <tr>
+        <th>Nr</th>
+        <th>Efekty obszarowe</th>
+        <th>Efekty kierunkowe</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="item in obszaroweEfekty">
+        <td >{{$index+1}}</td>
+        <td class="text-info" data-toggle="tooltip" data-placement="right" title={{item.opis}}>{{item.kod}}</td>
+        <td class="thumbnail" data-drop="true" ng-model='item.kierunkowe_efekty_ksztalcenia' data-jqyoui-options="{helper: 'clone'}" jqyoui-droppable="{multiple:true, placeholder: 'keep'}">
+            <div class="caption">
+                <div class="btn btn-info btn-draggable" ng-repeat="item in item.kierunkowe_efekty_ksztalcenia" ng-show="item.kod" data-drag="{{item.drag}}" data-jqyoui-options="{revert: 'invalid'}" ng-model="item.kierunkowe_efekty_ksztalcenia" jqyoui-draggable="{index: {{$index}},animate:true}">{{item.kod}}</div>
+            </div>
+        </td>
+    </tr>
+</tbody>
+</table>
 
 

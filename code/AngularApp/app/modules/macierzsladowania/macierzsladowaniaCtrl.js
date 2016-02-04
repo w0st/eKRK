@@ -23,25 +23,31 @@
 
 		function MacierzSladowania(MacierzSladowaniaService, $scope) {
 
-		  $scope.list1 = {title: "abc"};
-		  $scope.list2 = {};
-
-          $scope.list5 = {};
+            $scope.listKierunkoweEfekty = [
+            ];
 
 			/*jshint validthis: true */
 			var vm = this;
+			$scope.kierunkoweEfekty= {};
+			$scope.obszaroweEfekty= {};
 			$scope.ms= {};
+
             MacierzSladowaniaService.getObszaroweEfektyKsztalcenia().then(function(response) {
                 vm.macierz = response;
+                $scope.obszaroweEfekty=response;
+                //angular.forEach($scope.obszaroweEfekty, function(value){
+                //    value["listaEfektow"]=value.kierunkowe_efekty_ksztalcenia;
+                //});
+
             }, function(reason) {
                 console.log("Nie udalo sie pobrac macierzy");
             });
 
             MacierzSladowaniaService.getKierunkoweEfektyKsztalcenia().then(function(response) {
-                 $scope.ms = response;
-                 $scope.list5 = response;
-                 angular.forEach($scope.list5, function(value){
-                    value['drag']= true;
+                 $scope.kierunkoweEfekty = response;
+                 $scope.listKierunkoweEfekty = response;
+                 angular.forEach($scope.listKierunkoweEfekty, function(value){
+                   value['drag']= true;
                  });
                 console.log("kierunkowe efekty ksztalcenia = ", response)
             }, function(reason) {
