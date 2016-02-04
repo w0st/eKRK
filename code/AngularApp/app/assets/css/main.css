@@ -90,3 +90,23 @@ background-color: #eee;
 .icon-column {
     width: 100px;
 }
+
+.scroll-table {
+    height: 150px;
+    overflow-y: scroll;
+    margin-top: 20px;
+}
+
+.parent {
+    height: 200px;
+    display: table;
+}
+
+.child {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.assign-tables-wrapper {
+    height: 160px!important;
+}

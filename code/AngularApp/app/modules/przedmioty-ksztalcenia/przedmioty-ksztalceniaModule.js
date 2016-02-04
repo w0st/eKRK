@@ -10,6 +10,6 @@
 (function() {
   'use strict';
 
-  angular.module('przedmioty-ksztalcenia', []);
+  angular.module('przedmioty-ksztalcenia', ['pracownicy-naukowi']);
 
 })();

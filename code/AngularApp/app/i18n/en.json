@@ -3,6 +3,10 @@
     "global_logout": "Logout",
     "global_login": "Log In",
     "global_not_logged": "Not logged",
+    "global_btn_save": "Save",
+    "global_btn_cancel": "Cancel",
+    "global_btn_edit": "Edit",
+    "global_btn_delete": "Delete",
     "program_ksztalcenia_faculty": "Faculty",
     "program_ksztalcenia_field_of_study": "Field of study",
     "program_studiow_sem_nr": "Number of semesters",
@@ -22,8 +26,11 @@
     "program_studiow_btn_save": "Save changes",
     "program_studiow_btn_reset": "Clear all",
     "program_studiow_btn_add": "Add new",
+    "przedmioty_ksztalcenia_title": "Education subjects",
+    "przedmioty_ksztalcenia_new_title": "Add a new education subject",
     "przedmioty_ksztalcenia_name": "Name",
     "przedmioty_ksztalcenia_attendant": "Attendant",
+    "przedmioty_ksztalcenia_btn_add": "Add",
     "moduly_ksztalcenia_header" : "Education modules"
 
 

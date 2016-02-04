@@ -8,13 +8,13 @@
  * Route of the app
  */
 
-angular.module('modulksztalcenia')
+angular.module('moduly-ksztalcenia')
 	.config(['$stateProvider', function ($stateProvider) {
 		$stateProvider
-			.state('modulksztalcenia', {
-				url:'/modulyksztalcenia/modulksztalcenia',
-				templateUrl: 'app/modules/modulksztalcenia/modulksztalcenia.html',
-				controller: 'ModulksztalceniaCtrl',
+			.state('modul-ksztalcenia', {
+				url:'/moduly-ksztalcenia/modul-ksztalcenia',
+				templateUrl: 'app/modules/moduly-ksztalcenia/modul-ksztalcenia.html',
+				controller: 'ModulKsztalceniaCtrl',
 				controllerAs: 'vm'
 			});
 	}]);

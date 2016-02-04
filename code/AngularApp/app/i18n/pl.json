@@ -4,6 +4,10 @@
     "global_logout": "Wyloguj",
     "global_login": "Zaloguj się",
     "global_not_logged": "Niezalogowany",
+    "global_btn_save": "Zapisz",
+    "global_btn_cancel": "Anuluj",
+    "global_btn_edit": "Edytuj",
+    "global_btn_delete": "Usuń",
     "program_ksztalcenia_faculty": "Wydział",
     "program_ksztalcenia_field_of_study": "Kierunek",
     "program_studiow_sem_nr": "Liczba semestrów",
@@ -23,8 +27,11 @@
     "program_studiow_btn_save": "Zapisz zmiany",
     "program_studiow_btn_reset": "Wyczyść formularz",
     "program_studiow_btn_add": "Dodaj zagadnienie",
+    "przedmioty_ksztalcenia_title": "Przedmioty kształcenia",
+    "przedmioty_ksztalcenia_new_title": "Dodaj nowy przedmiot kształcenia",
     "przedmioty_ksztalcenia_name": "Nazwa",
     "przedmioty_ksztalcenia_attendant": "Opiekun",
+    "przedmioty_ksztalcenia_btn_add": "Dodaj przedmiot",
     "moduly_ksztalcenia_header" : "Moduły kształcenia"
 
 

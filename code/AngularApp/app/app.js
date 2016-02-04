@@ -27,10 +27,11 @@ angular.module('app', [
         'home',
         'program-ksztalcenia',
         'program-studiow',
-        'modulyksztalcenia',
-        'modulksztalcenia',
+        'moduly-ksztalcenia',
         'macierzsladowania',
-        'przedmioty-ksztalcenia'
+        'przedmioty-ksztalcenia',
+        'profile-modulow',
+        'pracownicy-naukowi',
     ])
 
     .config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpProvider', function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
