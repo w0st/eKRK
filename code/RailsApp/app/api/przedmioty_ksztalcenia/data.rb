@@ -9,15 +9,14 @@ module PrzedmiotyKsztalcenia
     end
 =end
     resource :przedmioty_ksztalcenia do
-      # Get a list of przedmioty_ksztalcenia
-      #
+      desc 'Pokaz wszystkie przedmioty ksztalcenia'
       # Example Request:
       #   GET /przedmioty_ksztalcenia
       get do
         present PrzedmiotKsztalcenia.all, with: PrzedmiotyKsztalcenia::Entities::PrzedmiotKsztalcenia
       end
 
-      # Get a przedmiot_ksztalcenia with id
+      desc 'Pokaz przedmiot ksztalcenia z wybranym id'
       params do
         requires :id
       end
@@ -26,8 +25,7 @@ module PrzedmiotyKsztalcenia
       end
 
 
-      # Create a new przedmioty_ksztalcenia
-      #
+      desc 'Utworz nowy przedmiot ksztalcenia'
       # Example Request:
       #   POST /v1/przedmioty_ksztalcenia
       params do
@@ -44,8 +42,7 @@ module PrzedmiotyKsztalcenia
         end
       end
 
-      # Updates przedmiot kształcenia
-      #
+      desc 'Aktualizuj przedmiot ksztalcenia'
       # Example Request:
       #   PUT /v1/przedmioty_ksztalcenia
       params do
@@ -64,12 +61,24 @@ module PrzedmiotyKsztalcenia
         end
       end
 
-      # Deletes przedmiot kształcenia
-      #
+      desc 'Usun wybrany przedmiot ksztalcenia'
       # Example Request:
       #   DELETE /v1/przedmioty_ksztalcenia/:id
       delete ':id' do
         PrzedmiotKsztalcenia.destroy(params[:id])
+      end
+
+      desc 'Pokaz kursy dla danego przedmiotu ksztalcenia (bez tych z GK)'
+      get ':id/kursy' do
+        przedmiot = PrzedmiotKsztalcenia.find(params[:id])
+        przedmiot.zajecia.select {|z| z.is_a? Kurs and z.grupa_kursow == nil }
+      end
+
+      desc 'Pobierz kursy w ramach GK dla danego przedmiotu ksztalcenia'
+      get ':id/kursyGK' do
+        przedmiot = PrzedmiotKsztalcenia.find(params[:id])
+        gk = przedmiot.zajecia.find {|z| z.is_a? GrupaKursow}
+        gk.kursy
       end
 
     end
