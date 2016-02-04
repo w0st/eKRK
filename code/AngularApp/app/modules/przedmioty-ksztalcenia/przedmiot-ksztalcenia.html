@@ -6,20 +6,29 @@
 <div class="col-lg-12" ng-show="!vm.error">
     <div class="panel panel-default">
         <div class="panel-heading">
-            {{'przedmioty_ksztalcenia_new_title' | translate}}
+            <span ng-if="!vm.editmode">{{'przedmioty_ksztalcenia_new_title' | translate}}</span>
+            <span ng-if="vm.editmode">{{'przedmioty_ksztalcenia_edit_title' | translate}}</span>
         </div>
         <!-- /.panel-heading -->
 
-        <form>
+        <form name="form">
             <div class="form-group">
                 <label>{{'przedmioty_ksztalcenia_name' | translate}}</label>
-                <input type="text" class="form-control" ng-model="vm.przedmiot.nazwaPrzedmiotu" >
+                <input type="text" class="form-control" name="subject" ng-model="vm.przedmiot.nazwaPrzedmiotu">
+                <div ng-show="form.$submitted || form.subject.$touched">
+                    <div class="alert-danger alert" role="alert" ng-if="!vm.przedmiot.nazwaPrzedmiotu">
+                        {{'przedmiot_ksztalcenia_please_insert_name' | translate}}
+                    </div>
+                </div>
             </div>
             <div class="form-group">
                 <label>{{'przedmioty_ksztalcenia_attendant' | translate}}</label>
-                <select class="form-control" ng-model="vm.przedmiot.pracownik_naukowy_id" >
-                    <option ng-repeat="pracownik in vm.pracownicyNaukowi"  value="{{pracownik.id}}">{{ pracownik.email }}</option>
-                </select>
+                <select class="form-control" ng-model="vm.przedmiot.pracownik_naukowy_id" ng-options="pracownik.id as pracownik.email for pracownik in vm.pracownicyNaukowi" required />
+                <div ng-show="form.$submitted || form.subject.$touched">
+                    <div class="alert-danger alert" role="alert" ng-if="!vm.przedmiot.pracownik_naukowy_id">
+                        {{'przedmiot_ksztalcenia_please_select_attendant' | translate}}
+                    </div>
+                </div>
             </div>
 
 

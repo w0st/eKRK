@@ -7,6 +7,7 @@
     "global_btn_cancel": "Cancel",
     "global_btn_edit": "Edit",
     "global_btn_delete": "Delete",
+    "global_btn_details": "Details",
     "program_ksztalcenia_faculty": "Faculty",
     "program_ksztalcenia_field_of_study": "Field of study",
     "program_studiow_sem_nr": "Number of semesters",
@@ -28,9 +29,15 @@
     "program_studiow_btn_add": "Add new",
     "przedmioty_ksztalcenia_title": "Education subjects",
     "przedmioty_ksztalcenia_new_title": "Add a new education subject",
+    "przedmioty_ksztalcenia_edit_title": "Edit the education subject",
     "przedmioty_ksztalcenia_name": "Name",
     "przedmioty_ksztalcenia_attendant": "Attendant",
     "przedmioty_ksztalcenia_btn_add": "Add",
+    "przedmiot_ksztalcenia_please_insert_name": "Please insert the name of a new subject",
+    "przedmiot_ksztalcenia_please_select_attendant": "Please select a attendant",
+    "przedmiot_ksztalcenia_title": "Education subject",
+    "przedmiot_ksztalcenia_actions": "Available actions",
+    "przedmiot_ksztalcenia_kursy": "Courses",
     "moduly_ksztalcenia_header" : "Education modules"
 
 
