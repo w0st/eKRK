@@ -22,6 +22,7 @@ angular.module('app', [
         'pascalprecht.translate',
         'ngStorage',
         'selectionModel',
+        'ngDragDrop',
         'authorisation',
         'home',
         'program-ksztalcenia',
@@ -29,7 +30,8 @@ angular.module('app', [
         'moduly-ksztalcenia',
         'macierzsladowania',
         'przedmioty-ksztalcenia',
-        'profile-modulow'
+        'profile-modulow',
+        'pracownicy-naukowi',
     ])
 
     .config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpProvider', function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {

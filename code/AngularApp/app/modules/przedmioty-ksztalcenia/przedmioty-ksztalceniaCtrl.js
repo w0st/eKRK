@@ -25,12 +25,24 @@
 			/*jshint validthis: true */
 			var vm = this;
 
-            PrzedmiotyKsztalceniaService.get().$promise.then(function (response) {
-                vm.przedmiotyKsztalcenia = response;
-            }, function (reason) {
-                console.log("problem = ", reason);
-            });
+            this.load = function() {
+                PrzedmiotyKsztalceniaService.getAll().$promise.then(function (response) {
+                    vm.przedmiotyKsztalcenia = response;
+                }, function (reason) {
+                    console.log("problem = ", reason);
+                });
+            };
 
+            this.delete = function(id) {
+                PrzedmiotyKsztalceniaService.delete({id: id}).$promise.then(function (response) {
+                    console.log('usunieto');
+                    vm.load();
+                }, function (reason) {
+                    console.log('problem = ', reason);
+                });
+            };
+
+            this.load();
             /*PrzedmiotyKsztalceniaService.add( {
                 nazwaPrzedmiotu: "Angielski B2",
                 program_ksztalcenia_id: 1,

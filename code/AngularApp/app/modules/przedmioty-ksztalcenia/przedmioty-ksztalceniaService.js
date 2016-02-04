@@ -19,11 +19,13 @@ angular
 
 		function PrzedmiotyKsztalcenia ($resource, CONFIG) {
             return $resource(
-                CONFIG.API_URL + 'przedmioty_ksztalcenia',
-                null,
+                CONFIG.API_URL + 'przedmioty_ksztalcenia/:id',
+                { id: '@id' },
                 {
-                    'get': {method: 'GET', isArray: true},
+                    'get': {method: 'GET'},
+                    'getAll': {method: 'GET', isArray: true},
                     'add': {method: 'POST'},
+                    'update': {method: 'PUT'},
                     'delete': {method: 'DELETE'}
                 }
             );

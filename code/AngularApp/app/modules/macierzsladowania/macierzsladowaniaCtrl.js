@@ -13,7 +13,7 @@
 		.module('macierzsladowania')
 		.controller('MacierzSladowaniaCtrl', MacierzSladowania);
 
-		MacierzSladowania.$inject = ['MacierzSladowaniaService'];
+		MacierzSladowania.$inject = ['MacierzSladowaniaService', '$scope'];
 
 		/*
 		* recommend
@@ -21,16 +21,34 @@
 		* and bindable members up top.
 		*/
 
-		function MacierzSladowania(MacierzSladowaniaService) {
+		function MacierzSladowania(MacierzSladowaniaService, $scope) {
+
+            $scope.listKierunkoweEfekty = [
+            ];
+
 			/*jshint validthis: true */
 			var vm = this;
+			$scope.kierunkoweEfekty= {};
+			$scope.obszaroweEfekty= {};
+			$scope.ms= {};
+
             MacierzSladowaniaService.getObszaroweEfektyKsztalcenia().then(function(response) {
                 vm.macierz = response;
+                $scope.obszaroweEfekty=response;
+                //angular.forEach($scope.obszaroweEfekty, function(value){
+                //    value["listaEfektow"]=value.kierunkowe_efekty_ksztalcenia;
+                //});
+
             }, function(reason) {
                 console.log("Nie udalo sie pobrac macierzy");
             });
 
             MacierzSladowaniaService.getKierunkoweEfektyKsztalcenia().then(function(response) {
+                 $scope.kierunkoweEfekty = response;
+                 $scope.listKierunkoweEfekty = response;
+                 angular.forEach($scope.listKierunkoweEfekty, function(value){
+                   value['drag']= true;
+                 });
                 console.log("kierunkowe efekty ksztalcenia = ", response)
             }, function(reason) {
                 console.log("Nie udalo sie pobrac kierunkowych efektow ksztalcenia");
