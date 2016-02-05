@@ -22,5 +22,16 @@ angular.module('przedmioty-ksztalcenia')
                 templateUrl: 'app/modules/przedmioty-ksztalcenia/przedmiot-ksztalcenia.html',
                 controller: 'PrzedmiotKsztalceniaCtrl',
                 controllerAs: 'vm'
+            })
+            .state('przedmiot-ksztalcenia-szczegoly', {
+                url:'/przedmiot-ksztalcenia-szczegoly/:id',
+                views: {
+                    '':
+                    {
+                        templateUrl: 'app/modules/przedmioty-ksztalcenia/przedmiot-ksztalcenia-szczegoly.html',
+                        controller: 'PrzedmiotKsztalceniaSzczegolyCtrl',
+                        controllerAs: 'vm'
+                    }
+                }
             });
 	}]);
