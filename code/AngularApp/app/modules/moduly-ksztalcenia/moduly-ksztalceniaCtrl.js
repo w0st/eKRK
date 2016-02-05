@@ -16,7 +16,7 @@
         .module('moduly-ksztalcenia')
         .controller('ModulyKsztalceniaCtrl', ModulyKsztalcenia);
 
-    ModulyKsztalcenia.$inject = ['$scope', 'ModulyKsztalceniaService'];
+    ModulyKsztalcenia.$inject = ['$scope', 'ModulyKsztalceniaService', 'DTOptionsBuilder', '$translate'];
 
     /*
      * recommend
@@ -24,7 +24,7 @@
      * and bindable members up top.
      */
 
-    function ModulyKsztalcenia($scope, ModulyKsztalceniaService) {
+    function ModulyKsztalcenia($scope, ModulyKsztalceniaService, DTOptionsBuilder, $translate) {
         /*jshint validthis: true */
         var vm = this;
 
@@ -33,6 +33,17 @@
 
         // index zaznaczonego tab-panelu z modulem
         vm.selectedTab = 0;
+
+        // Datatables configuration
+        vm.dtOptions = DTOptionsBuilder.newOptions()
+            .withLanguage({
+                "sSearch": "	🔎",
+                "sInfo":         "",
+                "sInfoEmpty":    "",
+                "sLengthMenu":   "_MENU_"
+            })
+            .withPaginationType('numbers');
+
 
         // Pobranie danych dla modulu
         ModulyKsztalceniaService.getProfileForPK(1).then(function (result) {

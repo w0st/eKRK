@@ -17,6 +17,7 @@
                     <th>{{'przedmioty_ksztalcenia_name' | translate}}</th>
                     <th></th>
                     <th>{{'przedmioty_ksztalcenia_attendant' | translate}}</th>
+                    <th>{{'global_btn_details' | translate}}</th>
                     <th>{{'global_btn_edit' | translate}}</th>
                     <th>{{'global_btn_delete' | translate}}</th>
                 </tr>
@@ -26,6 +27,7 @@
                     <td>{{przedmiot.nazwaPrzedmiotu}}</td>
                     <td>TODO</td>
                     <td>{{przedmiot.opiekunPrzedmiotu.email}}</td>
+                    <td><a class="btn btn-default" ui-sref="przedmiot-ksztalcenia-szczegoly({id: przedmiot.id})">{{'global_btn_details' | translate}}</a></td>
                     <td><a class="btn btn-default" ui-sref="przedmiot-ksztalcenia({id: przedmiot.id})">{{'global_btn_edit' | translate}}</a> </td>
                     <td><button class="btn btn-default" ng-click="vm.delete(przedmiot.id)">{{'global_btn_delete' | translate}}</button></td>
                 </tr>

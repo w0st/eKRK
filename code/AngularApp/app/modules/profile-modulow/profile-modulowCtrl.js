@@ -13,7 +13,7 @@
         .module('profile-modulow')
         .controller('ProfileModulowCtrl', ProfileModulow);
 
-    ProfileModulow.$inject = ['$scope', 'ProfileModulowService', '$location', '$anchorScroll'];
+    ProfileModulow.$inject = ['$scope', 'ProfileModulowService', '$location', '$anchorScroll', 'DTOptionsBuilder'];
 
 
     /*
@@ -22,7 +22,7 @@
      * and bindable members up top.
      */
 
-    function ProfileModulow($scope, ProfileModulowService, $location, $anchorScroll) {
+    function ProfileModulow($scope, ProfileModulowService, $location, $anchorScroll, DTOptionsBuilder ) {
         /*jshint validthis: true */
         var vm = this;
         // zaznaczony profil do edycji
@@ -36,6 +36,16 @@
 
         // poczatkowe wczytane dane profilu
         var initialProfileData;
+
+        // Datatables configuration
+        vm.dtOptions = DTOptionsBuilder.newOptions()
+            .withLanguage({
+                "sSearch": "	🔎",
+                "sInfo":         "",
+                "sInfoEmpty":    "",
+                "sLengthMenu":   "_MENU_"
+            })
+            .withPaginationType('numbers');
 
         // Pobranie danych dla profilu
         ProfileModulowService.getProfileForPK(1).then(function (result) {

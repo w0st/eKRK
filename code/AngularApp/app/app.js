@@ -32,6 +32,7 @@ angular.module('app', [
         'przedmioty-ksztalcenia',
         'profile-modulow',
         'pracownicy-naukowi',
+        'zajecia',
     ])
 
     .config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpProvider', function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {

@@ -16,5 +16,27 @@ module PrzedmiotyKsztalcenia
       expose :pracownik_naukowy_id
       expose :opiekunPrzedmiotu, using: PrzedmiotyKsztalcenia::Entities::PracownikNaukowy
     end
+
+    class Kurs < Grape::Entity
+      expose :id
+      expose :godzinyZZU
+      expose :godzinyCNPS
+      expose :formaKursu
+    end
+
+    class GrupaKursow < Grape::Entity
+      expose :id
+      expose :nazwaZajec
+      expose :punktyECTS
+      expose :punktyECTSBK
+      expose :punktyECTSP
+      expose :sposobZaliczenia
+      expose :czyOgolnouczelniany
+      expose :rodzaj
+      expose :typ
+      expose :kurs_koncowy, using: PrzedmiotyKsztalcenia::Entities::Kurs
+      expose :kursy, using: PrzedmiotyKsztalcenia::Entities::Kurs
+    end
+
   end
 end
