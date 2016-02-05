@@ -74,11 +74,12 @@ module PrzedmiotyKsztalcenia
         przedmiot.zajecia.select {|z| z.is_a? Kurs and z.grupa_kursow == nil }
       end
 
-      desc 'Pobierz kursy w ramach GK dla danego przedmiotu ksztalcenia'
-      get ':id/kursyGK' do
+      desc 'Pobierz GK dla danego przedmiotu ksztalcenia (wraz z kursami nalezacymi do GK)'
+      get ':id/grupa_kursow' do
         przedmiot = PrzedmiotKsztalcenia.find(params[:id])
         gk = przedmiot.zajecia.find {|z| z.is_a? GrupaKursow}
-        gk.kursy
+        #gk.kursy
+        present gk, with: PrzedmiotyKsztalcenia::Entities::GrupaKursow
       end
 
     end
