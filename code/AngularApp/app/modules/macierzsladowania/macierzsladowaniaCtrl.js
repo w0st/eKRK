@@ -32,16 +32,6 @@
 			$scope.obszaroweEfekty= {};
 			$scope.ms= {};
 
-            MacierzSladowaniaService.getObszaroweEfektyKsztalcenia().then(function(response) {
-                vm.macierz = response;
-                $scope.obszaroweEfekty=response;
-                //angular.forEach($scope.obszaroweEfekty, function(value){
-                //    value["listaEfektow"]=value.kierunkowe_efekty_ksztalcenia;
-                //});
-
-            }, function(reason) {
-                console.log("Nie udalo sie pobrac macierzy");
-            });
 
             MacierzSladowaniaService.getKierunkoweEfektyKsztalcenia().then(function(response) {
                  $scope.kierunkoweEfekty = response;
@@ -53,6 +43,22 @@
             }, function(reason) {
                 console.log("Nie udalo sie pobrac kierunkowych efektow ksztalcenia");
             });
+
+             MacierzSladowaniaService.getObszaroweEfektyKsztalcenia().then(function(response) {
+                            vm.macierz = response;
+                            $scope.obszaroweEfekty=response;
+                            angular.forEach($scope.obszaroweEfekty, function(efektObszarowy){
+                                angular.forEach(efektObszarowy.kierunkowe_efekty_ksztalcenia, function(efektKsztalcenia){
+                                    var i = parseInt(efektKsztalcenia.id,10)-1;
+                                    //console.log($scope.kierunkoweEfekty[i]);
+                                    //efektKsztalcenia["kod"] = $scope.kierunkoweEfekty[i];
+                                   // efektKsztalcenia["allInf"] = $scope.kierunkoweEfekty[i];
+                                });
+                            });
+
+                        }, function(reason) {
+                            console.log("Nie udalo sie pobrac macierzy");
+                        });
 
             MacierzSladowaniaService.set([
                     {
