@@ -65,12 +65,18 @@
                     'typ'
                 ];
 
-                ZajeciaService.getKursy(1).then(function(response) {
+                ZajeciaService.getKursy(id).then(function(response) {
                     console.log("kursy = ", response);
                     vm.kursy = response;
                 }, function(reason) {
                     console.log("Blad = ", reason);
-                })
+                });
+
+                ZajeciaService.getGrupaKursow(id).then(function(response) {
+                    console.log("grupa kursow = ", response);
+                }, function(reason) {
+                   conole.log("blad = ", reason);
+                });
             }
 
             vm.deleteZajecie = function(id) {
