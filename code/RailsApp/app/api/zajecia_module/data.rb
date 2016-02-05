@@ -28,6 +28,11 @@ module ZajeciaModule
             .where(programy_ksztalcenia:  {id: params[:program_ksztalcenia_id]},  :modul_ksztalcenia_id => params[:modul_ksztalcenia_id], :zajecia_id => nil)
       end
 
+      desc 'Usun wybrane zajecia (kurs bez GK / kurs z GK/ grupa kursow)'
+      delete ':id' do
+        Zajecia.destroy(params[:id])
+      end
+
 
     end
   end
