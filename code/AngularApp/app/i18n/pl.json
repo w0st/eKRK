@@ -32,10 +32,29 @@
     "przedmioty_ksztalcenia_name": "Nazwa",
     "przedmioty_ksztalcenia_attendant": "Opiekun",
     "przedmioty_ksztalcenia_btn_add": "Dodaj przedmiot",
-    "moduly_ksztalcenia_header" : "Moduły kształcenia"
-
-
-
-
+    "moduly_ksztalcenia_header" : "Moduły kształcenia",
+    "moduly_ksztalcenia_filter_all" : "Wszystkie",
+    "moduly_ksztalcenia_filter_mandatory" : "Obowiązkowe",
+    "moduly_ksztalcenia_filter_optional" :  "Wybieralne",
+    "moduly_ksztalcenia_add_modul" : "Dodaj nowy moduł",
+    "moduly_ksztalcenia_edit_education_profiles" : "Edytuj profile kształcenia",
+    "moduly_ksztalcenia_nazwa_modulu" : "Nazwa modułu",
+    "moduly_ksztalcenia_delete_confirm_header": "Potwierdź usuniecie modułu",
+    "moduly_ksztalcenia_delete_confirm_summary": "Czy na pewno chcesz usunąć moduł o nazwie:",
+    "modul_ksztalcenia_header" : "Moduł kształcenia",
+    "modul_ksztalcenia_edit_modul": "Edytuj moduł kształcenia",
+    "modul_ksztalcenia_edit_modul":"Dodaj nowy moduł kształcenia",
+    "modul_ksztalcenia_name": "Nazwa",
+    "modul_ksztalcenia_type" : "Typ",
+    "modul_ksztalcenia_type_mandatory": "Obowiązkowy",
+    "modul_ksztalcenia_type_optional": "Wybieralny",
+    "modul_ksztalcenia_min_ects": "Minimum punktów ECTS dla modułu",
+    "modul_ksztalcenia_subjects": "Zajęcia",
+    "modul_ksztalcenia_subjects_for_module": "Zajęcia dla modułu",
+    "profile_modulow_header" : "Profile modulów kształcenia",
+    "profile_modulow_new_profile": "Nowy profil:",
+    "profile_modulow_edit_profile": "Edytuj profil:",
+    "profile_modulow_delete_confirm_header": "Potwierdź usuniecie profilu",
+    "profile_modulow_delete_confirm_summary": "Czy na pewno chcesz usunąć profil o nazwie:"
 
 }

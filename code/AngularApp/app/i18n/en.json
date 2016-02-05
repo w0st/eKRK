@@ -31,7 +31,32 @@
     "przedmioty_ksztalcenia_name": "Name",
     "przedmioty_ksztalcenia_attendant": "Attendant",
     "przedmioty_ksztalcenia_btn_add": "Add",
-    "moduly_ksztalcenia_header" : "Education modules"
+    "moduly_ksztalcenia_header" : "Education modules",
+    "moduly_ksztalcenia_filter_all" : "All",
+    "moduly_ksztalcenia_filter_mandatory" : "Mandatory",
+    "moduly_ksztalcenia_filter_optional" :  "Optional",
+    "moduly_ksztalcenia_add_modul" : "Add new module",
+    "moduly_ksztalcenia_edit_education_profiles" : "Edit education profiles",
+    "moduly_ksztalcenia_nazwa_modulu" : "Module name",
+    "moduly_ksztalcenia_delete_confirm_header": "Confirm the deletion of education module",
+    "moduly_ksztalcenia_delete_confirm_summary": "Are you sure you want to delete the education module named:",
+    "modul_ksztalcenia_edit_modul": "Edit education module",
+    "modul_ksztalcenia_edit_modul":"Add new education module",
+    "modul_ksztalcenia_header" : "Education module",
+    "modul_ksztalcenia_name": "Name",
+    "modul_ksztalcenia_type" : "Type",
+    "modul_ksztalcenia_type_mandatory": "mandatory",
+    "modul_ksztalcenia_type_optional": "optional",
+    "modul_ksztalcenia_min_ects": "Minimum ECTS points for module",
+    "modul_ksztalcenia_subjects": "Subjects",
+    "modul_ksztalcenia_subjects_for_module": "Subjects for module",
+    "profile_modulow_header" : "Education profiles",
+    "profile_modulow_new_profile": "New profile:",
+    "profile_modulow_edit_profile": "Edit profile:",
+    "profile_modulow_delete_confirm_header": "Confirm the deletion of profile",
+    "profile_modulow_delete_confirm_summary": "Are you sure you want to delete the profile named:"
+
+
 
 
 
