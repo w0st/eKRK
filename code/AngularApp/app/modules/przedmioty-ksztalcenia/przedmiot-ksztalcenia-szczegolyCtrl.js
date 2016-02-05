@@ -13,7 +13,7 @@
 		.module('przedmioty-ksztalcenia')
 		.controller('PrzedmiotKsztalceniaSzczegolyCtrl', PrzedmiotKsztalceniaSzczegoly);
 
-        PrzedmiotKsztalceniaSzczegoly.$inject = ['PrzedmiotyKsztalceniaService', '$stateParams'];
+        PrzedmiotKsztalceniaSzczegoly.$inject = ['PrzedmiotyKsztalceniaService', 'ZajeciaService', '$stateParams'];
 
 		/*
 		* recommend
@@ -21,7 +21,7 @@
 		* and bindable members up top.
 		*/
 
-		function PrzedmiotKsztalceniaSzczegoly(PrzedmiotyKsztalceniaService, $stateParams) {
+		function PrzedmiotKsztalceniaSzczegoly(PrzedmiotyKsztalceniaService, ZajeciaService, $stateParams) {
 			/*jshint validthis: true */
             this.przedmiot = {nazwaPrzedmiotu: undefined, opiekunPrzedmiotu: undefined };
             var vm = this;
@@ -52,7 +52,34 @@
                         forma: 'Laborka'
                     }
                 ];
-                vm.properties = _.keys(vm.kursy[0]);
+                vm.properties = [
+                    'kodZajec',
+                    'godzinyZZU',
+                    'godzinyCNPS',
+                    'sposobZaliczenia',
+                    'punktyECTS',
+                    'punktyECTSP',
+                    'punktyECTSBK',
+                    'czyOgolnouczelniany',
+                    'rodzaj',
+                    'typ'
+                ];
+
+                ZajeciaService.getKursy(1).then(function(response) {
+                    console.log("kursy = ", response);
+                    vm.kursy = response;
+                }, function(reason) {
+                    console.log("Blad = ", reason);
+                })
+            }
+
+            vm.deleteZajecie = function(id) {
+                console.log('usun zajecie = ', id);
+                ZajeciaService.deleteZajecie(id).then(function(response) {
+                    console.log('Usunieto zajecia');
+                }, function (reason) {
+                    console.log('Blad = ', reason);
+                });
             }
 		}
 

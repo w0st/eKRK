@@ -54,19 +54,19 @@
                 <tbody>
                 <tr>
                     <td></td>
-                    <td ng-repeat="kurs in vm.kursy">{{kurs.forma}}</td>
+                    <td ng-repeat="kurs in vm.kursy">{{kurs.formaKursu}}</td>
                 </tr>
                 <tr ng-repeat="property in vm.properties">
-                    <td>{{property}}</td>
+                    <td>{{('przedmiot_ksztalcenia_label_' + property) | translate}}</td>
                     <td ng-repeat="kurs in vm.kursy">{{kurs[property]}}</td>
                 </tr>
                 <tr>
                     <td>Edytuj</td>
-                    <td ng-repeat="kurs in vm.kursy"><a class="btn btn-default">Edytuj</a></td>
+                    <td ng-repeat="kurs in vm.kursy"><a class="btn btn-default" ui-sref="zajecie(kurs.id)">Edytuj</a></td>
                 </tr>
                 <tr>
                     <td>Usuń</td>
-                    <td ng-repeat="kurs in vm.kursy"><a class="btn btn-default">Usun</a></td>
+                    <td ng-repeat="kurs in vm.kursy"><button class="btn btn-default" ng-click="vm.deleteZajecie(kurs.id)">Usun</button></td>
                 </tr>
                 </tbody>
             </table>
