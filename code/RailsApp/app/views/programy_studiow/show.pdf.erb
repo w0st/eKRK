@@ -150,14 +150,14 @@
                               <%= zajecie.przedmiot_ksztalcenia.kierunkowe_efekty_ksztalcenia.map {|kek| kek.kod}.join(', ') %>
                             </td>
                             <td>
-                              <%= if (zajecie.is_a? Kurs)
+                              <%= if zajecie.is_a? Kurs
                                     zajecie.godzinyZZU
                                   else
                                     zajecie.kursy.reduce(0) {|sum, kurs| sum + kurs.godzinyZZU}
                                   end %>
                             </td>
                             <td>
-                              <%= if (zajecie.is_a? Kurs)
+                              <%= if zajecie.is_a? Kurs
                                     zajecie.godzinyCNPS
                                   else
                                     zajecie.kursy.reduce(0) {|sum, kurs| sum + kurs.godzinyCNPS}
@@ -185,6 +185,42 @@
     <% end %>
   </ul>
 </div>
+
+<div>
+  <lable>Łączna liczba punktów ECTS, którą student może uzyskać na zajęciach BK</lable>
+  <b><%= @programStudiow.lacznaLiczbaECTSBK %></b>
+</div>
+
+<div>
+  <lable>Łączna liczba punktów ECTS, którą student może uzyskać na zajęciach obowiązkowych</lable>
+  <b><%= @programStudiow.lacznaLiczbaECTSOb %></b>
+</div>
+
+<div>
+  <lable>Łączna liczba punktów ECTS, którą student może uzyskać na zajęciach wybieralnych</lable>
+  <b><%= @programStudiow.lacznaLiczbaECTSWyb %></b>
+</div>
+
+<div>
+  <lable>Łączna liczba punktów ECTS, którą student może uzyskać w ramach zajęć z zakresu nauk podstawowych</lable>
+  <b><%= @programStudiow.lacznaLiczbaECTSNaukPodst %></b>
+</div>
+
+<div>
+  <lable>Łączna liczba punktów ECTS, którą student może uzyskać w ramach zajęć o charakterze praktycznym, w tym zajęć laboratoryjnych i projektowych</lable>
+  <b><%= @programStudiow.lacznaLiczbaECTSPraktycznych %></b>
+</div>
+
+<div>
+  <label>Minimalna liczba punktów ECTS , którą student musi uzyskać, realizując moduły kształcenia oferowane na zajęciach ogólnouczelnianych</label>
+  <b><%= @programStudiow.minLiczbaECTSOgolnouczelnianych %></b>
+</div>
+
+<div>
+  <label>Łączna liczba punktów ECTS, którą student może uzyskać, realizując moduły wybieralne</label>
+  <b><%= @programStudiow.lacznaLiczbaECTSModulyWyb %></b>
+</div>
+
 
 <div>
   <label>Zakres egzaminu dyplomowego:</label>
