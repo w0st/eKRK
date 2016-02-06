@@ -16,5 +16,11 @@ angular.module('zajecia')
 				templateUrl: 'app/modules/zajecia/zajecia.html',
 				controller: 'ZajeciaCtrl',
 				controllerAs: 'vm'
-			});
+			})
+            .state('kurs', {
+            url:'/zajecia/kurs?przedmiot-ksztalcenia-id&kurs-id',
+            templateUrl: 'app/modules/zajecia/kurs.html',
+            controller: 'KursCtrl',
+            controllerAs: 'vm'
+        });
 	}]);

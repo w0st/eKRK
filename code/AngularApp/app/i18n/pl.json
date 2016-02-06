@@ -72,7 +72,8 @@
     "profile_modulow_new_profile": "Nowy profil:",
     "profile_modulow_edit_profile": "Edytuj profil:",
     "profile_modulow_delete_confirm_header": "Potwierdź usuniecie profilu",
-    "profile_modulow_delete_confirm_summary": "Czy na pewno chcesz usunąć profil o nazwie:"
+    "profile_modulow_delete_confirm_summary": "Czy na pewno chcesz usunąć profil o nazwie:",
+    "formy_kursow_laboratorium": "Laboratorium"
 
 
 }

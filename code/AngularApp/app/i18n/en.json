@@ -61,6 +61,7 @@
     "profile_modulow_new_profile": "New profile:",
     "profile_modulow_edit_profile": "Edit profile:",
     "profile_modulow_delete_confirm_header": "Confirm the deletion of profile",
-    "profile_modulow_delete_confirm_summary": "Are you sure you want to delete the profile named:"
+    "profile_modulow_delete_confirm_summary": "Are you sure you want to delete the profile named:",
+    "formy_kursow_laboratorium": "Laboratory"
 
 }
