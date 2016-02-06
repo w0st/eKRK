@@ -26,6 +26,7 @@ module PrzedmiotyKsztalcenia
 
     class GrupaKursow < Grape::Entity
       expose :id
+      expose :kodZajec
       expose :nazwaZajec
       expose :punktyECTS
       expose :punktyECTSBK
