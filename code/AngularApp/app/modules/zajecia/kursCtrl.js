@@ -55,32 +55,13 @@
 
         console.log('KursId: ' + kursId + ' IsEditMode:' + (vm.isEditMode() == true));
 
-        vm.formyKursow = [
-            {value: 'Wyklad', label: "formy_kursow_wyklad"},
-            {value: 'Cwiczenia', label: "formy_kursow_cwiczenia"},
-            {value: 'Laboratorium', label: "formy_kursow_laboratorium"},
-            {value: 'Seminarium', label: "formy_kursow_seminarium"},
-            {value: 'Projekt', label: "formy_kursow_projekt"},
-            {value: 'Praktyka', label: "formy_kursow_praktyka"},
-            {value: 'PracaDyplomowa', label: "formy_kursow_praca_dyplomowa"}
-        ];
+        vm.formyKursow = ZajeciaService.getFormyKursow();
 
-        vm.sposobyZaliczenia = [
-            {value: 'Zaliczenie', label: "sposoby_zaliczenia_zaliczenie"},
-            {value: 'Egzamin', label: "sposoby_zaliczenia_egzamin"}
-        ];
+        vm.sposobyZaliczenia = ZajeciaService.getSposobyZaliczenia();
 
-        vm.rodzaje = [
-            {value: 'KsztalceniaOgolnego', label: "rodzaje_kursow_ksztalcenia_ogolnego"},
-            {value: 'Podstawowy', label: "rodzaje_kursow_podstawowy"},
-            {value: 'Kierunkowy', label: "rodzaje_kursow_kierunkowy"},
-            {value: 'Specjalnosciowy', label: "rodzaje_kursow_specjalnosciowy"}
-        ];
+        vm.rodzaje = ZajeciaService.getRodzajeKursu();
 
-        vm.typy = [
-            {value: 'Wybieralny', label: "typy_kursow_wybieralny"},
-            {value: 'Obowiazkowy', label: "typy_kursow_obowiazkowy"}
-        ];
+        vm.typy = ZajeciaService.getTypyKursu();
 
         vm.save = function () {
             if(vm.isEditMode()) {

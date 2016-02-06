@@ -110,3 +110,19 @@ background-color: #eee;
 .assign-tables-wrapper {
     height: 160px!important;
 }
+
+#grupa-kursow-add-kurs-button {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.width-100 {
+    width: 100%;
+}
+
+#grupa-kursow-kursy-panel {
+    margin-bottom: 0px;
+}
+#grupa-kursow-kursy-panel table tr th {
+    width: 20%;
+}

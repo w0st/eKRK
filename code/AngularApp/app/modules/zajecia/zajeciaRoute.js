@@ -22,5 +22,11 @@ angular.module('zajecia')
             templateUrl: 'app/modules/zajecia/kurs.html',
             controller: 'KursCtrl',
             controllerAs: 'vm'
-        });
+            })
+            .state('grupakursow', {
+                url:'/zajecia/grupa-kursow?przedmiot-ksztalcenia-id&grupa-kursow-id',
+                templateUrl: 'app/modules/zajecia/grupa-kursow.html',
+                controller: 'GrupaKursowCtrl',
+                controllerAs: 'vm'
+            });
 	}]);

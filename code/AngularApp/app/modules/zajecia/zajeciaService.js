@@ -45,7 +45,39 @@
             },
             addKurs: function (kurs) {
                 return $http.post(CONFIG.API_URL + "/zajecia/kurs", kurs);
+            },
+            getFormyKursow: function () {
+                return [
+                    {value: 'Wyklad', label: "formy_kursow_wyklad"},
+                    {value: 'Cwiczenia', label: "formy_kursow_cwiczenia"},
+                    {value: 'Laboratorium', label: "formy_kursow_laboratorium"},
+                    {value: 'Seminarium', label: "formy_kursow_seminarium"},
+                    {value: 'Projekt', label: "formy_kursow_projekt"},
+                    {value: 'Praktyka', label: "formy_kursow_praktyka"},
+                    {value: 'PracaDyplomowa', label: "formy_kursow_praca_dyplomowa"}
+                ]
+            },
+            getSposobyZaliczenia: function () {
+                return [
+                    {value: 'Zaliczenie', label: "sposoby_zaliczenia_zaliczenie"},
+                    {value: 'Egzamin', label: "sposoby_zaliczenia_egzamin"}
+                ];
+            },
+            getRodzajeKursu: function () {
+                return [
+                    {value: 'KsztalceniaOgolnego', label: "rodzaje_kursow_ksztalcenia_ogolnego"},
+                    {value: 'Podstawowy', label: "rodzaje_kursow_podstawowy"},
+                    {value: 'Kierunkowy', label: "rodzaje_kursow_kierunkowy"},
+                    {value: 'Specjalnosciowy', label: "rodzaje_kursow_specjalnosciowy"}
+                ]
+            },
+            getTypyKursu: function () {
+                return [
+                    {value: 'Wybieralny', label: "typy_kursow_wybieralny"},
+                    {value: 'Obowiazkowy', label: "typy_kursow_obowiazkowy"}
+                ]
             }
+
         };
 
     }
