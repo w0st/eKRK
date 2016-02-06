@@ -39,6 +39,7 @@
     "przedmiot_ksztalcenia_title": "Przedmiot kształcenia",
     "przedmiot_ksztalcenia_actions": "Dostępne akcje",
     "przedmiot_ksztalcenia_kursy": "Kursy",
+    "przedmiot_ksztalcenia_label_forma_kursu": "Forma kursu",
     "przedmiot_ksztalcenia_label_kodZajec": "Kod",
     "przedmiot_ksztalcenia_label_godzinyZZU": "Godziny ZZU",
     "przedmiot_ksztalcenia_label_godzinyCNPS": "Godziny CNPS",
@@ -73,7 +74,23 @@
     "profile_modulow_edit_profile": "Edytuj profil:",
     "profile_modulow_delete_confirm_header": "Potwierdź usuniecie profilu",
     "profile_modulow_delete_confirm_summary": "Czy na pewno chcesz usunąć profil o nazwie:",
-    "formy_kursow_laboratorium": "Laboratorium"
+    "formy_kursow_wyklad":"Wykład",
+    "formy_kursow_cwiczenia": "Ćwiczenia",
+    "formy_kursow_laboratorium": "Laboratorium",
+    "formy_kursow_seminarium": "Seminarium",
+    "formy_kursow_projekt": "Projekt",
+    "formy_kursow_praktyka": "Praktyka",
+    "formy_kursow_praca_dyplomowa": "Praca dyplomowa",
+    "sposoby_zaliczenia_zaliczenie": "Zaliczenie",
+    "sposoby_zaliczenia_egzamin": "Egzamin",
+    "rodzaje_kursow_ksztalcenia_ogolnego": "Kształcenia ogólnego",
+    "rodzaje_kursow_podstawowy": "Podstawowy",
+    "rodzaje_kursow_kierunkowy": "Kierunkowy",
+    "rodzaje_kursow_specjalnosciowy": "Specjalnościowy",
+    "typy_kursow_wybieralny": "Wybieralny",
+    "typy_kursow_obowiazkowy": "Obowiązkowy",
+    "zajecia_kurs_edit_kurs": "Edytuj Kurs",
+    "zajecia_kurs_add_kurs": "Dodaj nowy kurs"
 
 
 }
