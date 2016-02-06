@@ -42,6 +42,9 @@
             },
             updateKurs: function (kurs) {
                 return $http.put(CONFIG.API_URL + "/zajecia/kurs", kurs);
+            },
+            addKurs: function (kurs) {
+                return $http.post(CONFIG.API_URL + "/zajecia/kurs", kurs);
             }
         };
 

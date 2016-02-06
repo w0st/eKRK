@@ -13,7 +13,7 @@
         .module('zajecia')
         .controller('KursCtrl', Kurs);
 
-    Kurs.$inject = ['ZajeciaService', '$state', '$stateParams'];
+    Kurs.$inject = ['PrzedmiotyKsztalceniaService', 'ZajeciaService', '$state', '$stateParams'];
 
     /*
      * recommend
@@ -21,7 +21,7 @@
      * and bindable members up top.
      */
 
-    function Kurs(ZajeciaService, $state, $stateParams) {
+    function Kurs(PrzedmiotyKsztalceniaService, ZajeciaService, $state, $stateParams) {
         /*jshint validthis: true */
         var vm = this;
         var przedmiotKsztalceniaId = $stateParams['przedmiot-ksztalcenia-id'];
@@ -36,6 +36,12 @@
         vm.isEditMode = function () {
             return kursId != undefined;
         }
+
+        PrzedmiotyKsztalceniaService.get({id: przedmiotKsztalceniaId}).$promise.then(function(response) {
+            vm.przedmiot = response;
+        }, function(reason) {
+            console.log(reason);
+        });
 
         if (vm.isEditMode()) {
             vm.kurs = ZajeciaService.getKurs(kursId).then(
@@ -77,8 +83,29 @@
         ];
 
         vm.save = function () {
+            if(vm.isEditMode()) {
+                console.log('Update Kurs');
+                vm.updateKurs();
+            }
+            else{
+                console.log('Add new Kurs');
+                vm.addKurs();
+            }
             console.log(vm.kurs);
+        }
+
+        vm.updateKurs = function() {
             ZajeciaService.updateKurs(vm.kurs).then(
+                function (result) {
+                    console.log(result);
+                }, function (reason) {
+                    console.log(reason);
+                });
+        }
+
+        vm.addKurs = function() {
+            vm.kurs.przedmiot_ksztalcenia_id = przedmiotKsztalceniaId;
+            ZajeciaService.addKurs(vm.kurs).then(
                 function (result) {
                     console.log(result);
                 }, function (reason) {

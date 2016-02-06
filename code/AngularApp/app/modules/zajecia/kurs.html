@@ -9,7 +9,7 @@
     <div class="col-lg-12" ng-show="!vm.error">
         <div class="panel panel-default">
             <div class="panel-heading">
-                Przedmiot kształcenia: 1
+                Przedmiot kształcenia: {{ vm.przedmiot.id }}
             </div>
             <!-- Przedmiot Ksztalcenia -->
             <!-- /.panel-heading -->
@@ -18,7 +18,7 @@
                     <tbody>
                     <tr>
                         <td>Nazwa:</td>
-                        <td>Podstawy elektroniki i miernictwa</td>
+                        <td>{{ vm.przedmiot.nazwaPrzedmiotu }}</td>
                     </tr>
                     </tbody>
                 </table>
