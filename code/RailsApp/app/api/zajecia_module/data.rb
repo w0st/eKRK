@@ -46,6 +46,35 @@ module ZajeciaModule
             .where(programy_ksztalcenia:  {id: params[:program_ksztalcenia_id]},  :modul_ksztalcenia_id => params[:modul_ksztalcenia_id], :zajecia_id => nil)
       end
 
+
+      desc 'Dodaj kurs'
+      # Example Request:
+      #   PUT /v1/kurs
+      params do
+        requires :kodZajec,  type: String
+        requires :nazwaZajec,  type: String
+        requires :punktyECTS, type: Integer
+        requires :punktyECTSBK, type: Float
+        requires :punktyECTSP, type: Integer
+        requires :sposobZaliczenia, type: String
+        requires :czyOgolnouczelniany,type: Virtus::Attribute::Boolean
+        requires :rodzaj, type: String
+        requires :typ, type: String
+        requires :formaKursu, type: String
+        requires :godzinyZZU, type: Integer
+        requires :godzinyCNPS, type: Integer
+        requires :przedmiot_ksztalcenia_id, type: Integer
+        optional :zajecia_id, type: Integer
+      end
+      post '/kurs' do
+        kurs = Kurs.new(params)
+        if kurs.save
+          kurs
+        else
+          kurs.errors
+        end
+      end
+
       desc 'Aktualizuj kurs'
       # Example Request:
       #   PUT /v1/kurs
