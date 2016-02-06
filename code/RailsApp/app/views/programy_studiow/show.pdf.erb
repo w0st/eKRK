@@ -68,9 +68,81 @@
                 <ul>
                   <% moduly.each do |modul| %>
                       <li>
+                        <table class="kursy">
+                          <thead>
+                          <tr>
+                            <th rowspan="2">L.p</th>
+                            <th rowspan="2">Kod kursu/grupy kursów</th>
+                            <th rowspan="2">Nazwa kursu/grupy kursów</th>
+                            <th>w</th>
+                            <th>ć</th>
+                            <th>l</th>
+                            <th>p</th>
+                            <th>s</th>
+                            <th rowspan="2">Symbol KEK</th>
+                            <th colspan="2">Godziny</th>
+                            <th colspan="2">Liczba pkt. ECTS</th>
+                            <th rowspan="2">Sposób zaliczenia</th>
+                            <th colspan="4">Kurs/Grupa kursów</th>
+                          </tr>
+                          <tr>
+                            <th>w</th>
+                            <th>ć</th>
+                            <th>l</th>
+                            <th>p</th>
+                            <th>s</th>
+                            <th>ZZU</th>
+                            <th>CNPS</th>
+                            <th>łączna</th>
+                            <th>zajęć BK</th>
+                            <th>Ogólnouczelniany</th>
+                            <th>O charakterze praktycznym</th>
+                            <th>Rodzaj</th>
+                            <th>Typ</th>
+                          </tr>
+                          </thead>
+                          <tbody>
                         <%= modul.nazwaModulu %> (min. <%= modul.minEcts %> pkt. ECTS)
                         <% # TODO W obrebie modulu zrobic tabelke kursow!
-                        %><br />
+                          modul.zajecia.each_with_index do |zajecie, index|
+                            %>
+
+                          <tr>
+                            <td><%= index+1 %></td>
+                            <td><%= zajecie.kodZajec %></td>
+                            <td><%= zajecie.nazwaZajec %></td>
+                            <td></td>
+                            <td>ć</td>
+                            <td>l</td>
+                            <td>p</td>
+                            <td>s</td>
+                            <td>Symbol KEK</td>
+                            <td>
+                              <%= if (zajecie.is_a? Kurs)
+                                    zajecie.godzinyZZU
+                                  else
+                                    zajecie.kursy.reduce(0) {|sum, kurs| sum + kurs.godzinyZZU}
+                                  end %>
+                            </td>
+                            <td>
+                              <%= if (zajecie.is_a? Kurs)
+                                    zajecie.godzinyCNPS
+                                  else
+                                    zajecie.kursy.reduce(0) {|sum, kurs| sum + kurs.godzinyCNPS}
+                                  end %>
+                            </td>
+                            <td>łączna</td>
+                            <td>zajęć BK</td>
+                            <td><%= zajecie.sposobZaliczenia %></td>
+                            <td><%= zajecie.czyOgolnouczelniany %></td>
+                            <td>O charakterze praktycznym</td>
+                            <td><%= zajecie.rodzaj %></td>
+                            <td><%= zajecie.typ %></td>
+                          </tr>
+
+                          <% end
+                        %></tbody>
+                        </table><br />
                         <%= render "przypis_tabelki"%>
                       </li>
                   <% end %>
