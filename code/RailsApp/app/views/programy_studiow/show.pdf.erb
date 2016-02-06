@@ -42,7 +42,9 @@
 
 <div>
   <label>Obszary kształcenia:</label>
-  <%= "TODO (Braki w modelu)" %>
+  <%= @programStudiow.program_ksztalcenia.udzialy_obszarow.map do |udzial|
+    udzial.obszar_ksztalcenia.nazwaObszaru
+  end.join(',') %>
 </div>
 
 <div>
@@ -74,49 +76,79 @@
                             <th rowspan="2">L.p</th>
                             <th rowspan="2">Kod kursu/grupy kursów</th>
                             <th rowspan="2">Nazwa kursu/grupy kursów</th>
-                            <th>w</th>
-                            <th>ć</th>
-                            <th>l</th>
-                            <th>p</th>
-                            <th>s</th>
+                            <th colspan="7">Formy zajęć</th>
                             <th rowspan="2">Symbol KEK</th>
                             <th colspan="2">Godziny</th>
-                            <th colspan="2">Liczba pkt. ECTS</th>
+                            <th colspan="3">Liczba pkt. ECTS</th>
                             <th rowspan="2">Sposób zaliczenia</th>
                             <th colspan="4">Kurs/Grupa kursów</th>
                           </tr>
                           <tr>
-                            <th>w</th>
-                            <th>ć</th>
-                            <th>l</th>
-                            <th>p</th>
-                            <th>s</th>
+                            <th>w<sup>1</sup></th>
+                            <th>ć<sup>2</sup></th>
+                            <th>l<sup>3</sup></th>
+                            <th>p<sup>4</sup></th>
+                            <th>s<sup>5</sup></th>
+                            <th>prak<sup>6</sup></th>
+                            <th>prac<sup>7</sup></th>
                             <th>ZZU</th>
                             <th>CNPS</th>
                             <th>łączna</th>
-                            <th>zajęć BK</th>
-                            <th>Ogólnouczelniany</th>
-                            <th>O charakterze praktycznym</th>
+                            <th>zajęć BK <sup>8</sup></th>
+                            <th>zajęć P <sup>9</sup></th>
+                            <th>Ogólno.<sup>10</sup></th>
                             <th>Rodzaj</th>
                             <th>Typ</th>
                           </tr>
                           </thead>
                           <tbody>
                         <%= modul.nazwaModulu %> (min. <%= modul.minEcts %> pkt. ECTS)
-                        <% # TODO W obrebie modulu zrobic tabelke kursow!
-                          modul.zajecia.each_with_index do |zajecie, index|
+                        <% # W obrebie modulu wybieram zajecia ktore nie wchodza w sklad zadnej GK
+                          modul.zajecia.select{|z| z.grupa_kursow == nil}.each_with_index do |zajecie, index|
                             %>
-
                           <tr>
                             <td><%= index+1 %></td>
                             <td><%= zajecie.kodZajec %></td>
                             <td><%= zajecie.nazwaZajec %></td>
-                            <td></td>
-                            <td>ć</td>
-                            <td>l</td>
-                            <td>p</td>
-                            <td>s</td>
-                            <td>Symbol KEK</td>
+                            <td><%= if zajecie.is_a? Kurs
+                                      'x' if zajecie.Wyklad?
+                                    else
+                                      'x' if zajecie.kursy.any?{|k| k.Wyklad?}
+                                    end %>
+                            </td>
+                            <td><%= if zajecie.is_a? Kurs
+                                      'x' if zajecie.Cwiczenia?
+                                    else
+                                      'x' if zajecie.kursy.any?{|k| k.Cwiczenia?}
+                                    end %></td>
+                            <td><%= if zajecie.is_a? Kurs
+                                       'x' if zajecie.Laboratorium?
+                                     else
+                                       'x' if zajecie.kursy.any?{|k| k.Laboratorium?}
+                                     end %></td>
+                            <td><%= if zajecie.is_a? Kurs
+                                      'x' if zajecie.Projekt?
+                                    else
+                                      'x' if zajecie.kursy.any?{|k| k.Projekt?}
+                                    end %></td>
+                            <td><%= if zajecie.is_a? Kurs
+                                      'x' if zajecie.Seminarium?
+                                    else
+                                      'x' if zajecie.kursy.any?{|k| k.Seminarium?}
+                                    end %></td>
+                            <td><%= if zajecie.is_a? Kurs
+                                      'x' if zajecie.Praktyka?
+                                    else
+                                      'x' if zajecie.kursy.any?{|k| k.Praktyka?}
+                                    end %></td>
+                            <td><%= if zajecie.is_a? Kurs
+                                      'x' if zajecie.Praktyka?
+                                    else
+                                      'x' if zajecie.kursy.any?{|k| k.Praktyka?}
+                                    end %></td>
+                            <td>
+                              <%= zajecie.przedmiot_ksztalcenia.kierunkowe_efekty_ksztalcenia.map {|kek| kek.kod}.join(', ') %>
+                            </td>
                             <td>
                               <%= if (zajecie.is_a? Kurs)
                                     zajecie.godzinyZZU
@@ -131,11 +163,11 @@
                                     zajecie.kursy.reduce(0) {|sum, kurs| sum + kurs.godzinyCNPS}
                                   end %>
                             </td>
-                            <td>łączna</td>
-                            <td>zajęć BK</td>
+                            <td><%= zajecie.punktyECTS %></td>
+                            <td><%= zajecie.punktyECTSBK %></td>
+                            <td><%= zajecie.punktyECTSP %></td>
                             <td><%= zajecie.sposobZaliczenia %></td>
-                            <td><%= zajecie.czyOgolnouczelniany %></td>
-                            <td>O charakterze praktycznym</td>
+                            <td><%= zajecie.czyOgolnouczelniany ? 'TAK' : 'NIE' %></td>
                             <td><%= zajecie.rodzaj %></td>
                             <td><%= zajecie.typ %></td>
                           </tr>

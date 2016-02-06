@@ -90,7 +90,7 @@ kartaPrzedmiotu1PL.przedmiotowe_efekty_ksztalcenia << pek1
 
 # Zajecia
 gk1 = GrupaKursow.create(kodZajec: 'IZN001516WL',nazwaZajec: 'Podstawy elektroniki i miernictwa GK',
-                   punktyECTS: 2,punktyECTSBK: 3,punktyECTSP: 2,sposobZaliczenia: 'Zaliczenie',
+                   punktyECTS: 5,punktyECTSBK: 3,punktyECTSP: 2,sposobZaliczenia: 'Zaliczenie',
                    czyOgolnouczelniany: FALSE, rodzaj: 'Podstawowy',
                    typ: 'Obowiazkowy',modul_ksztalcenia: modul_ksztalcenia1, semestr: semestr2, przedmiot_ksztalcenia: przedmiotKsztalcenia1)
 
@@ -98,14 +98,14 @@ kurs1 = Kurs.create(formaKursu: 'Wyklad', godzinyZZU: 30, godzinyCNPS: 60, modul
 kurs2 = Kurs.create(formaKursu: 'Laboratorium', godzinyZZU: 30, godzinyCNPS: 60, modul_ksztalcenia: modul_ksztalcenia1, semestr: semestr2, przedmiot_ksztalcenia: przedmiotKsztalcenia1)
 
 kurs3 = Kurs.create(kodZajec: 'IZN001518',nazwaZajec: 'Test',
-                    punktyECTS: 2,punktyECTSBK: 3,punktyECTSP: 2,sposobZaliczenia: 'Zaliczenie',
+                    punktyECTS: 4,punktyECTSBK: 3,punktyECTSP: 2,sposobZaliczenia: 'Zaliczenie',
                     czyOgolnouczelniany: FALSE, rodzaj: 'Podstawowy',
-                    typ: 'Obowiazkowy',formaKursu: 'Laboratorium', godzinyZZU: 30, godzinyCNPS: 60, semestr: semestr2, przedmiot_ksztalcenia: przedmiotKsztalcenia1)
+                    typ: 'Obowiazkowy',formaKursu: 'Laboratorium', godzinyZZU: 30, godzinyCNPS: 60, semestr: semestr2, przedmiot_ksztalcenia: przedmiotKsztalcenia1, modul_ksztalcenia: modul_ksztalcenia1)
 
 kurs4 = Kurs.create(kodZajec: 'IZN001518',nazwaZajec: 'Test2',
-                    punktyECTS: 2,punktyECTSBK: 3,punktyECTSP: 2,sposobZaliczenia: 'Zaliczenie',
+                    punktyECTS: 3,punktyECTSBK: 1,punktyECTSP: 0.8,sposobZaliczenia: 'Zaliczenie',
                     czyOgolnouczelniany: FALSE, rodzaj: 'Podstawowy',
-                    typ: 'Obowiazkowy',formaKursu: 'Laboratorium', godzinyZZU: 30, godzinyCNPS: 60, semestr: semestr2, przedmiot_ksztalcenia: przedmiotKsztalcenia1)
+                    typ: 'Obowiazkowy',formaKursu: 'Laboratorium', godzinyZZU: 30, godzinyCNPS: 60, semestr: semestr2, przedmiot_ksztalcenia: przedmiotKsztalcenia1, modul_ksztalcenia: modul_ksztalcenia1)
 
 
 
