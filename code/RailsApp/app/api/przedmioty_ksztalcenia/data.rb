@@ -78,8 +78,11 @@ module PrzedmiotyKsztalcenia
       get ':id/grupa_kursow' do
         przedmiot = PrzedmiotKsztalcenia.find(params[:id])
         gk = przedmiot.zajecia.find {|z| z.is_a? GrupaKursow}
-        #gk.kursy
-        present gk, with: PrzedmiotyKsztalcenia::Entities::GrupaKursow
+        if gk != nil
+          present gk, with: PrzedmiotyKsztalcenia::Entities::GrupaKursow
+        else
+          raise ActiveRecord::RecordNotFound
+        end
       end
 
     end
