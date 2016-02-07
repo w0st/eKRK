@@ -40,19 +40,6 @@
                         console.log("fail get(1)");
                     });
 
-                    vm.properties = [
-                        'kodZajec',
-                        'godzinyZZU',
-                        'godzinyCNPS',
-                        'sposobZaliczenia',
-                        'punktyECTS',
-                        'punktyECTSP',
-                        'punktyECTSBK',
-                        'czyOgolnouczelniany',
-                        'rodzaj',
-                        'typ'
-                    ];
-
                     ZajeciaService.getKursy(id).then(function(response) {
                         console.log("kursy = ", response);
                         vm.kursy = response;

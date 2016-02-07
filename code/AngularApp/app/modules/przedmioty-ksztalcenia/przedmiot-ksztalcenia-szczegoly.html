@@ -58,11 +58,55 @@
                     <tbody>
                     <tr>
                         <td></td>
-                        <td ng-repeat="kurs in vm.kursy">{{kurs.formaKursu}}</td>
+                        <td ng-repeat="kurs in vm.kursy">{{'formy_kursow_' + kurs.formaKursu.toLowerCase() | translate}}</td>
                     </tr>
-                    <tr ng-repeat="property in vm.properties">
-                        <td>{{('przedmiot_ksztalcenia_label_' + property) | translate}}</td>
-                        <td ng-repeat="kurs in vm.kursy">{{kurs[property]}}</td>
+                    <tr>
+                        <td>{{('przedmiot_ksztalcenia_label_nazwaZajec') | translate}}</td>
+                        <td ng-repeat="kurs in vm.kursy">{{kurs.nazwaZajec}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{('przedmiot_ksztalcenia_label_kodZajec') | translate}}</td>
+                        <td ng-repeat="kurs in vm.kursy">{{kurs.kodZajec}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{('przedmiot_ksztalcenia_label_godzinyZZU') | translate}}</td>
+                        <td ng-repeat="kurs in vm.kursy">{{kurs.godzinyZZU}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{('przedmiot_ksztalcenia_label_godzinyCNPS') | translate}}</td>
+                        <td ng-repeat="kurs in vm.kursy">{{kurs.godzinyCNPS}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{('przedmiot_ksztalcenia_label_sposobZaliczenia') | translate}}</td>
+                        <td ng-repeat="kurs in vm.kursy">{{'sposoby_zaliczenia_' + kurs.sposobZaliczenia.toLowerCase() | translate}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{('przedmiot_ksztalcenia_label_punktyECTS') | translate}}</td>
+                        <td ng-repeat="kurs in vm.kursy">{{kurs.punktyECTS}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{('przedmiot_ksztalcenia_label_punktyECTSP') | translate}}</td>
+                        <td ng-repeat="kurs in vm.kursy">{{kurs.punktyECTSP}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{('przedmiot_ksztalcenia_label_punktyECTSBK') | translate}}</td>
+                        <td ng-repeat="kurs in vm.kursy">{{kurs.punktyECTSBK}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{('przedmiot_ksztalcenia_label_czyOgolnouczelniany') | translate}}</td>
+                        <td ng-repeat="kurs in vm.kursy">
+                            <span ng-class="{'fa fa-check': kurs.czyOgolnouczelniany, 'fa fa-times': !kurs.czyOgolnouczelniany}">
+
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>{{('przedmiot_ksztalcenia_label_rodzaj') | translate}}</td>
+                        <td ng-repeat="kurs in vm.kursy">{{'rodzaje_kursow_' + kurs.rodzaj.toLowerCase() | translate}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{('przedmiot_ksztalcenia_label_typ') | translate}}</td>
+                        <td ng-repeat="kurs in vm.kursy">{{'typy_kursow_' + kurs.typ.toLowerCase() | translate}}</td>
                     </tr>
                     <tr>
                         <td>{{'global_btn_edit' | translate}}</td>
@@ -107,7 +151,44 @@
                     <table class="table">
                         <tbody>
                         <tr>
-                            <td>tutaj informacje o grupie kursow</td>
+                            <td>{{('przedmiot_ksztalcenia_label_nazwaZajec') | translate}}</td>
+                            <td>{{vm.grupaKursow.nazwaZajec}}</td>
+                        </tr>
+                        <tr>
+                            <td>{{('przedmiot_ksztalcenia_label_kodZajec') | translate}}</td>
+                            <td>{{vm.grupaKursow.kodZajec}}</td>
+                        </tr>
+                        <tr>
+                            <td>{{('przedmiot_ksztalcenia_label_sposobZaliczenia') | translate}}</td>
+                            <td>{{'sposoby_zaliczenia_' + vm.grupaKursow.sposobZaliczenia.toLowerCase() | translate}}</td>
+                        </tr>
+                        <tr>
+                            <td>{{('przedmiot_ksztalcenia_label_punktyECTS') | translate}}</td>
+                            <td>{{vm.grupaKursow.punktyECTS}}</td>
+                        </tr>
+                        <tr>
+                            <td>{{('przedmiot_ksztalcenia_label_punktyECTSP') | translate}}</td>
+                            <td>{{vm.grupaKursow.punktyECTSP}}</td>
+                        </tr>
+                        <tr>
+                            <td>{{('przedmiot_ksztalcenia_label_punktyECTSBK') | translate}}</td>
+                            <td>{{vm.grupaKursow.punktyECTSBK}}</td>
+                        </tr>
+                        <tr>
+                            <td>{{('przedmiot_ksztalcenia_label_czyOgolnouczelniany') | translate}}</td>
+                            <td>
+                            <span ng-class="{'fa fa-check': vm.grupaKursow.czyOgolnouczelniany, 'fa fa-times': !kurs.czyOgolnouczelniany}">
+
+                            </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>{{('przedmiot_ksztalcenia_label_rodzaj') | translate}}</td>
+                            <td>{{'rodzaje_kursow_' + vm.grupaKursow.rodzaj.toLowerCase() | translate}}</td>
+                        </tr>
+                        <tr>
+                            <td>{{('przedmiot_ksztalcenia_label_typ') | translate}}</td>
+                            <td>{{'typy_kursow_' + vm.grupaKursow.typ.toLowerCase() | translate}}</td>
                         </tr>
                         </tbody>
                     </table>
@@ -126,9 +207,18 @@
 
                 <div class="table-responsive">
                     <table class="table">
-                        <tbody>
+                        <thead>
                         <tr>
-                            <td>tutaj tabelka z kursami wew. GK</td>
+                            <td>{{'przedmiot_ksztalcenia_label_forma_kursu' | translate}}</td>
+                            <td>{{'przedmiot_ksztalcenia_label_godzinyZZU' | translate}}</td>
+                            <td>{{'przedmiot_ksztalcenia_label_godzinyCNPS' | translate}}</td>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="kurs in vm.grupaKursow.kursy">
+                            <td>{{'formy_kursow_' + kurs.formaKursu.toLowerCase() | translate}}</td>
+                            <td>{{kurs.godzinyZZU}}</td>
+                            <td>{{kurs.godzinyCNPS}}</td>
                         </tr>
                         </tbody>
                     </table>
