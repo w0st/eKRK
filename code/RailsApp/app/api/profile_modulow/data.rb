@@ -40,7 +40,7 @@ module ProfileModulow
         if profil_modulu.save
           profil_modulu
         else
-          profil_modulu.errors
+          error!(profil_modulu.errors, 400)
         end
       end
 
@@ -57,7 +57,7 @@ module ProfileModulow
         if profil_modulu.save
           profil_modulu
         else
-          profil_modulu.errors
+          error!(profil_modulu.errors, 400)
         end
       end
 
