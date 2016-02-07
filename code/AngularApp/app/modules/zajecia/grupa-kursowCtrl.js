@@ -32,6 +32,12 @@
                 return grupaKursowId != undefined;
             }
 
+            vm.addKursToGrupaKursow = function() {
+                var newKurs = { przedmiot_ksztalcenia_id: przedmiotKsztalceniaId, id: createdKursIndex};
+                createdKursIndex = createdKursIndex - 1;
+                vm.grupaKursow.kursy.push(newKurs);
+            }
+
             PrzedmiotyKsztalceniaService.get({id: przedmiotKsztalceniaId}).$promise.then(function(response) {
                 vm.przedmiot = response;
             }, function(reason) {
@@ -48,7 +54,9 @@
 
             }
             else {
-
+                vm.grupaKursow = {kursy: []}
+                vm.addKursToGrupaKursow()
+                vm.grupaKursow.kurs_koncowy = vm.grupaKursow.kursy[0]
             }
 
             vm.formyKursow = ZajeciaService.getFormyKursow();
@@ -59,22 +67,38 @@
 
             vm.typy = ZajeciaService.getTypyKursu();
 
-            vm.addKursToGrupaKursow = function() {
-                var newKurs = {grupa_kursow_id: vm.grupaKursow.id, przedmiot_ksztalcenia_id: przedmiotKsztalceniaId, id: createdKursIndex};
-                createdKursIndex = createdKursIndex - 1;
-                vm.grupaKursow.kursy.push(newKurs);
-            }
-
             vm.deleteKurs = function(index) {
                 vm.grupaKursow.kursy.splice(index, 1);
             }
 
             vm.save = function() {
+                console.log(vm.grupaKursow)
+                if(vm.isEditMode()) {
+                   vm.updateGrupaKursow();
+                }
+                else {
+                    vm.addGrupaKursow()
+                }
+            }
+
+            vm.updateGrupaKursow = function() {
                 vm.grupaKursow.kurs_koncowy_id = vm.grupaKursow.kurs_koncowy.id
                 console.log(vm.grupaKursow)
                 ZajeciaService.updateGrupaKursow(vm.grupaKursow).then(function(response) {
                     console.log(response)
-                   // vm.grupaKursow = response
+                    // vm.grupaKursow = response
+                }, function(reason) {
+                    console.log(reason);
+                });
+            }
+
+            vm.addGrupaKursow = function() {
+                vm.grupaKursow.kurs_koncowy_id = vm.grupaKursow.kurs_koncowy.id
+                vm.grupaKursow.przedmiot_ksztalcenia_id = przedmiotKsztalceniaId
+                console.log(vm.grupaKursow)
+                ZajeciaService.addGrupaKursow(vm.grupaKursow).then(function(response) {
+                    console.log(response)
+                    // vm.grupaKursow = response
                 }, function(reason) {
                     console.log(reason);
                 });
