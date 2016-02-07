@@ -22,6 +22,7 @@ module PrzedmiotyKsztalcenia
       expose :godzinyZZU
       expose :godzinyCNPS
       expose :formaKursu
+      expose :grupa_kursow_id
     end
 
     class GrupaKursow < Grape::Entity
