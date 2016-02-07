@@ -43,6 +43,10 @@
             };
 
             this.load();
+
+            this.select = function(przedmiot) {
+                vm.selected = przedmiot;
+            };
             /*PrzedmiotyKsztalceniaService.add( {
                 nazwaPrzedmiotu: "Angielski B2",
                 program_ksztalcenia_id: 1,

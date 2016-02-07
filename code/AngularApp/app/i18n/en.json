@@ -3,6 +3,7 @@
     "global_logout": "Logout",
     "global_login": "Log In",
     "global_not_logged": "Not logged",
+    "global_btn_add": "Add",
     "global_btn_save": "Save",
     "global_btn_cancel": "Cancel",
     "global_btn_edit": "Edit",
@@ -33,6 +34,8 @@
     "przedmioty_ksztalcenia_name": "Name",
     "przedmioty_ksztalcenia_attendant": "Attendant",
     "przedmioty_ksztalcenia_btn_add": "Add",
+    "przedmioty_ksztalcenia_delete_confirm_header": "Confirm the deletion of the subject",
+    "przedmioty_ksztalcenia_delete_confirm_summary": "Are you sure you want to delete the subject named",
     "przedmiot_ksztalcenia_please_insert_name": "Please insert the name of a new subject",
     "przedmiot_ksztalcenia_please_select_attendant": "Please select a attendant",
     "przedmiot_ksztalcenia_title": "Education subject",
@@ -49,6 +52,14 @@
     "przedmiot_ksztalcenia_label_czyOgolnouczelniany": "Is university-wide",
     "przedmiot_ksztalcenia_label_rodzaj": "Kind",
     "przedmiot_ksztalcenia_label_typ": "Type",
+    "przedmiot_ksztalcenia_btn_add_course": "Add a course",
+    "przedmiot_ksztalcenia_btn_create_grupa_kursow": "Add a groupe of courses",
+    "przedmiot_ksztalcenia_btn_edit_grupa_kursow": "Edit the groupe of courses",
+    "przedmiot_ksztalcenia_btn_delete_grupa_kursow": "Delete the groupe of courses",
+    "przedmiot_ksztalcenia_grupa_kursow_title": "The groupe of courses",
+    "przedmiot_ksztalcenia_grupa_kursow_kursy_title": "The courses assign to the groupe",
+    "kurs_delete_confirm_header": "Confirm the deletion of course",
+    "kurs_delete_confirm_summary": "Are you sure you want to delete the course",
     "moduly_ksztalcenia_header" : "Education modules",
     "moduly_ksztalcenia_filter_all" : "All",
     "moduly_ksztalcenia_filter_mandatory" : "Mandatory",
@@ -89,6 +100,7 @@
     "typy_kursow_wybieralny": "Optional",
     "typy_kursow_obowiazkowy": "Obligatory",
     "zajecia_kurs_edit_kurs": "Edit course",
-    "zajecia_kurs_add_kurs": "Add new course"
-
+    "zajecia_kurs_add_kurs": "Add new course",
+    "grupa_kursow_delete_confirm_header": "Confirm the deletion of the groupe of courses",
+    "grupa_kursow_delete_confirm_summary": "Are you sure you want to delete the groupe"
 }
