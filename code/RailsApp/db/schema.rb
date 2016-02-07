@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160111191828) do
+ActiveRecord::Schema.define(version: 20160207164241) do
 
   create_table "emp_data", force: :cascade do |t|
     t.string   "name"
@@ -297,15 +297,17 @@ ActiveRecord::Schema.define(version: 20160111191828) do
     t.integer  "formaKursu"
     t.integer  "godzinyZZU"
     t.integer  "godzinyCNPS"
-    t.integer  "zajecia_id"
+    t.integer  "grupa_kursow_id"
+    t.integer  "kurs_koncowy_id"
     t.string   "type"
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
   end
 
+  add_index "zajecia", ["grupa_kursow_id"], name: "index_zajecia_on_grupa_kursow_id"
+  add_index "zajecia", ["kurs_koncowy_id"], name: "index_zajecia_on_kurs_koncowy_id"
   add_index "zajecia", ["modul_ksztalcenia_id"], name: "index_zajecia_on_modul_ksztalcenia_id"
   add_index "zajecia", ["przedmiot_ksztalcenia_id"], name: "index_zajecia_on_przedmiot_ksztalcenia_id"
   add_index "zajecia", ["semestr_id"], name: "index_zajecia_on_semestr_id"
-  add_index "zajecia", ["zajecia_id"], name: "index_zajecia_on_zajecia_id"
 
 end

@@ -16,7 +16,8 @@ class CreateZajecia < ActiveRecord::Migration
       t.integer :formaKursu
       t.integer :godzinyZZU
       t.integer :godzinyCNPS
-      t.references :zajecia, index: true, foreign_key: true
+      t.references :grupa_kursow, references: :zajecia, index: true, foreign_key: true
+      t.references :kurs_koncowy, references: :zajecia, index: true, foreign_key: true
       t.string :type
 
       t.timestamps null: false
