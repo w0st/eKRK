@@ -70,18 +70,20 @@
                     </div>
                 </div>
                 <div class="col-lg-12">
+
+                    <div class="alert alert-success" collapse="!vm.isUpdateAlertVisible">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                        <strong>{{"global_success_alert" | translate}}</strong>
+                    </div>
+
                     <button ng-click="vm.submit()" type="submit" class="btn btn-success">{{'program_studiow_btn_save' |
                         translate}}
                     </button>
-                    <button ng-click="vm.reset()" class="btn btn-danger">Reset</button>
+                    <a  href="/moduly-ksztalcenia" class="btn btn-danger">{{'global_btn_cancel' | translate}}</a>
                 </div>
             </form>
 
 
-        </div>
-        <div class="alert alert-success" collapse="vm.isSaveAlertCollapsed">
-            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-            <strong>Zmiany zostały zapisane!</strong>
         </div>
     </div>
 </div>

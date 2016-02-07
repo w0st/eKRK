@@ -13,7 +13,7 @@
         .module('zajecia')
         .controller('KursCtrl', Kurs);
 
-    Kurs.$inject = ['PrzedmiotyKsztalceniaService', 'ZajeciaService', '$state', '$stateParams'];
+    Kurs.$inject = ['PrzedmiotyKsztalceniaService', 'ZajeciaService', '$state', '$stateParams', '$timeout'];
 
     /*
      * recommend
@@ -21,11 +21,13 @@
      * and bindable members up top.
      */
 
-    function Kurs(PrzedmiotyKsztalceniaService, ZajeciaService, $state, $stateParams) {
+    function Kurs(PrzedmiotyKsztalceniaService, ZajeciaService, $state, $stateParams, $timeout) {
         /*jshint validthis: true */
         var vm = this;
         var przedmiotKsztalceniaId = $stateParams['przedmiot-ksztalcenia-id'];
         var kursId = $stateParams['kurs-id'];
+        vm.isUpdateAlertVisible = false
+        vm.przedmiotKsztalceniaId = przedmiotKsztalceniaId
 
         console.log(przedmiotKsztalceniaId);
 
@@ -75,10 +77,15 @@
             console.log(vm.kurs);
         }
 
+        vm.reset = function() {
+            $state.reload();
+        }
+
         vm.updateKurs = function() {
             ZajeciaService.updateKurs(vm.kurs).then(
                 function (result) {
                     console.log(result);
+                    vm.dispaySuccessAlert()
                 }, function (reason) {
                     console.log(reason);
                 });
@@ -88,10 +95,18 @@
             vm.kurs.przedmiot_ksztalcenia_id = przedmiotKsztalceniaId;
             ZajeciaService.addKurs(vm.kurs).then(
                 function (result) {
-                    console.log(result);
+                    console.log(result)
+                    vm.dispaySuccessAlert()
                 }, function (reason) {
                     console.log(reason);
                 });
+        }
+
+        vm.dispaySuccessAlert = function() {
+            vm.isUpdateAlertVisible = true
+            $timeout(function() {
+                vm.isUpdateAlertVisible = false
+            }, 3000)
         }
 
     }

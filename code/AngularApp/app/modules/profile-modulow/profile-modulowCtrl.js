@@ -13,7 +13,7 @@
         .module('profile-modulow')
         .controller('ProfileModulowCtrl', ProfileModulow);
 
-    ProfileModulow.$inject = ['$scope', 'ProfileModulowService', '$location', '$anchorScroll', 'DTOptionsBuilder'];
+    ProfileModulow.$inject = ['$scope', 'ProfileModulowService', '$location', '$anchorScroll', 'DTOptionsBuilder', '$timeout'];
 
 
     /*
@@ -22,7 +22,7 @@
      * and bindable members up top.
      */
 
-    function ProfileModulow($scope, ProfileModulowService, $location, $anchorScroll, DTOptionsBuilder ) {
+    function ProfileModulow($scope, ProfileModulowService, $location, $anchorScroll, DTOptionsBuilder, $timeout ) {
         /*jshint validthis: true */
         var vm = this;
         // zaznaczony profil do edycji
@@ -105,8 +105,10 @@
             if (vm.selectedProfile != null) {
                 ProfileModulowService.updateProfilModulu(vm.profilToSave).then(function (res) {
                         console.log('Edited profile');
+                        vm.dispaySuccessAlert()
                     },
                     function (err) {
+                        console.log(err)
                         console.log("THERE WAS AN ERROR");
                     });
             }
@@ -114,14 +116,24 @@
                 vm.profilToSave.program_studiow_id = 1;
                 ProfileModulowService.addProfilModulu(vm.profilToSave).then(function (res) {
                         console.log('Saved profile');
+                        console.log(res)
                         vm.profile_modulow.push(res.data);
                         initialProfileData = angular.copy(vm.profile_modulow);
+                        vm.dispaySuccessAlert()
                     },
                     function (err) {
+                        console.log(err)
                         console.log("THERE WAS AN ERROR");
                     });
             }
             console.log(vm.profilToSave);
+        }
+
+        vm.dispaySuccessAlert = function() {
+            vm.isUpdateAlertVisible = true
+            $timeout(function() {
+                vm.isUpdateAlertVisible = false
+            }, 3000)
         }
 
     }

@@ -11,9 +11,17 @@
         <label for="profil-input-save">{{ vm.selectedProfile == null? "profile_modulow_new_profile" : "profile_modulow_edit_profile" | translate }}</label>
         <input type="text" ng-model="vm.profilToSave.nazwa" class="form-control" id="profil-input-save">
     </div>
+
+    <!--Success alert -->
+    <div class="alert alert-success" collapse="!vm.isUpdateAlertVisible">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+        <strong>{{"global_success_alert" | translate}}</strong>
+    </div>
+
     <button ng-click="vm.submit()" type="submit" class="btn btn-success">{{'program_studiow_btn_save' | translate}}
     </button>
     <button ng-click="vm.reset()" class="btn btn-danger">Reset</button>
+
 </form>
 
 <div class="panel">
@@ -41,6 +49,7 @@
                 </table>
             </div>
         </div>
+
     </div>
     <!--Profile end -->
 

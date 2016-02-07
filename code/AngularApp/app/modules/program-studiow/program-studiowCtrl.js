@@ -6,11 +6,9 @@
         .module('program-studiow')
         .controller('ProgramStudiowCtrl', ProgramStudiow);
 
-    ProgramStudiow.$inject = ['ProgramStudiowService', '$scope'];
+    ProgramStudiow.$inject = ['ProgramStudiowService', '$scope', '$timeout'];
 
-    function ProgramStudiow(ProgramStudiowService, $scope) {
-
-        $scope.isSaveAlertCollapsed=true;
+    function ProgramStudiow(ProgramStudiowService, $scope, $timeout) {
 
         /*jshint validthis: true */
         var vm = this;
@@ -45,7 +43,14 @@
             var program = jQuery.extend(true, {}, $scope.ps);
             delete program.zagadnienia_egzaminu_dyplomowego;
             ProgramStudiowService.updateProgramStudiow(program);
-            $scope.isSaveAlertCollapsed=false;
+            this.dispaySuccessAlert()
+        }
+
+        this.dispaySuccessAlert = function() {
+            $scope.isUpdateAlertVisible = true
+            $timeout(function() {
+                $scope.isUpdateAlertVisible = false
+            }, 3000)
         }
     }
 

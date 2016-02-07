@@ -13,7 +13,7 @@
         .module('moduly-ksztalcenia')
         .controller('ModulKsztalceniaCtrl', ModulKsztalcenia);
 
-    ModulKsztalcenia.$inject = ['ModulKsztalceniaService', '$scope', '$location'];
+    ModulKsztalcenia.$inject = ['ModulKsztalceniaService', '$scope', '$location', '$timeout'];
 
     /*
      * recommend
@@ -21,7 +21,7 @@
      * and bindable members up top.
      */
 
-    function ModulKsztalcenia(ModulKsztalceniaService, $scope, $location) {
+    function ModulKsztalcenia(ModulKsztalceniaService, $scope, $location, $timeout) {
         /*jshint validthis: true */
         var vm = this;
 
@@ -119,23 +119,36 @@
         // przypisuje zajecia do modulu
         this.submit = function () {
             if (this.isEditMode()) {
-                console.log('edytuj nowy modul ksztalcenia');
-                ModulKsztalceniaService.updateModulKsztalcenia(vm.modul);
-                vm.assignZajeciaToModule(vm.modul.id);
-                vm.isSaveAlertCollapsed = false;
+                this.editModulKsztalcenia()
             }
             else {
-                ModulKsztalceniaService.addModulKsztalcenia(vm.modul).then(function (res) {
-                        console.log("Add new modul");
-                        console.log(res.data.id);
-                        vm.modul.id = res.data.id;
-                        vm.assignZajeciaToModule(vm.modul.id);
-                        vm.isSaveAlertCollapsed = false;
-                    },
-                    function (err) {
-                        console.log("THERE WAS AN ERROR");
-                    });
+                this.addModulKsztalcenia()
             }
+        }
+
+        this.addModulKsztalcenia = function() {
+            ModulKsztalceniaService.addModulKsztalcenia(vm.modul).then(function (res) {
+                    console.log("Add new modul");
+                    console.log(res.data.id);
+                    vm.modul.id = res.data.id;
+                    vm.assignZajeciaToModule(vm.modul.id);
+                    vm.dispaySuccessAlert()
+                },
+                function (err) {
+                    console.log("THERE WAS AN ERROR");
+                });
+        }
+
+        this.editModulKsztalcenia = function() {
+            console.log('edytuj nowy modul ksztalcenia');
+            ModulKsztalceniaService.updateModulKsztalcenia(vm.modul).then(function (res) {
+                    vm.assignZajeciaToModule(vm.modul.id);
+                    vm.assignZajeciaToModule(vm.modul.id);
+                    vm.dispaySuccessAlert()
+                },
+                function (err) {
+                    console.log("THERE WAS AN ERROR");
+                });
         }
 
         // funkcja obslugujaca przenoszenie modulow do listy przypisanych
@@ -160,6 +173,13 @@
                         listFrom.splice(index, 1);
                     }
                 });
+        }
+
+        vm.dispaySuccessAlert = function() {
+            vm.isUpdateAlertVisible = true
+            $timeout(function() {
+                vm.isUpdateAlertVisible = false
+            }, 3000)
         }
 
     }

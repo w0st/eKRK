@@ -13,7 +13,7 @@
 		.module('zajecia')
 		.controller('GrupaKursowCtrl', GrupaKursow);
 
-		GrupaKursow.$inject = ['PrzedmiotyKsztalceniaService', 'ZajeciaService', '$state', '$stateParams'];
+		GrupaKursow.$inject = ['PrzedmiotyKsztalceniaService', 'ZajeciaService', '$state', '$stateParams', '$timeout'];
 
 		/*
 		* recommend
@@ -21,12 +21,13 @@
 		* and bindable members up top.
 		*/
 
-		function GrupaKursow(PrzedmiotyKsztalceniaService, ZajeciaService, $state, $stateParams) {
+		function GrupaKursow(PrzedmiotyKsztalceniaService, ZajeciaService, $state, $stateParams, $timeout) {
 			/*jshint validthis: true */
 			var vm = this;
             var przedmiotKsztalceniaId = $stateParams['przedmiot-ksztalcenia-id'];
             var grupaKursowId = $stateParams['grupa-kursow-id'];
             var createdKursIndex = -1;
+            vm.przedmiotKsztalceniaId = przedmiotKsztalceniaId
 
             vm.isEditMode = function () {
                 return grupaKursowId != undefined;
@@ -86,7 +87,7 @@
                 console.log(vm.grupaKursow)
                 ZajeciaService.updateGrupaKursow(vm.grupaKursow).then(function(response) {
                     console.log(response)
-                    // vm.grupaKursow = response
+                    vm.dispaySuccessAlert()
                 }, function(reason) {
                     console.log(reason);
                 });
@@ -98,10 +99,17 @@
                 console.log(vm.grupaKursow)
                 ZajeciaService.addGrupaKursow(vm.grupaKursow).then(function(response) {
                     console.log(response)
-                    // vm.grupaKursow = response
+                    vm.dispaySuccessAlert()
                 }, function(reason) {
                     console.log(reason);
                 });
+            }
+
+            vm.dispaySuccessAlert = function() {
+                vm.isUpdateAlertVisible = true
+                $timeout(function() {
+                    vm.isUpdateAlertVisible = false
+                }, 3000)
             }
 
 

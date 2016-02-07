@@ -125,10 +125,12 @@
                 </div>
             </div>
         </div>
-        <div class="alert alert-success" collapse="isSaveAlertCollapsed">
+        <!--Success alert -->
+        <div class="alert alert-success" collapse="!isUpdateAlertVisible">
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-            <strong>Zmiany zostały zapisane!</strong>
+            <strong>{{"global_success_alert" | translate}}</strong>
         </div>
+
         <button ng-click="psCtr.updateProgramStudiow()" type="submit" class="btn btn-success">{{'program_studiow_btn_save' | translate}}</button>
         <button type="reset" class="btn btn-danger">{{'program_studiow_btn_reset' | translate}}</button>
     </div>

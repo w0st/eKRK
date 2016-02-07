@@ -9,6 +9,7 @@
     "global_btn_edit": "Edit",
     "global_btn_delete": "Delete",
     "global_btn_details": "Details",
+    "global_success_alert" : "Changes have been saved!",
     "program_ksztalcenia_faculty": "Faculty",
     "program_ksztalcenia_field_of_study": "Field of study",
     "program_studiow_sem_nr": "Number of semesters",

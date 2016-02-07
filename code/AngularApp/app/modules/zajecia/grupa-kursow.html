@@ -151,13 +151,18 @@
                     </div>
                 </div>
 
+                <!--Success alert -->
+                <div class="alert alert-success" collapse="!vm.isUpdateAlertVisible">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                    <strong>{{"global_success_alert" | translate}}</strong>
+                </div>
 
 
                 <button ng-click="vm.save()" type="submit" class="btn btn-success">{{'program_studiow_btn_save' |
                     translate}}
                 </button>
-                <button type="reset" class="btn btn-danger">{{'program_studiow_btn_reset' | translate}}</button>
-            </div>
+                <a  href="/przedmiot-ksztalcenia-szczegoly/{{vm.przedmiotKsztalceniaId}}" class="btn btn-danger">{{'global_btn_cancel' | translate}}</a>          </div>
+        </div>
         </div>
 
     </div>

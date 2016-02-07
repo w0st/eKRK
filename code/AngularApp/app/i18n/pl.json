@@ -10,6 +10,7 @@
     "global_btn_edit": "Edytuj",
     "global_btn_delete": "Usuń",
     "global_btn_details": "Szczegóły",
+    "global_success_alert" : "Zmiany zostały zapisane!",
     "program_ksztalcenia_faculty": "Wydział",
     "program_ksztalcenia_field_of_study": "Kierunek",
     "program_studiow_sem_nr": "Liczba semestrów",
