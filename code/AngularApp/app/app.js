@@ -56,11 +56,10 @@ angular.module('app', [
         $translateProvider.preferredLanguage('en');
     }])
 
-    .run(['$rootScope', function ($rootScope) {
+    .run(['$rootScope', '$localStorage', '$translate', function ($rootScope, $localStorage, $translate) {
 
         'use strict';
-
         console.log('AngularJS run() function...');
-
+        $translate.use($localStorage.language);
 
     }]);

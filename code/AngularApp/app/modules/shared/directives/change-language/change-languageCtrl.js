@@ -13,7 +13,7 @@ angular
 		.module('app')
 		.controller('ChangeLanguageCtrl', ChangeLanguage );
 
-		ChangeLanguage.$inject = ['$translate'];
+		ChangeLanguage.$inject = ['$translate', '$localStorage'];
 
 		/*
 		* recommend
@@ -21,7 +21,7 @@ angular
 		* and bindable members up top.
 		*/
 
-		function ChangeLanguage($translate) {
+		function ChangeLanguage($translate, $localStorage) {
 			/*jshint validthis: true */
 			var vm = this;
 
@@ -31,6 +31,7 @@ angular
 
             vm.setLanguage = function(language) {
                 $translate.use(language);
+                $localStorage.language = language;
             };
 
 		}
