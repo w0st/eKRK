@@ -135,7 +135,7 @@
                                             <input type="radio" class="width-100" ng-model="vm.grupaKursow.kurs_koncowy.id" ng-value="kurs.id">
                                         </td>
                                         <td>
-                                            <button class="btn btn-primary width-100">Usuń</button>
+                                            <button class="btn btn-primary width-100" ng-click="vm.deleteKurs($index)">Usuń</button>
                                         </td>
                                     </tr>
 
@@ -145,7 +145,7 @@
                             <!-- /.table-responsive -->
                         </div>
 
-                        <button id="grupa-kursow-add-kurs-button"  class="btn btn-primary">Dodaj kolejny kurs</button>
+                        <button id="grupa-kursow-add-kurs-button" ng-click="vm.addKursToGrupaKursow()"  class="btn btn-primary">Dodaj kolejny kurs</button>
 
 
                     </div>

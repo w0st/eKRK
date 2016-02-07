@@ -31,6 +31,9 @@
                     {'get': {method: 'GET'}}
                 ).get({id: id}).$promise;
             },
+            updateGrupaKursow: function (grupaKursow) {
+                return $http.put(CONFIG.API_URL + "/zajecia/grupa_kursow", grupaKursow);
+            },
             deleteZajecie: function (id) {
                 return $resource(CONFIG.API_URL + 'zajecia/:id',
                     {id: '@id'},
