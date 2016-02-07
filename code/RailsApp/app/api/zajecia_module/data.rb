@@ -43,7 +43,7 @@ module ZajeciaModule
       end
       get '/from_module'  do
         Zajecia.joins(przedmiot_ksztalcenia: :program_ksztalcenia)
-            .where(programy_ksztalcenia:  {id: params[:program_ksztalcenia_id]},  :modul_ksztalcenia_id => params[:modul_ksztalcenia_id], :zajecia_id => nil)
+            .where(programy_ksztalcenia:  {id: params[:program_ksztalcenia_id]},  :modul_ksztalcenia_id => params[:modul_ksztalcenia_id], :grupa_kursow_id => nil)
       end
 
 
