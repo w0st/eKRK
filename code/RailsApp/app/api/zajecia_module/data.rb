@@ -104,6 +104,83 @@ module ZajeciaModule
       end
 
 
+      desc 'Aktualizuj grupe-kursow'
+      # Example Request:
+      #   POST /v1/grupa-kursow
+      params do
+        requires :kodZajec,  type: String
+        requires :nazwaZajec,  type: String
+        requires :punktyECTS, type: Integer
+        requires :punktyECTSBK, type: Float
+        requires :punktyECTSP, type: Integer
+        requires :sposobZaliczenia, type: String
+        requires :czyOgolnouczelniany,type: Virtus::Attribute::Boolean
+        requires :rodzaj, type: String
+        requires :typ, type: String
+        requires :kurs_koncowy_id, type: Integer
+        requires :przedmiot_ksztalcenia_id, type: Integer
+        requires :kursy, type: Array do
+          requires :id, type: Integer
+          requires :formaKursu, type: String
+          requires :godzinyZZU, type: Integer
+          requires :godzinyCNPS, type: Integer
+        end
+      end
+      post '/grupa_kursow' do
+        pk =PrzedmiotKsztalcenia.find(params[:przedmiot_ksztalcenia_id])
+        gk = GrupaKursow.new({kodZajec: params[:kodZajec],
+                              nazwaZajec: params[:nazwaZajec],
+                              punktyECTS: params[:punktyECTS],
+                              punktyECTSBK: params[:punktyECTSBK],
+                              punktyECTSP: params[:punktyECTSP],
+                              sposobZaliczenia: params[:sposobZaliczenia],
+                              czyOgolnouczelniany: params[:czyOgolnouczelniany],
+                              rodzaj: params[:rodzaj],
+                              typ: params[:typ]})
+        pk.zajecia << gk
+        kursyToUpdate = params[:kursy].select{|kurs| kurs[:id] >= 0}
+
+        kursyToSave = params[:kursy].select{|kurs| kurs[:id] < 0}
+
+        gk.kursy.clear
+
+        kursKoncowy = nil
+
+        #aktualizuj istniejace
+        kursyToUpdate.each do |z|
+          kursToUpdate = Kurs.find(z.id)
+          kursToUpdate.assign_attributes(z)
+          gk.kursy << kursToUpdate
+          if z.id == params[:kurs_koncowy_id]
+            gk.kurs_koncowy = kursToUpdate
+          end
+        end
+
+        # dodaj nowe kursy
+        kursyToSave.each do |z|
+          if z.id == params[:kurs_koncowy_id]
+            z.id = nil
+            newKurs = Kurs.new(z)
+            newKurs.save
+            gk.kurs_koncowy = newKurs
+            gk.kursy << newKurs
+          else
+            z.id = nil
+            newKurs = Kurs.new(z)
+            newKurs.save
+            gk.kursy << newKurs
+          end
+        end
+
+        if gk.save
+          #Usuwa wszystkie usuniete z grupy kursow
+          Kurs.where(kodZajec: nil, grupa_kursow_id: nil).destroy_all
+          gk
+        else
+          gk.errors
+        end
+      end
+
 
       desc 'Aktualizuj grupe-kursow'
       # Example Request:
@@ -125,7 +202,6 @@ module ZajeciaModule
           requires :formaKursu, type: String
           requires :godzinyZZU, type: Integer
           requires :godzinyCNPS, type: Integer
-          requires :grupa_kursow_id, type: Integer
         end
       end
       put '/grupa_kursow' do
@@ -188,7 +264,6 @@ module ZajeciaModule
       delete ':id' do
         Zajecia.destroy(params[:id])
       end
-
 
     end
   end
