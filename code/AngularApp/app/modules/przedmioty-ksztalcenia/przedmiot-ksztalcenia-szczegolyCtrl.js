@@ -13,7 +13,7 @@
 		.module('przedmioty-ksztalcenia')
 		.controller('PrzedmiotKsztalceniaSzczegolyCtrl', PrzedmiotKsztalceniaSzczegoly);
 
-        PrzedmiotKsztalceniaSzczegoly.$inject = ['PrzedmiotyKsztalceniaService', 'ZajeciaService', '$stateParams'];
+        PrzedmiotKsztalceniaSzczegoly.$inject = ['PrzedmiotyKsztalceniaService', 'ZajeciaService', '$stateParams', '$state'];
 
 		/*
 		* recommend
@@ -21,72 +21,90 @@
 		* and bindable members up top.
 		*/
 
-		function PrzedmiotKsztalceniaSzczegoly(PrzedmiotyKsztalceniaService, ZajeciaService, $stateParams) {
+		function PrzedmiotKsztalceniaSzczegoly(PrzedmiotyKsztalceniaService, ZajeciaService, $stateParams, $state) {
 			/*jshint validthis: true */
             this.przedmiot = {nazwaPrzedmiotu: undefined, opiekunPrzedmiotu: undefined };
             var vm = this;
             var id = $stateParams.id;
+            vm.id = id;
 
-            if (id.match(/^\d+$/)) {
-                PrzedmiotyKsztalceniaService.get({id: id}).$promise.then(function(response) {
-                    vm.przedmiot = {
-                        nazwaPrzedmiotu: response.nazwaPrzedmiotu,
-                        opiekunPrzedmiotu: response.opiekunPrzedmiotu.email
-                    };
-                }, function(reason) {
-                    console.log("fail get(1)");
-                });
+            vm.load = function() {
+                if (id.match(/^\d+$/)) {
+                    PrzedmiotyKsztalceniaService.get({id: id}).$promise.then(function(response) {
+                        vm.przedmiot = {
+                            id: response.id,
+                            nazwaPrzedmiotu: response.nazwaPrzedmiotu,
+                            opiekunPrzedmiotu: response.opiekunPrzedmiotu.email
+                        };
+                    }, function(reason) {
+                        console.log("fail get(1)");
+                    });
 
-                // fake data, tylko dla sprawdzenia idei widoku
-                vm.kursy = [
-                    {
-                        kod: 'KOD',
-                        godzinyZZU: 'Cos',
-                        godzinyCNPS: 'COS',
-                        forma: 'Wyklad'
-                    },
-                    {
-                        kod: 'KOD2',
-                        godzinyZZU: 'Cos111',
-                        godzinyCNPS: 'COS222',
-                        forma: 'Laborka'
-                    }
-                ];
-                vm.properties = [
-                    'kodZajec',
-                    'godzinyZZU',
-                    'godzinyCNPS',
-                    'sposobZaliczenia',
-                    'punktyECTS',
-                    'punktyECTSP',
-                    'punktyECTSBK',
-                    'czyOgolnouczelniany',
-                    'rodzaj',
-                    'typ'
-                ];
+                    vm.properties = [
+                        'kodZajec',
+                        'godzinyZZU',
+                        'godzinyCNPS',
+                        'sposobZaliczenia',
+                        'punktyECTS',
+                        'punktyECTSP',
+                        'punktyECTSBK',
+                        'czyOgolnouczelniany',
+                        'rodzaj',
+                        'typ'
+                    ];
 
-                ZajeciaService.getKursy(id).then(function(response) {
-                    console.log("kursy = ", response);
-                    vm.kursy = response;
-                }, function(reason) {
-                    console.log("Blad = ", reason);
-                });
+                    ZajeciaService.getKursy(id).then(function(response) {
+                        console.log("kursy = ", response);
+                        vm.kursy = response;
+                    }, function(reason) {
+                        console.log("Blad = ", reason);
+                    });
 
-                ZajeciaService.getGrupaKursow(id).then(function(response) {
-                    console.log("grupa kursow = ", response);
-                }, function(reason) {
-                   conole.log("blad = ", reason);
-                });
-            }
+                    ZajeciaService.getGrupaKursow(id).then(function(response) {
+                        console.log("grupa kursow = ", response);
+                        vm.grupaKursow = response;
+                    }, function(reason) {
+                        console.log("blad = ", reason);
+                        vm.grupaKursow = undefined;
+                    });
+                }
+            };
 
-            vm.deleteZajecie = function(id) {
+
+            vm.selectKurs = function(kurs) {
+                vm.selectedKurs = kurs;
+            };
+
+            vm.deleteKurs = function(id) {
+                // TODO Modal
                 console.log('usun zajecie = ', id);
                 ZajeciaService.deleteZajecie(id).then(function(response) {
                     console.log('Usunieto zajecia');
+                    vm.load();
                 }, function (reason) {
                     console.log('Blad = ', reason);
                 });
-            }
-		}
+            };
+
+            vm.deleteGrupa = function(id) {
+                vm.deleteKurs(id);
+            };
+
+            this.selectPrzedmiot = function(przedmiot) {
+                vm.selectedPrzedmiot = przedmiot;
+            };
+
+            this.deletePrzedmiot = function(id) {
+                PrzedmiotyKsztalceniaService.delete({id: id}).$promise.then(function (response) {
+                    console.log('usunieto');
+                    $state.go('przedmioty-ksztalcenia');
+                }, function (reason) {
+                    console.log('problem = ', reason);
+                });
+            };
+
+            vm.load();
+
+        }
 
 })();
