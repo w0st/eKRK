@@ -9,11 +9,16 @@ module PrzedmiotyKsztalcenia
       expose :email
     end
 
+    class Zajecia < Grape::Entity
+      expose :kodZajec
+    end
+
     class PrzedmiotKsztalcenia < Grape::Entity
       expose :id
       expose :nazwaPrzedmiotu
       expose :program_ksztalcenia_id
       expose :pracownik_naukowy_id
+      expose :zajecia, using: PrzedmiotyKsztalcenia::Entities::Zajecia
       expose :opiekunPrzedmiotu, using: PrzedmiotyKsztalcenia::Entities::PracownikNaukowy
     end
 

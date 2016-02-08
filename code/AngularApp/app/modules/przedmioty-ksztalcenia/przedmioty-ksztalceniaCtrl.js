@@ -28,8 +28,18 @@
             this.load = function() {
                 PrzedmiotyKsztalceniaService.getAll().$promise.then(function (response) {
                     vm.przedmiotyKsztalcenia = response;
+                    angular.forEach(vm.przedmiotyKsztalcenia, function(przedmiot) {
+                        var kodyZajec = _.map(
+                            _.filter(przedmiot.zajecia, function(z) {return z.kodZajec != null}),
+                            function(zajecie) {
+                                return zajecie.kodZajec;
+                            }
+                        );
+                        przedmiot.kodyZajec = kodyZajec.join(', ');
+                    });
                 }, function (reason) {
                     console.log("problem = ", reason);
+                    vm.error = 'global_problem_server';
                 });
             };
 

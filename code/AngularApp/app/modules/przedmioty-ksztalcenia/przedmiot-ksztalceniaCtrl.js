@@ -36,6 +36,7 @@
                     };
                 }, function(reason) {
                     console.log("fail get(1)");
+                    vm.error = 'global_problem_server';
                 });
             }
 
@@ -43,6 +44,7 @@
                 vm.pracownicyNaukowi = response;
             }, function(reason) {
                 console.log("Wystapil blad z pobraniem danych");
+                vm.error = 'global_problem_server';
             });
 
             this.save = function() {
@@ -67,10 +69,11 @@
                     pracownik_naukowy_id: parseInt(this.przedmiot.pracownik_naukowy_id)
                 }).$promise.then(function(response) {
                     console.log("SUKCES");
+                    $state.go('przedmioty-ksztalcenia');
                 }, function(reason) {
-                    console.log("PORAŻKA");
+                    console.log("PORAŻKA = ", reason);
+                    vm.errorUnique = reason.data.error;
                 });
-                $state.go('przedmioty-ksztalcenia');
             };
 
             this.add = function() {
@@ -82,10 +85,12 @@
                  pracownik_naukowy_id: this.przedmiot.pracownik_naukowy_id
                  }).$promise.then(function(response) {
                     console.log("SUKCES");
+                    $state.go('przedmioty-ksztalcenia');
                  }, function(reason) {
-                    console.log("PORAŻKA");
+                    console.log("PORAŻKA = ", reason);
+                    vm.errorUnique = reason.data.error;
                  });
-                $state.go('przedmioty-ksztalcenia');
+
             };
 		}
 
