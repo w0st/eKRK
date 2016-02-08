@@ -73,14 +73,28 @@
             }
 
             vm.save = function() {
-                console.log(vm.grupaKursow)
-                if(vm.isEditMode()) {
-                   vm.updateGrupaKursow();
+                console.log('grupa kursow = ', vm.grupaKursow)
+                if (vm.checkGrupaKursow(vm.grupaKursow)) {
+                    if(vm.isEditMode()) {
+                        vm.updateGrupaKursow();
+                    }
+                    else {
+                        vm.addGrupaKursow()
+                    }
                 }
-                else {
-                    vm.addGrupaKursow()
-                }
+
             }
+
+            vm.checkGrupaKursow = function(grupaKursow) {
+                console.log('Grupa kursow = ', grupaKursow);
+                vm.validations = {
+                    'grupa_kursow_no_final_course': _.some(grupaKursow.kursy, function(kurs) {
+                        return _.isUndefined(grupaKursow.kursKoncowy) || kurs.id !== grupaKursow.kurs_koncowy.id
+                    }),
+                    'grupa_kursow_no_courses': grupaKursow.kursy !== null && grupaKursow.kursy.length > 0
+                };
+                return _.some(vm.validations, false);
+            };
 
             vm.updateGrupaKursow = function() {
                 vm.grupaKursow.kurs_koncowy_id = vm.grupaKursow.kurs_koncowy.id

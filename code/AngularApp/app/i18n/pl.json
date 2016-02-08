@@ -122,6 +122,8 @@
     "typy_kursow_obowiazkowy": "Obowiązkowy",
     "zajecia_kurs_edit_kurs": "Edytuj Kurs",
     "zajecia_kurs_add_kurs": "Dodaj nowy kurs",
+    "grupa_kursow_no_final_course": "Nie wybrano kursu końcowego",
+    "grupa_kursow_no_courses": "Grupa kursów nie zawiera żadnego kursu",
     "grupa_kursow_delete_confirm_header": "Potwierdź usunięcie grupy kursów",
     "grupa_kursow_delete_confirm_summary": "Czy na pewno chcesz usunąć grupę kursów"
 }

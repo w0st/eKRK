@@ -121,6 +121,8 @@
     "typy_kursow_obowiazkowy": "Obligatory",
     "zajecia_kurs_edit_kurs": "Edit course",
     "zajecia_kurs_add_kurs": "Add new course",
+    "grupa_kursow_no_final_course": "Not select final course",
+    "grupa_kursow_no_courses": "The groupe of courses doesn't have any course",
     "grupa_kursow_delete_confirm_header": "Confirm the deletion of the groupe of courses",
     "grupa_kursow_delete_confirm_summary": "Are you sure you want to delete the groupe"
 }
