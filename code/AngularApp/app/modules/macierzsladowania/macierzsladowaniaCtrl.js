@@ -32,7 +32,6 @@
 			$scope.obszaroweEfekty= {};
 			$scope.ms= {};
 
-
             MacierzSladowaniaService.getKierunkoweEfektyKsztalcenia().then(function(response) {
                  $scope.kierunkoweEfekty = response;
                  $scope.listKierunkoweEfekty = response;
@@ -49,7 +48,8 @@
                             $scope.obszaroweEfekty=response;
                             angular.forEach($scope.obszaroweEfekty, function(efektObszarowy){
                                 angular.forEach(efektObszarowy.kierunkowe_efekty_ksztalcenia, function(efektKsztalcenia){
-                                    var i = parseInt(efektKsztalcenia.id,10)-1;
+                                   // var i = parseInt(efektKsztalcenia.id,10)-1;
+                                    efektKsztalcenia.drag = true;
                                     //console.log($scope.kierunkoweEfekty[i]);
                                     //efektKsztalcenia["kod"] = $scope.kierunkoweEfekty[i];
                                    // efektKsztalcenia["allInf"] = $scope.kierunkoweEfekty[i];

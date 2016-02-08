@@ -11,6 +11,7 @@
     })
 </script>
 
+
 <table class="table" ng-model="efektyKierunkoweTable">
     <thead>
     <tr>
@@ -20,10 +21,10 @@
     </tr>
     </thead>
     <tbody>
-    <tr ng-repeat="item in listKierunkoweEfekty">
+    <tr ng-repeat="item in listKierunkoweEfekty track by item.kod">
         <td >{{$index+1}}</td>
         <td data-drop="false" ng-model='listKierunkoweEfekty'
-            data-jqyoui-options="{helper: 'clone', accept:'.btn-draggable:not([ng-model=list5])'}" jqyoui-droppable="{index: {{$index}}}">
+            data-jqyoui-options="{helper: 'clone'}" jqyoui-droppable="{index: {{$index}}}">
             <div class="btn btn-info btn-draggable" data-drag="{{item.drag}}" data-jqyoui-options="{revert: 'invalid'}" ng-model="listKierunkoweEfekty"
                  jqyoui-draggable="{index: {{$index}},placeholder: 'keep', animate:true}" ng-hide="!item.kod">{{item.kod}}</div>
         </td>
@@ -46,9 +47,9 @@
     <tr ng-repeat="item in obszaroweEfekty">
         <td >{{$index+1}}</td>
         <td class="text-info" data-toggle="tooltip" data-placement="right" title={{item.opis}}>{{item.kod}}</td>
-        <td class="thumbnail" data-drop="true" ng-model='item.kierunkowe_efekty_ksztalcenia' data-jqyoui-options="{helper: 'clone'}" jqyoui-droppable="{multiple:true, placeholder: 'keep'}">
+        <td class="thumbnail" data-drop="true" ng-model='item.kierunkowe_efekty_ksztalcenia'  jqyoui-droppable="{multiple:true, placeholder: 'keep'}" data-jqyoui-options="opcje1">
             <div class="caption">
-                <div class="btn btn-info btn-draggable" ng-repeat="efekt in item.kierunkowe_efekty_ksztalcenia" ng-show="efekt.kod" data-drag="{{efekt.drag}}" data-jqyoui-options="{revert: 'invalid'}"
+                <div class="btn btn-info btn-draggable" ng-repeat="efekt in item.kierunkowe_efekty_ksztalcenia track by efekt.kod" ng-show="efekt.kod" data-drag="{{efekt.drag}}" data-jqyoui-options="{revert: 'invalid'}"
                      ng-model="item.kierunkowe_efekty_ksztalcenia" jqyoui-draggable="{index: {{$index}},animate:true}">{{efekt.kod}}
                     <button type="button" class="close" data-target="#deleteEfektModal" data-toggle="modal">&nbsp&nbsp×</button>
                 </div>
