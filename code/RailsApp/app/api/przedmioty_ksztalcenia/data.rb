@@ -34,11 +34,15 @@ module PrzedmiotyKsztalcenia
         requires :pracownik_naukowy_id, type: Integer
       end
       post do
-        przedmiotKsztalcenia = PrzedmiotKsztalcenia.new(params)
-        if przedmiotKsztalcenia.save
-          przedmiotKsztalcenia
-        else
-          przedmiotKsztalcenia.errors
+        begin
+          przedmiotKsztalcenia = PrzedmiotKsztalcenia.new(params)
+          if przedmiotKsztalcenia.save
+            przedmiotKsztalcenia
+          else
+            przedmiotKsztalcenia.errors
+          end
+        rescue ActiveRecord::RecordNotUnique
+          error! 'przedmiot_ksztalcenia_please_insert_unique_name', 409
         end
       end
 

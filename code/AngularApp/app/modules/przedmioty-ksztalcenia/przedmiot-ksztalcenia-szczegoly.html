@@ -4,6 +4,9 @@
     </div>
 </div>
 <div class="row">
+    <div class="alert alert-danger" ng-show="vm.error">
+        {{vm.error | translate}}
+    </div>
     <div class="col-lg-8" ng-show="!vm.error">
         <div class="panel panel-default">
             <div class="panel-heading">
@@ -22,6 +25,10 @@
                         <td>{{'przedmioty_ksztalcenia_attendant' | translate}}</td>
                         <td>{{vm.przedmiot.opiekunPrzedmiotu}}</td>
                     </tr>
+                    <tr>
+                        <td>{{'przedmioty_ksztalcenia_course_code' | translate}}</td>
+                        <td>{{vm.przedmiot.kodyZajec}}</td>
+                    </tr>
                     </tbody>
                 </table>
             </div>
@@ -35,9 +42,11 @@
                 {{'przedmiot_ksztalcenia_actions' | translate}}
             </div>
             <!-- /.panel-heading -->
-            <a class="btn btn-default" ui-sref="przedmiot-ksztalcenia({id: vm.id})">{{'global_btn_edit' | translate}}</a><br/>
-            <button class="btn btn-default" data-target="#deletePrzedmiotModal" data-toggle="modal" ng-click="vm.selectPrzedmiot(vm.przedmiot)">{{'global_btn_delete' | translate}}</button>
-
+            <div class="table-responsive">
+                <a class="btn btn-default btn-action" ui-sref="przedmiot-ksztalcenia({id: vm.id})">{{'global_btn_edit' | translate}}</a><br/>
+                <button class="btn btn-default btn-action" data-target="#deletePrzedmiotModal" data-toggle="modal" ng-click="vm.selectPrzedmiot(vm.przedmiot)">{{'global_btn_delete' | translate}}</button>
+            </div>
+            <!-- /.table-responsive -->
         </div>
         <!-- /.panel -->
     </div>
@@ -130,7 +139,7 @@
 </div>
 
 <div class="row">
-    <div col="col-lg-6">
+    <div col="col-lg-6" ng-show="!vm.error">
         <p class="panel-heading">
             <a class="btn btn-default" ng-if="!vm.grupaKursow" ui-sref="grupakursow({'przedmiot-ksztalcenia-id': vm.id})">{{'przedmiot_ksztalcenia_btn_create_grupa_kursow' | translate}}</a>
             <a class="btn btn-default" ng-if="vm.grupaKursow" ui-sref="grupakursow({'przedmiot-ksztalcenia-id': vm.id, 'grupa-kursow-id': vm.grupaKursow.id})">{{'przedmiot_ksztalcenia_btn_edit_grupa_kursow' | translate}}</a>
@@ -140,7 +149,7 @@
 </div>
 
 <div class="row">
-        <div class="col-lg-6" >
+        <div class="col-lg-6" ng-show="!vm.error">
             <div class="panel panel-default" ng-if="vm.grupaKursow">
                 <div class="panel-heading">
                     {{'przedmiot_ksztalcenia_grupa_kursow_title' | translate}}
@@ -198,7 +207,7 @@
             <!-- /.panel -->
         </div>
 
-        <div class="col-lg-6">
+        <div class="col-lg-6" ng-show="!vm.error">
             <div class="panel panel-default" ng-if="vm.grupaKursow">
                 <div class="panel-heading">
                     {{'przedmiot_ksztalcenia_grupa_kursow_kursy_title' | translate}}

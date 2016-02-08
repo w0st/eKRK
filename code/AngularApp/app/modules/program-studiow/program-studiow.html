@@ -1,11 +1,11 @@
 <div class="row">
     <div class="col-lg-12">
-        <h1 class="page-header">Program studiów</h1>
+        <h1 class="page-header">{{'program_studiow_header' | translate}}</h1>
     </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading">
-        Program studiów {{vm.ps.id}}
+        {{'program_studiow_header' | translate}} {{vm.ps.id}}
     </div>
     <div class="panel-body" ng-controller="ProgramStudiowCtrl as psCtr">
         <div class="row">
@@ -132,7 +132,7 @@
         </div>
 
         <button ng-click="psCtr.updateProgramStudiow()" type="submit" class="btn btn-success">{{'program_studiow_btn_save' | translate}}</button>
-        <button type="reset" class="btn btn-danger">{{'program_studiow_btn_reset' | translate}}</button>
+        <!--<button type="reset" class="btn btn-danger">{{'program_studiow_btn_reset' | translate}}</button>-->
     </div>
 </div>
 
