@@ -9,6 +9,8 @@ class Zajecia < ActiveRecord::Base
   belongs_to :grupa_kursow, :class_name => 'GrupaKursow', :foreign_key => 'grupa_kursow_id'
   has_one :kurs_koncowy, :class_name => "Kurs", :foreign_key => "kurs_koncowy_id"
 
+  validates :kodZajec, uniqueness: true
+
 
   enum sposobZaliczenia: {
       Zaliczenie: 0,

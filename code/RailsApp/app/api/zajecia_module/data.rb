@@ -71,7 +71,7 @@ module ZajeciaModule
         if kurs.save
           kurs
         else
-          kurs.errors
+          error!(kurs.errors, 409)
         end
       end
 
@@ -99,7 +99,7 @@ module ZajeciaModule
         if kurs.save
           kurs
         else
-          kurs.errors
+          error!(kurs.errors, 409)
         end
       end
 
@@ -139,9 +139,11 @@ module ZajeciaModule
                               typ: params[:typ]})
         pk.zajecia << gk
         kursyToUpdate = params[:kursy].select{|kurs| kurs[:id] >= 0}
-
+        puts('ToUpdate')
+        puts(kursyToUpdate)
         kursyToSave = params[:kursy].select{|kurs| kurs[:id] < 0}
-
+        puts('ToSave')
+        puts(kursyToSave)
         gk.kursy.clear
 
         kursKoncowy = nil
@@ -218,18 +220,19 @@ module ZajeciaModule
         puts(params[:kursy])
         puts(params[:kurs_koncowy_id])
         kursyToUpdate = params[:kursy].select{|kurs| kurs[:id] >= 0}
-
+        puts('ToUpdate')
+        puts(kursyToUpdate)
         kursyToSave = params[:kursy].select{|kurs| kurs[:id] < 0}
+        puts('ToSave')
+        puts(kursyToSave)
 
-        gk.kursy.clear
 
-        kursKoncowy = nil
-
+        newKursArray = []
         #aktualizuj istniejace
         kursyToUpdate.each do |z|
           kursToUpdate = Kurs.find(z.id)
           kursToUpdate.assign_attributes(z)
-          gk.kursy << kursToUpdate
+          newKursArray << kursToUpdate
           if z.id == params[:kurs_koncowy_id]
             gk.kurs_koncowy = kursToUpdate
           end
@@ -242,14 +245,18 @@ module ZajeciaModule
             newKurs = Kurs.new(z)
             newKurs.save
             gk.kurs_koncowy = newKurs
-            gk.kursy << newKurs
+            newKursArray << newKurs
           else
             z.id = nil
             newKurs = Kurs.new(z)
             newKurs.save
-            gk.kursy << newKurs
+            newKursArray << newKurs
           end
         end
+
+        gk.kursy = newKursArray
+        puts('new Kursy')
+        puts(newKursArray)
 
         if gk.save
           #Usuwa wszystkie usuniete z grupy kursow
