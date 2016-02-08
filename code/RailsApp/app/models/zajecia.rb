@@ -5,7 +5,7 @@ class Zajecia < ActiveRecord::Base
   belongs_to :semestr
   belongs_to :przedmiot_ksztalcenia
 
-  has_many :kursy, :class_name => 'Kurs', :foreign_key => 'grupa_kursow_id'
+  has_many :kursy, :class_name => 'Kurs', :foreign_key => 'grupa_kursow_id', :dependent => :delete_all
   belongs_to :grupa_kursow, :class_name => 'GrupaKursow', :foreign_key => 'grupa_kursow_id'
   has_one :kurs_koncowy, :class_name => "Kurs", :foreign_key => "kurs_koncowy_id"
 
