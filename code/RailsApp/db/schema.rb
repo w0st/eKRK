@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160208164241) do
+ActiveRecord::Schema.define(version: 20160208171935) do
 
   create_table "emp_data", force: :cascade do |t|
     t.string   "name"
@@ -223,6 +223,7 @@ ActiveRecord::Schema.define(version: 20160208164241) do
     t.datetime "updated_at",             null: false
   end
 
+  add_index "przedmioty_ksztalcenia", ["nazwaPrzedmiotu"], name: "index_przedmioty_ksztalcenia_on_nazwaPrzedmiotu", unique: true
   add_index "przedmioty_ksztalcenia", ["pracownik_naukowy_id"], name: "index_przedmioty_ksztalcenia_on_pracownik_naukowy_id"
   add_index "przedmioty_ksztalcenia", ["program_ksztalcenia_id"], name: "index_przedmioty_ksztalcenia_on_program_ksztalcenia_id"
 
