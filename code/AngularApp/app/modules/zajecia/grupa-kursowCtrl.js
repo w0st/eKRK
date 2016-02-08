@@ -91,7 +91,32 @@
                     'grupa_kursow_no_final_course': _.some(grupaKursow.kursy, function(kurs) {
                         return _.isUndefined(grupaKursow.kursKoncowy) || kurs.id !== grupaKursow.kurs_koncowy.id
                     }),
-                    'grupa_kursow_no_courses': grupaKursow.kursy !== null && grupaKursow.kursy.length > 0
+                    'grupa_kursow_no_courses': grupaKursow.kursy !== null && grupaKursow.kursy.length > 0,
+                    'validate_kodZajec_require':    vm.grupaKursow.kodZajec != undefined && vm.grupaKursow.kodZajec.length > 0,
+                    'validate_nazwaZajec_require':   vm.grupaKursow.nazwaZajec != undefined && vm.grupaKursow.nazwaZajec.length > 0,
+                    'validate_punktyECTS_require':    vm.grupaKursow.punktyECTS === 0 || vm.grupaKursow.punktyECTS != undefined,
+                    'validate_punktyECTSBK_require':    vm.grupaKursow.punktyECTSBK === 0 || vm.grupaKursow.punktyECTSBK != undefined,
+                    'validate_punktyECTSP_require':     vm.grupaKursow.punktyECTSP === 0 || vm.grupaKursow.punktyECTSP != undefined,
+                    'validate_sposobZaliczenia_require':   vm.grupaKursow.sposobZaliczenia != undefined,
+                    'validate_rodzaj_require':   vm.grupaKursow.rodzaj != undefined,
+                    'validate_typ_require':   vm.grupaKursow.typ != undefined,
+                    'validate_punktyECTS_Z_6':    vm.grupaKursow.punktyECTS > 0,
+                    'validate_punktyECTSBK_Z_7':    vm.grupaKursow.punktyECTSBK > 0,
+                    'validate_punktyECTSBK_Z_8':    vm.grupaKursow.punktyECTS >= vm.grupaKursow.punktyECTSBK,
+                    'validate_punktyECTSP_Z_11':    vm.grupaKursow.punktyECTSP > 0,
+                    'validate_punktyECTSP_Z_12':    vm.grupaKursow.punktyECTS >= vm.grupaKursow.punktyECTSP,
+                    'validate_forma_kursu_require': _.every(grupaKursow.kursy, function(kurs) {
+                        return   kurs.formaKursu != undefined
+                    }),
+                    'validate_godzinyZZU_Z_3': _.every(grupaKursow.kursy, function(kurs) {
+                        return   kurs.godzinyZZU > 0
+                    }),
+                    'validate_godzinyCNPS_Z_4': _.every(grupaKursow.kursy, function(kurs) {
+                    return   kurs.godzinyCNPS > 0
+                    }),
+                    'validate_godzinyCNPS_Z_5': _.every(grupaKursow.kursy, function(kurs) {
+                        return   kurs.godzinyCNPS >= kurs.godzinyZZU
+                    }),
                 };
                 return _.some(vm.validations, false);
             };
