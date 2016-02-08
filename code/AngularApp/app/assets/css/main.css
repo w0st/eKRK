@@ -126,3 +126,6 @@ background-color: #eee;
 #grupa-kursow-kursy-panel table tr th {
     width: 20%;
 }
+.btn-action {
+    margin: 10px;
+}

@@ -34,10 +34,16 @@
                         vm.przedmiot = {
                             id: response.id,
                             nazwaPrzedmiotu: response.nazwaPrzedmiotu,
-                            opiekunPrzedmiotu: response.opiekunPrzedmiotu.email
+                            opiekunPrzedmiotu: response.opiekunPrzedmiotu.email,
+                            kodyZajec: _.map(
+                                _.filter(response.zajecia, function(z) {return z.kodZajec != null}),
+                                function(zajecie) {
+                                    return zajecie.kodZajec
+                                }).join(', ')
                         };
                     }, function(reason) {
                         console.log("fail get(1)");
+                        vm.error = 'global_problem_server';
                     });
 
                     ZajeciaService.getKursy(id).then(function(response) {
@@ -45,6 +51,7 @@
                         vm.kursy = response;
                     }, function(reason) {
                         console.log("Blad = ", reason);
+                        vm.error = 'global_problem_server';
                     });
 
                     ZajeciaService.getGrupaKursow(id).then(function(response) {
@@ -52,6 +59,7 @@
                         vm.grupaKursow = response;
                     }, function(reason) {
                         console.log("blad = ", reason);
+                        vm.error = 'global_problem_server';
                         vm.grupaKursow = undefined;
                     });
                 }
