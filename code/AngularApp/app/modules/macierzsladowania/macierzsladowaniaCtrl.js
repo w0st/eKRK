@@ -68,7 +68,7 @@
                         console.log('obszarowy efekt =', obszarowyEfekt);
                         console.log('kierunkowy efekt =', dragEl);
                         return !_.some(obszarowyEfekt.kierunkowe_efekty_ksztalcenia,  function(kek) {
-                            return dragEl[0].innerHTML.contains(kek.kod);
+                            return dragEl[0].innerHTML.indexOf(kek.kod) > 0;
                         });
                     }
                 };
