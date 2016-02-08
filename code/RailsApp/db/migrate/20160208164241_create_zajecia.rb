@@ -21,6 +21,7 @@ class CreateZajecia < ActiveRecord::Migration
       t.string :type
 
       t.timestamps null: false
+      t.index [:kodZajec], unique: true,  name: 'kod_unique'
     end
   end
 end

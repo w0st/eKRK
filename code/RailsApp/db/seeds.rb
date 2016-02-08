@@ -97,7 +97,7 @@ gk1 = GrupaKursow.create(kodZajec: 'IZN001516WL',nazwaZajec: 'Podstawy elektroni
 kurs1 = Kurs.create(formaKursu: 'Wyklad', godzinyZZU: 30, godzinyCNPS: 60, semestr: semestr2, przedmiot_ksztalcenia: przedmiotKsztalcenia1)
 kurs2 = Kurs.create(formaKursu: 'Laboratorium', godzinyZZU: 30, godzinyCNPS: 60, semestr: semestr2, przedmiot_ksztalcenia: przedmiotKsztalcenia1)
 
-kurs3 = Kurs.create(kodZajec: 'IZN001518',nazwaZajec: 'Test',
+kurs3 = Kurs.create(kodZajec: 'IZN001519',nazwaZajec: 'Test',
                     punktyECTS: 4,punktyECTSBK: 3,punktyECTSP: 2,sposobZaliczenia: 'Zaliczenie',
                     czyOgolnouczelniany: FALSE, rodzaj: 'Podstawowy',
                     typ: 'Obowiazkowy',formaKursu: 'Laboratorium', godzinyZZU: 30, godzinyCNPS: 60, semestr: semestr2, przedmiot_ksztalcenia: przedmiotKsztalcenia1, modul_ksztalcenia: modul_ksztalcenia1)
