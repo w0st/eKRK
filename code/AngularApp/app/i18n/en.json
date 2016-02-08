@@ -62,6 +62,8 @@
     "przedmiot_ksztalcenia_label_nazwaZajec": "Name",
     "kurs_delete_confirm_header": "Confirm the deletion of course",
     "kurs_delete_confirm_summary": "Are you sure you want to delete the course",
+    "macierz_sladowania_btn_save": "Save changes",
+    "macierz_sladowania_btn_cancel": "Cancel",
     "moduly_ksztalcenia_header" : "Education modules",
     "moduly_ksztalcenia_filter_all" : "All",
     "moduly_ksztalcenia_filter_mandatory" : "Mandatory",
