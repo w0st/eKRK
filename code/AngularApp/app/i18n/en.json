@@ -11,6 +11,7 @@
     "global_btn_edit": "Edit",
     "global_btn_delete": "Delete",
     "global_btn_details": "Details",
+    "global_btn_print": "Print",
     "global_success_alert" : "Changes have been saved!",
     "global_field_is_mandatory" : "Field is mandatory",
     "global_problem_server": "Communication problem with the server",

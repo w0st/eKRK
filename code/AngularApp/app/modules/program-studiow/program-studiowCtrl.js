@@ -13,8 +13,22 @@
         /*jshint validthis: true */
         var vm = this;
         $scope.ps= {};
+        vm.dostepneTytuly = [
+            {
+                key: 'program_studiow_bachelor',
+                value: 'Licencjat'
+            },
+            {
+                key: 'program_studiow_engineer',
+                value: 'Inzynier'
+            }, {
+                key: 'program_studiow_master',
+                value: 'Magister'
+            }
+        ];
         ProgramStudiowService.getProgramStudiow(1).then(function(result) {
             vm.ps = result;
+            console.log('vm.ps = ', vm.ps);
             $scope.ps= result;
         }, function(reason) {
             vm.error = reason;

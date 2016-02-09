@@ -13,7 +13,7 @@
         .module('program-ksztalcenia')
         .controller('ProgramKsztalceniaCtrl', ProgramKsztalcenia);
 
-    ProgramKsztalcenia.$inject = ['ProgramKsztalceniaService'];
+    ProgramKsztalcenia.$inject = ['ProgramKsztalceniaService', 'CONFIG'];
 
     /*
      * recommend
@@ -21,11 +21,12 @@
      * and bindable members up top.
      */
 
-    function ProgramKsztalcenia(ProgramKsztalceniaService) {
+    function ProgramKsztalcenia(ProgramKsztalceniaService, CONFIG) {
         /*jshint validthis: true */
         var vm = this;
         ProgramKsztalceniaService.get(1).then(function(result) {
             vm.content = result;
+            vm.pdfLink = CONFIG.RAILS_URL.concat('/programy_studiow/1.pdf');
         }, function(reason) {
             vm.error = reason;
         });

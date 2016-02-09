@@ -12,6 +12,7 @@
     "global_btn_edit": "Edytuj",
     "global_btn_delete": "Usuń",
     "global_btn_details": "Szczegóły",
+    "global_btn_print": "Drukuj",
     "global_success_alert" : "Zmiany zostały zapisane!",
     "global_field_is_mandatory" : "Pole jest wymagane",
     "global_problem_server": "Problem komunikacji z serwerem.",

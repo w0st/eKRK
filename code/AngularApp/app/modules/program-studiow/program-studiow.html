@@ -21,11 +21,16 @@
                     </div>
                     <div class="form-group">
                         <label>{{"program_studiow_obtained_title" | translate}}</label>
-                        <select class="form-control" ng-model="ps.uzyskiwanyTytul">
+                        <select
+                            ng-model="ps.uzyskiwanyTytul"
+                            ng-options="tytul.value as tytul.key | translate for tytul in vm.dostepneTytuly"
+                            class="form-control">
+                        </select>
+                        <!--<select class="form-control" ng-model="ps.uzyskiwanyTytul" >
                             <option>{{"program_studiow_bachelor" | translate}}</option>
                             <option>{{"program_studiow_engineer" | translate}}</option>
                             <option>{{"program_studiow_master" | translate}}</option>
-                        </select>
+                        </select>-->
                     </div>
                     <div class="form-group">
                         <label>{{"program_studiow_entrance_requirements" | translate}}</label>

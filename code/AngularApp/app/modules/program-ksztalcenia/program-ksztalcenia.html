@@ -92,4 +92,23 @@
 </div>
 <!-- /.col-lg-6 -->
 
+<div class="col-lg-6" ng-show="!vm.error">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            {{'program_studiow_header' | translate}}
+        </div>
+        <!-- /.panel-heading -->
+        <div class="panel-body">
+            <div class="table-responsive">
+                <a class="btn btn-default" ui-sref="program-studiow">{{'global_btn_edit' | translate}}</a>
+                <a class="btn btn-default" ng-href="{{vm.pdfLink}}">{{'global_btn_print' | translate}}</a>
+            </div>
+            <!-- /.table-responsive -->
+        </div>
+        <!-- /.panel-body -->
+    </div>
+    <!-- /.panel -->
+</div>
+<!-- /.col-lg-6 -->
+
 

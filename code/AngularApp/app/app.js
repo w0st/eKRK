@@ -19,6 +19,7 @@ angular.module('app', [
         'ngSanitize',
         'ui.router',
         'angular-loading-bar',
+        'ui.bootstrap',
         'pascalprecht.translate',
         'ngStorage',
         'selectionModel',
