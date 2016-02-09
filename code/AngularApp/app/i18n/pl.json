@@ -107,6 +107,7 @@
     "modul_ksztalcenia_min_ects": "Minimum punktów ECTS dla modułu",
     "modul_ksztalcenia_subjects": "Zajęcia",
     "modul_ksztalcenia_subjects_for_module": "Zajęcia dla modułu",
+    "modul_ksztalcenia_edit": "Edytuj",
     "profile_modulow_header" : "Profile modulów kształcenia",
     "profile_modulow_new_profile": "Nowy profil:",
     "profile_modulow_edit_profile": "Edytuj profil:",

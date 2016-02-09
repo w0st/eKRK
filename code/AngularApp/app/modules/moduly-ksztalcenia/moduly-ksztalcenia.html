@@ -46,10 +46,10 @@
                             class="gradeA even">
                             <td>{{ modul.nazwaModulu }}</td>
                             <td>
-                                <a class="btn btn-primary"
-                                   ng-href="moduly-ksztalcenia/modul-ksztalcenia?modul-id={{ modul.id }}">E</a>
+                                <a class="btn btn-default"
+                                   ng-href="moduly-ksztalcenia/modul-ksztalcenia?modul-id={{ modul.id }}">{{ 'modul_ksztalcenia_edit' | translate}}</a>
                                 <button data-target="#deleteModulModal" data-toggle="modal" type="button"
-                                        ng-click="vm.selectModulToDelete(modul)" class="btn btn-primary">D
+                                        ng-click="vm.selectModulToDelete(modul)" class="btn btn-danger">x
                                 </button>
                             </td>
                         </tr>
