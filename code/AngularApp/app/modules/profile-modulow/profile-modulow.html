@@ -39,9 +39,9 @@
                     <tr dt-rows ng-repeat="profil in vm.profile_modulow">
                         <td>{{ profil.nazwa }}</td>
                         <td>
-                            <button class="btn btn-primary" ng-click="vm.selectEditProfile(profil)">E</button>
+                            <button class="btn btn-default" ng-click="vm.selectEditProfile(profil)">{{'modul_ksztalcenia_edit' | translate}}</button>
                             <button data-target="#deleteProfilModal" data-toggle="modal" type="button"
-                                    ng-click="vm.selectProfilToDelete(profil)" class="btn btn-primary">D
+                                    ng-click="vm.selectProfilToDelete(profil)" class="btn btn-danger">x
                             </button>
                         </td>
                     </tr>
