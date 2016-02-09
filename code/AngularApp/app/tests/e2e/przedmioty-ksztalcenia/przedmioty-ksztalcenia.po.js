@@ -1,7 +1,7 @@
 var PrzedmiotyKsztalcenia = function() {
 
     this.get = function() {
-        browser.get('http://127.0.0.1:8000/przedmioty-ksztalcenia');
+        browser.get('http://127.0.0.1:5000/przedmioty-ksztalcenia');
     };
 
     this.nazwa1 = "Matematyka dyskretna";

@@ -2,8 +2,8 @@ angular.module('app').constant('CONFIG', {
     /**
      * CLIENT_ID przypisany do aplikacji angularowej przez /oauth/applications
      */
-    CLIENT_ID: '89594a1482351ab0845d6cacecd1d80f8b9b11fc23af21032f99224e3ad6b3a2',
-    ANGULAR_URL: 'http://localhost:8000',
+    CLIENT_ID: 'bf01a2c8e7d49f42518f57899f9180a85eb2f9a904f3d8510182aab2899059ce',
+    ANGULAR_URL: 'http://localhost:5000',
     RAILS_URL: 'http://localhost:3000',
     API_URL: 'http://localhost:3000/api/v1/',
     OAUTH_URL: 'http://localhost:3000/oauth/',

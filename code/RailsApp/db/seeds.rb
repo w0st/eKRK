@@ -125,7 +125,7 @@ User.create(email: 'another@example.com', password: 'user1234', password_confirm
             role: 0)
 
 #Seed dla OAuth
-app = Doorkeeper::Application.create! :name => "Doorkeeper AngularJS Client", :redirect_uri => "http://localhost:8000/"
+app = Doorkeeper::Application.create! :name => "Doorkeeper AngularJS Client", :redirect_uri => "http://localhost:5000/"
 
 puts "Application: "
 puts "name: #{app.name}"
