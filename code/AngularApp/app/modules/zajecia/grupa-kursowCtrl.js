@@ -118,7 +118,11 @@
                         return   kurs.godzinyCNPS >= kurs.godzinyZZU
                     }),
                 };
-                return _.some(vm.validations, false);
+                var all_true = _.every(vm.validations, function(key, value) {
+                    return key;
+                });
+                
+                return all_true;
             };
 
             vm.updateGrupaKursow = function() {
