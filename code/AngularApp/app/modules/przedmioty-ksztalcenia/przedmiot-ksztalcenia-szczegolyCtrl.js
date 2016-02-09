@@ -51,7 +51,7 @@
                         vm.kursy = response;
                     }, function(reason) {
                         console.log("Blad = ", reason);
-                        vm.error = 'global_problem_server';
+                        vm.error_kursy = 'global_problem_server';
                     });
 
                     ZajeciaService.getGrupaKursow(id).then(function(response) {
@@ -59,7 +59,7 @@
                         vm.grupaKursow = response;
                     }, function(reason) {
                         console.log("blad = ", reason);
-                        vm.error = 'global_problem_server';
+                        vm.error_grupa = 'global_problem_server';
                         vm.grupaKursow = undefined;
                     });
                 }

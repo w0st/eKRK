@@ -54,7 +54,10 @@
 
 
 <div class="row">
-    <div class="col-lg-12" ng-show="!vm.error">
+    <div class="alert alert-danger" ng-show="vm.error">
+        {{vm.error_kursy | translate}}
+    </div>
+    <div class="col-lg-12" ng-show="!vm.error_kursy">
         <p><a class="btn btn-default" ui-sref="kurs({'przedmiot-ksztalcenia-id': vm.id})">{{'przedmiot_ksztalcenia_btn_add_course' | translate}}</a></p>
         <div class="panel panel-default">
             <div class="panel-heading">
@@ -149,7 +152,7 @@
 </div>
 
 <div class="row">
-        <div class="col-lg-6" ng-show="!vm.error">
+        <div class="col-lg-6" ng-show="!vm.error_grupa">
             <div class="panel panel-default" ng-if="vm.grupaKursow">
                 <div class="panel-heading">
                     {{'przedmiot_ksztalcenia_grupa_kursow_title' | translate}}
@@ -207,7 +210,7 @@
             <!-- /.panel -->
         </div>
 
-        <div class="col-lg-6" ng-show="!vm.error">
+        <div class="col-lg-6" ng-show="!vm.error_grupa">
             <div class="panel panel-default" ng-if="vm.grupaKursow">
                 <div class="panel-heading">
                     {{'przedmiot_ksztalcenia_grupa_kursow_kursy_title' | translate}}
