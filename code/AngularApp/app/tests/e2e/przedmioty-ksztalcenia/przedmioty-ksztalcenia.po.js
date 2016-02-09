@@ -5,6 +5,7 @@ var PrzedmiotyKsztalcenia = function() {
     };
 
     this.nazwa1 = "Matematyka dyskretna";
+    this.nazwa2= "Analiza matematyczna";
     this.komunikat1 = "Please insert unique name for the subject"
 
 };

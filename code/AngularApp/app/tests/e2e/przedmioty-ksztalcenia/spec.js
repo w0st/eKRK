@@ -21,18 +21,22 @@ describe('Przedmioty-Ksztalcenia Tests', function () {
         element(by.cssContainingText('option', 'janusz.martan')).click();
         element(by.binding('global_btn_save')).click();
         expect(element(by.binding('vm.errorUnique')).getText()).toEqual(przedmiotyKsztalcenia.komunikat1);
-
     });
-    //element(by.binding('global_btn_cancel')).click();
 
-    /*it('should change name', function() {
+    it('should edit name', function() {
+        element(by.binding('global_btn_cancel')).click();
         element.all(by.binding('global_btn_edit')).last().click();
-        //browser.pause();
+        element(by.model('vm.przedmiot.nazwaPrzedmiotu')).clear();
+        element(by.model('vm.przedmiot.nazwaPrzedmiotu')).sendKeys(przedmiotyKsztalcenia.nazwa2);
+        element(by.binding('global_btn_save')).click();
+        expect((element.all(by.repeater('przedmiot in vm.przedmiotyKsztalcenia').column('nazwaPrzedmiotu'))).last().getText())
+            .toEqual(przedmiotyKsztalcenia.nazwa2);
     });
 
     it('shuld delete selected przedmiot-ksztalcenia', function() {
-
-    });*/
-    // Aby zatrzymac test (sprawdzamy go np.)
-    // browser.pause();
+        element.all(by.css('[ng-click="vm.select(przedmiot)"]')).last().click();
+        element(by.css('[ng-click="vm.delete(vm.selected.id)"]')).click();
+        expect((element.all(by.repeater('przedmiot in vm.przedmiotyKsztalcenia').column('nazwaPrzedmiotu'))).last().getText())
+            .not.toEqual(przedmiotyKsztalcenia.nazwa2);
+    });
 });
