@@ -83,7 +83,7 @@ module.exports = function (grunt) {
             server: {
                 options: {
                     keepalive: true,
-                    port: 8000,
+                    port: process.env.PORT || 5000,
                     base: '.',
                     hostname: 'localhost',
                     debug: true,
@@ -148,5 +148,6 @@ module.exports = function (grunt) {
 
     // Development task(s).
     grunt.registerTask('dev', ['injector', 'concurrent']);
+    grunt.registerTask('default', ['injector', 'concurrent']);
 
 };
